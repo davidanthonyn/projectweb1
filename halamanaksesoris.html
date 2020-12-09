@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
+    <link rel="stylesheet" type="text/css" href="aksesoris.css">
+    </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-  <style> 
+  <style>
 	body {
 	font-family: 'Roboto', sans-serif;
 	}
 	
 		.logo{
-		background-image: url(Gallery/homepage/smartphone.png);
+		background-image: url(smartphone.png);
 		width: 40px;
 		margin: 4px 14px;
 		height: 40px;
@@ -18,7 +20,6 @@
 		border: solid 2px #666;
 		border-radius: 50px;
 		background-color: #fff;
-		href: url(home.html);
 		}
 
 			.navbar-left{
@@ -79,7 +80,7 @@
 				position:absolute;
 				left:-999em;
 				height:auto;
-				width:108px;
+				width:120px;
 				margin-top:50px;
 				border:1px solid #666;
 			}
@@ -233,55 +234,13 @@
   clear: both;
 }
 
-.row {
-display: flex;
-align-items: center;
-flex-wrap: wrap;
-justify-content: space-around;
-} 
 
-.categories {
-margin: 5px 0;
-}
-
-.small-container {
-max-width: 60%;
-margin: auto;
-}
-
-.col-4 {
-flex-basis: 20%;
-min-width: 100px;
-margin-left: 10%;
-margin-bottom: 20px;
-transition: transform 0.5s;
-border-style: ridge;
-}
-
-.col-4 img {
-	width: 100%;
-}
-
-h4 {
-color: #555;
-font-weight: normal;
-}
-
-.col-4 p {
-	font-size: 14px;
-}
-
-.col-4:hover {
-	transform: translateY(-5px);
-}
 
 
   </style>
-  <title>iPhone XS Series | SI Gadget</title>
-  <link rel="shortcut icon" type="image" href="Gallery/homepage/smartphone.png">
+  <title>SI Gadget | Menjual Smartphone dan Aksesoris</title>
   </head>
 <body>
-
 <!----navigation--->
 <nav class="navbar">
     <div class="navbar-left" style="position: relative; left: 140px"><div class="logo" onclick="location.href='home.html';"></div></div>
@@ -330,33 +289,42 @@ font-weight: normal;
     </div>
 </nav>
 
-<!-----featured categories------>
-<div class="categories">
-	<div class="row">
-		<div class="col-3"></div>
-</div>
+<h1 align="center"> Dapatkan Aksesoris Disini </h1>
+<div class="aksesoris"> 
+    <center>
+        <!---iklan Wireless Charger--->
+        <div class="offer">
+        <img src="(WIRELESS%20CHARGER)iklan.png" class="offer-img">
+        <div class="tulisan">
+           
+            <p> Eksklusif tersedia di toko(nama toko)</p>
+       <h2>Mophie Powerstation</h2>
+        <small>Tipe Baterai Lithium Ion, Kapasitas 20000 mAh, Jumlah Port Keluaran 3 Port(s), Berat 428 g</small>
+            <br>
+            <br>
+            <a href="wirelesscharger.html" class="btn">Beli Sekarang  &#8594;</a>
+           </div>
+         </div>  
+           
+         <br>  
+        <br>
+        <!---iklan airpods--->
+        <img src="(AKSESORIS)logo-airpodspro-min.png" width="200px" height="100px">
+        <br>
+        <br>
+        <p>Peredam Kebisingan Aktif dengan mode Transparansi, tahan air dan keringat,1 dan ukuran <br> yang bisa disesuaikan.</p>
+           <br>
+        <a href="headphone.html"> Lihat Selengkapnya</a>
+        <br>
+        <br>
+        <br>
+        <br>
+ <img src="(AKSESORIS)airpodspro-1-min.png" width="500px" height="450px">
+    </center>
 </div>
 
-<!-----featured products------>
-<h2 style="text-align: center;">iPhone XS</h2>
-<hr>
-<div class="small-container">
-<div class="row">
-	<div class="col-4" onclick="location.href='iPhoneXSMaxProduct.html';">
-		<img src="Gallery/iPhone/iPhone XS/iphone-xs-max-space-gray_1_2_1_2_3.jpg">
-		<h4>iPhone XS Max</h4>
-		<p>Rp 14.999.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhoneXSProduct.html';">
-		<img src="Gallery/iPhone/iPhone XS/iphone-xs-gold_1_1_1_4_2.jpg">
-		<h4>iPhone XS</h4>
-		<p>Rp 12.999.000</p>
-	</div>
 
-	</div>
-</div>
 
-<!-----newsletter------>
 <div class="newsletter">
 	<p style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
 		<input style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
@@ -364,7 +332,6 @@ font-weight: normal;
 	</p>
 </div>
 
-<!-----penjelasan SI Gadget------>
 <p style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
 
 <div class="row">
