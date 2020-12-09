@@ -38,7 +38,7 @@ display:flex;
 }
 
 .produktl{
-    color:aliceblue;
+    color:black;
 }
 
 .produktl::after{
@@ -54,12 +54,12 @@ display:flex;
 }
 
 h4{
-    color: azure;
+    color: black;
     font-weight: normal;
 }
 .col-2 p{
     font-size: 14px;
-    color: ghostwhite;
+    color: black;
 }
 
 .rating .fa{
