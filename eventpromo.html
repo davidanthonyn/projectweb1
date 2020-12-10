@@ -246,6 +246,19 @@
 
                                       .button:hover{background-color: #fff; color:#333;}
 
+                                      .buttonblack {
+                                        padding: 2px 50px;
+                                        text-align: center;
+                                        text-decoration: none;
+                                        display: inline-block;
+                                        cursor: pointer;
+                                        background-color: rgba(255, 255, 255,0.1);
+                                        color: black;
+                                        border: 2px solid #333;
+                                      }
+
+                                      .buttonblack:hover{background-color: #333; color:#fff;}
+
   .column {
     float: left;
     width: 33%;
@@ -272,7 +285,32 @@
     }
 
     .faq-section {
-      padding: 75px 50px;
+      padding: 75px 50px -4px 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .faq-section p{
+      font-size: 19px;
+      color:#4a4a4a;
+    }
+
+    .faq-section b{
+      font-size: 23px;
+      color: black;
+    }
+
+    .faq-section span{
+      color: #990606;
+    }
+
+    .gas {
+      text-align:left;
+      padding-top:13px;
+    }
+
+    .promo-section {
+      padding: 120px 50px 100px 50px;
       text-align: center;
       position: relative;
     }
@@ -318,7 +356,7 @@
 <body class="body">
 <nav class="navbar">
     <div class="navbar-left"><div class="logo"></div></div>
-    <div class="navbar-left">
+    <div class="navbar-right">
       <ul>
           <li><a href="iPhoneproducts">iPhone</a>
     <ul class="dropdown-list">
@@ -349,7 +387,7 @@
                                                                     </ul>
                                                                   </li>
 
-                                                                                                    <li><a href="#">Event and Promo</a></li>
+                                                                                                    <li><a href="eventpromo.html">Event and Promo</a></li>
 
                                                                                                                         <li><a href="#">Layanan</a>
                                                                                                                           <ul class="dropdown-list">
@@ -362,26 +400,42 @@
     </div>
 </nav>
 
-<div class="about-section animate__animated animate__fadeIn">
-  <h1 class="animate__animated animate__fadeInLeft" style="font-size:48px; background: -webkit-linear-gradient(#79c4e8, #5eacd1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;">Temukan Kami Di</h1> <br>
-
-  <p class="animate__animated animate__fadeInLeft" style="font-size:28px; background: -webkit-linear-gradient(#79c4e8, #FFFFFF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;">Jl. M. H. Thamrin Boulevard 1100 Lippo Village <br>
-  Tangerang 15811 - Indonesia</p>
-  <br>
-
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15865.070982999167!2d106.6104213!3d-6.2283883!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x79c34e4f78fbbf2!2sUniversitas%20Pelita%20Harapan!5e0!3m2!1sen!2sid!4v1607325241262!5m2!1sen!2sid"
-  class="animate__animated animate__fadeInLeft" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-  <p class="animate__animated animate__fadeInLeft" style="font-size:22px; color:white;">(021) 5460901 / (021) 5470901
-  <br>
-  information@sigadget.com</p>
+<div class="promo-section">
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="galaxy.jpg" width="196px;"><br>
+        <p>&nbsp;</p>
+      <h2 style="background: -webkit-linear-gradient(#000000, #590000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; font-size:25px; text-align:center;">Samsung</h2>
+      <input type="submit" name="" class="buttonblack" value="Detail">
+    </div>
+    <div class="col-sm-3">
+      <img src="iphone12.jpg" width="208px;"><br>
+      <p>&nbsp;</p>
+      <h2 style="background: -webkit-linear-gradient(#000000, #590000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; font-size:25px; text-align:center;">iPhone</h2>
+      <input type="submit" name="" class="buttonblack" value="Detail">
+    </div>
+    <div class="col-sm-3">
+      <img src="accesories.jpg" width="230px;"><br>
+      <p>&nbsp;</p>
+      <h2 style="background: -webkit-linear-gradient(#000000, #590000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; font-size:25px; text-align:center;">accesories</h2>
+      <input type="submit" name="" class="buttonblack" value="Detail">
+    </div>
+    <div class="col-sm-3">
+      <img src="repairs.jpg" width="220px;"><br>
+      <p>&nbsp;</p>
+      <h2 style="background: -webkit-linear-gradient(#000000, #590000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; font-size:25px; text-align:center;">Repair</h2>
+      <input type="submit" name="" class="buttonblack" value="Detail">
+    </div>
+  </div>
 </div>
-
-
 
 <div class="newsletter">
 	<p>Mari berlangganan newsletter untuk mendapatkan informasi terbaru
@@ -435,6 +489,8 @@
 					<div class="bottomnav">
 					  <p style="text-align:center; color:white; font-size: 15px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
 					</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 </html>
