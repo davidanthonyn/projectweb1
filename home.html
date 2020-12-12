@@ -5,8 +5,8 @@
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<script src="script.js" defer></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<style>
 	
 	</style>
@@ -17,7 +17,7 @@
 <body>
 <!----navigation--->
 <nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='home.html';"></div></div>
+    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo" onclick="location.href='home.html';"></div></div>
     <div class="navbar-right"  style="position: relative; left: 140px">
         <ul class="animate__animated animate__fadeInDown">
             <li><a href="Bagian David/iPhoneproducts.html">iPhone</a>
@@ -66,15 +66,15 @@
 
 <div class="slideshow-container">
 <div class="mySlides fade">
-  <img src="Gallery/homepage/Iklan iPhone 11 Pro smartfren.png" style="width:100%" onclick="document.location='PromotioniPhone11Pro.html'">
+  <img src="Gallery/homepage/Iklan iPhone 11 Pro smartfren.png" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11Pro.html'">
 </div>
 
 <div class="mySlides fade">
-  <img src="Gallery/homepage/Iklan AirPods Pro.png" style="width:100%">
+  <img src="Gallery/homepage/Iklan AirPods Pro.png" style="width:100%" onclick="document.location='Bagian Tius/headphone.html'">
 </div>
 
 <div class="mySlides fade">
-  <img src="Gallery/homepage/Iklan iPhone 11.png" style="width:100%" onclick="document.location='PromotioniPhone11.html'">
+  <img src="Gallery/homepage/Iklan iPhone 11.png" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11.html'">
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -131,49 +131,51 @@ function showSlides(n) {
 <img src="Gallery/homepage/New-Apple-store-Retail-in-Asia3.jpg" alt="Toko Elektronik" width="100%" height="100%" onclick="document.location='Bagian Sanctus/About.html'">
 </div>
 
-<div class="newsletter">
-	<p style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
-		<input style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
-		<input style="position: relative; left: 300px" type="submit" value="Kirim">
-	</p>
-</div>
+<!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
+    ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
+    <div class="newsletter">
+    	<p class="animate__animated animate__fadeInDown" style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
+    		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
+    		<input class="button animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="submit" value="KIRIM">
+    	</p>
+    </div>
+    <!-- penjelasan SI Gadget -->
+    <div class="experience">
+    <p class="animate__animated animate__fadeInLeft" style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
+    					<div class="column animate__animated animate__fadeInLeft">
+    						<ul style="list-style-type:none">
+    							<li>Jika Anda ingin bantuan atau memiliki masukan, silakan hubungi kami: </li><br>
+    							<li>Jam 9.30 - 17.30(Senin s/d Minggu).</li>
+    							<li>Email: customercare@sigadget.com</li>
+    							<li>Phone: 911</li>
+    							<li>WA: 081234567890</li>
+    						</ul>
+    					</div>
+    															<div class="column animate__animated animate__fadeInLeft">
+    																	<ul style="list-style-type:none">
+    																		<li>Kami menerima metode pembayaran:</li><br>
+    																		<li>OVO</li>
+    																		<li>GO-PAY</li>
+    																		<li>Cash on Delivery(COD)</li>
+    																		<li>Debit card</li>
+    																		<li>Credit card</li>
+    																	</ul>
+    															</div>
 
-<p style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
+    																							<div class="column animate__animated animate__fadeInLeft">
+    																									<ul style="list-style-type:none">
+    																										<li>Kurir pengiriman:</li><br>
+    																										<li>JNE</li>
+    																										<li>JET Express</li>
+    																										<li>SiCepat</li>
+    																									</ul>
+    																							</div>
+    </div>
 
-<div class="row">
-					<div class="column">
-						<ul style="list-style-type:none">
-							<li>Jika Anda ingin bantuan atau memiliki masukan, silakan hubungi kami: </li>
-							<li>Jam 9.30 - 17.30(Senin s/d Minggu).</li>
-							<li>Email: customercare@sigadget.com</li>
-							<li>Phone: 911</li>
-							<li>WA: 081234567890</li>
-						</ul>
-					</div>
-															<div class="column">
-																	<ul style="list-style-type:none">
-																		<li>Kami menerima metode pembayaran:</li>
-																		<li>OVO</li>
-																		<li>GO-PAY</li>
-																		<li>Cash on Delivery(COD)</li>
-																		<li>Debit card</li>
-																		<li>Credit card</li>
-																	</ul>
-															</div>
-  
-																							<div class="column">
-																									<ul style="list-style-type:none">
-																										<li>Kurir pengiriman:</li>
-																										<li>JNE</li>
-																										<li>JET Express</li>
-																										<li>SiCepat</li>
-																									</ul>
-																							</div>
-</div>
-
-					<div class="bottomnav">
-					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
-					</div>
+    					<div class="bottomnav">
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					</div>
+    <!--Copas footer sampai sini -->
 
 
 <!---js for toggle menu------>
