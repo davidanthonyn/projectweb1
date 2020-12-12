@@ -191,7 +191,6 @@ var cart = {
         }
  
     }
- 
 };
  
 document.addEventListener('DOMContentLoaded', function () {
@@ -224,6 +223,4 @@ document.addEventListener('DOMContentLoaded', function () {
         cart.clearItems();
  
     });
- 
- 
 });
