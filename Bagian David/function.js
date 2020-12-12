@@ -89,14 +89,14 @@ var helpers = {
  
     },
     emptyView: function () {
- 
-        this.setHtml('cartItems', '<p>Add some items to see</p>');
+        this.setHtml('cartItems', '<p>Keranjang kosong</p>');
         this.updateTotal();
+		
  
     },
     updateTotal: function () {
  
-        this.setHtml('totalPrice', cart.total + '₹');
+        this.setHtml('totalPrice', 'Rp ' + cart.total);
  
     }
  
@@ -129,6 +129,7 @@ var cart = {
         helpers.emptyView();
  
     },
+	
     addItem: function (item) {
  
         if (this.containsItem(item.id) === false) {
