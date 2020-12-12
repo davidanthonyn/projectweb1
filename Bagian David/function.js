@@ -92,6 +92,9 @@ var helpers = {
         this.setHtml('cartItems', '<p>Keranjang kosong</p>');
         this.updateTotal();
 		
+		document.querySelector('#checkout').addEventListener('click', function (e) {
+        alert("Mohon memilih salah satu produk.");
+		});
  
     },
     updateTotal: function () {
