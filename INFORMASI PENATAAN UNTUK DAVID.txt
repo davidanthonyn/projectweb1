@@ -1,9 +1,0 @@
-- dapid itu yang kodingan di halaman utamanya ada di "pagetemplate.html"dengan css "aksesoris.css"
-
--untuk halaman headphone yaitu "headphone.html" dengan css "headphone.css"
-
--dan halaman wireless charger yaitu "wirelesscharger.html" dengan css "wirelesscharger.css" 
-
--oiya tadinya kan powerbank jadinya diganti dengan wireless charger
-
--trus headset uda masuk ke halaman headphone
