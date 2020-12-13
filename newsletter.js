@@ -1,39 +1,10 @@
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-
-<!---js for toggle menu------>
-var MenuItems = document.getElementById("MenuItems");
-	
-	MenuItems.style.maxHeight = "0px";
-	
-	function menutoggle(){
-		if(MenuItems.style.maxHeight == "0px"){
-			 MenuItems.style.maxHeight == "200px";
-		} else {
-			MenuItems.style.maxHeight == "0px";
+function newsletterCheck() {
+	var emailUser = document.getElementsById("email");
+	if(emailUser.value.length == "0"){
+		alert("Tidak berhasil mendaftarkan newsletter karena email kosong");
+	} else if(emailUser.value.length < "10") {
+		alert("Email tidak boleh terlalu pendek");
+	} else {
+		alert("Pendaftaran newsletter berhasil");
 	}
-
+}
