@@ -343,9 +343,7 @@ ul.no-bullets {
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.html">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.html">Login</a>
-																																																															<li><a href="../Bagian David/cart.html">Keranjang Belanja</a></li>
-																																																															</li>
+                                                                                                                            <li><a href="../Bagian David/account.html">Login</a></li>
 
         </ul>
     </div>
@@ -375,10 +373,10 @@ ul.no-bullets {
 				</select>
 
 				<br>
-							<button id="down" onclick="setQuantity('down');">-</button>
-							<input type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
-							<button id="up" onclick="setQuantity('up');">+</button>
-							<a href="" class="btn-cart" style="position:relative;left:10px;">Tambah ke Keranjang</a>
+							<button hidden id="down" onclick="setQuantity('down');">-</button>
+							<input hidden type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
+							<button hidden id="up" onclick="setQuantity('up');">+</button>
+							<a href="../Bagian David/Keranjang Belanja/keranjangbelanjaiPhone11Pro.html" class="btn-cart">Beli</a>
 							<br><br>
 							<h3>Detail Produk</h3>
 							<p>Sistem tiga kamera transformatif yang menambahkan kemampuan luar biasa tanpa kerumitan. Lompatan tak tertandingi dalam hal kekuatan baterai. Dan chip luar biasa dengan pembelajaran mesin yang semakin canggih dan menghilangkan batasan kemampuan ponsel pintar. Selamat datang di iPhone pertama yang karena kecanggihannya layak disebut Pro.</p>
@@ -800,11 +798,6 @@ ul.no-bullets {
 		<h4>iPhone 11 Pro Max</h4>
 		<p>Rp 22.999.000</p>
 	</div>
-	<div class="col-4" onclick="location.href='iPhone11ProProduct.html';">
-		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_space_grey_1_4_1_1.jpg">
-		<h4>iPhone 11 Pro</h4>
-		<p>Rp 18.999.000</p>
-	</div>
 	<div class="col-4" onclick="location.href='iPhone11Product.html';">
 		<img src="Gallery/iPhone/iPhone 11/apple_iphone_11_black_1_2_1_1_1.jpg">
 		<h4>iPhone 11</h4>
@@ -946,11 +939,10 @@ ProductImg.src = "Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-space-grey.png";
 
 <script>
 function myFunction() {
-  var x = document.getElementById("mySelect").value;
-  document.getElementById("demo").innerHTML = "Rp. " + x;
+  var harga = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "Rp. " + harga;
 }
 </script>
-
 
 </body>
 </html>
