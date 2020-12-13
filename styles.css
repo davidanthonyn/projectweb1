@@ -192,17 +192,8 @@ body {
 
 					/* On smaller screens, decrease text size */
 					
-					.text {
-					  color: #f2f2f2;
-					  font-size: 15px;
-					  padding: 8px 12px;
-					  position: absolute;
-					  bottom: 8px;
-					  width: 100%;
-					  text-align: center;
-					}
 
-									.experience {
+									.experiencedays {
 									position: relative;
 									  left: 200px;
 									}
@@ -222,6 +213,30 @@ body {
 .column {
   float: left;
   width: 33.33%;
+  padding: 10px;
+}
+
+.column1 {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+.column2 {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+
+.column3 {
+  float: left;
+  width: 15%;
+  padding: 40px 10px 0 10px;
+}
+
+.column4 {
+  float: left;
+  width: 75%;
   padding: 10px;
 }
 
@@ -289,8 +304,12 @@ body {
 					}
 
 									.experience {
-									position: relative;
-									  left: 200px;
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 2px 15px;
+                    background: #666565;
+                    color: white;
+                    height: 248px;
 									}
   
   
@@ -304,12 +323,6 @@ body {
 																		  overflow: hidden;
 																		  background-color: #333;
 																		}
-
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-}
 
 /* Clear floats after the columns */
 .row:after {
