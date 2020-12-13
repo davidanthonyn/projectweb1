@@ -68,6 +68,7 @@ var helpers = {
         var item = {
  
             name: object.getAttribute('data-name'),
+			color: object.getAttribute('data-color'),
             price: object.getAttribute('data-price'),
             id: object.getAttribute('data-id'),
             count: count.value,
@@ -144,6 +145,7 @@ var cart = {
             this.items.push({
                 id: item.id,
                 name: item.name,
+				color: item.color,
                 price: item.price,
                 count: item.count,
                 total: item.price * item.count
