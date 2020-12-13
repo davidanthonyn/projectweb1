@@ -503,17 +503,17 @@ form a{
 					</div>
 					
 					<form id="LoginForm">
-						<input type="text" placeholder="Username">
-						<input type="password" placeholder="Password">
-						<button type="submit" class="btn-cart">Login</button>
+						<input type="text" placeholder="Username" id="myUsernameLogin">
+						<input type="password" placeholder="Password" id="myPasswordLogin">
+						<button type="submit" class="btn-cart" onclick="loginAccount()">Login</button>
 						<a href="../Bagian David/forgotpassword.html">Forgot Password</a>
 					</form>
 					
 					<form id="RegForm">
-						<input type="text" placeholder="Username">
-						<input type="email" placeholder="Email">
-						<input type="password" placeholder="Password">
-						<button type="submit" class="btn-cart">Register</button>
+						<input type="text" placeholder="Username" id="myUsernameReg">
+						<input type="email" placeholder="Email" id="myEmailReg">
+						<input type="password" placeholder="Password" id="myPasswordReg">
+						<button type="submit" class="btn-cart" onclick="makeAccount()">Register</button>
 					</form>
 				</div>
 			</div>
@@ -591,6 +591,13 @@ form a{
 	var RegForm = document.getElementById("RegForm");
 	var Indicator = document.getElementById("Indicator");
 	
+	var usernameLogin = document.getElementById("myUsernameLogin");
+	var passwordLogin = document.getElementById("myPasswordLogin");
+	
+	var usernameSignUp = document.getElementById("myUsernameReg");
+	var emailSignUp = document.getElementById("myEmailReg");
+	var passwordSignUp = document.getElementById("myPasswordReg");
+	
 	function login() {
 		LoginForm.style.transform = "translateX(300px)";
 		RegForm.style.transform = "translateX(300px)";
@@ -603,6 +610,23 @@ form a{
 		Indicator.style.transform = "translateX(100px)";
 	}
 	
+	function makeAccount() {
+		if(usernameSignUp.value.length == "0" || emailSignUp.value.length == "0" || passwordSignUp.value.length == "0" ) {
+			alert("Form tidak boleh kosong");
+			} else {
+					alert("Registrasi berhasil, silakan login");
+					onclick=location.href='../home.html';
+				}
+	}
+	
+	function loginAccount() {
+		if(usernameLogin.value.length == "0" || passwordLogin.value.length == "0") {
+			alert("Form tidak boleh kosong");
+		} else {
+					alert("Login berhasil");
+					onclick=location.href='../home.html';
+				}
+	}
 	
 </script>
 
