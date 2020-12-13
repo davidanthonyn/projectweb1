@@ -359,10 +359,10 @@ font-size: 15px;
     <option value="6">6 GB</option>
 </select>
 <div style="margin-left:300px;margin-top: 15px;">
-	<button id="down" onclick="setQuantity('down');">-</button>
-							<input type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
-							<button id="up" onclick="setQuantity('up');">+</button>
-							<a href="" class="btn-cart" style="position:relative;left:10px;">Tambah ke Keranjang</a>
+	<button hidden id="down" onclick="setQuantity('down');">-</button>
+							<input hidden type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
+							<button hidden id="up" onclick="setQuantity('up');">+</button>
+							<a href="../Bagian David/Keranjang Belanja/keranjangbelanjaMiNote10.html" class="btn-cart">Beli</a>
 </div>
 <h1 style="margin-left:300px;margin-top: 30px;">Detail Produk</h1><br>
 <div style="margin-left:300px;margin-top: 15px;">
@@ -461,7 +461,7 @@ font-size: 15px;
 	function changeColor() {
 		var image = document.getElementById("foto");
 		image.src = "https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/F4/Green-800x800.png";
-		image.style.width="50%";
+		image.style.width="35%";
 	}
 </script>
 		
