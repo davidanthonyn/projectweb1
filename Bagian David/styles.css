@@ -199,10 +199,7 @@ body {
 									}
   
   
-															.bottomnav {
-															overflow: hidden;
-															background-color: #333;
-															}
+				
 
 
 																		.newsletter {
@@ -316,12 +313,17 @@ body {
 															.bottomnav {
 															overflow: hidden;
 															background-color: #333;
+															height: 25%;
+															width: 100%;
 															}
 
 
 																		.newsletter {
+																			width: 100%;
 																		  overflow: hidden;
 																		  background-color: #333;
+																			padding: 2px 19px 0 100px;
+																			color : white;
 																		}
 
 /* Clear floats after the columns */
@@ -437,14 +439,6 @@ font-weight: normal;
 											flex-basis: 24%
 											cursor: pointer;
 										}
-										
-										.experience {
-                    margin: 0 auto;
-                    padding: 2px 15px;
-                    background: #666565;
-                    color: white;
-                    height: 248px;
-									}
 									
 									.button {
                                       padding: 1px 14px;
@@ -458,3 +452,27 @@ font-weight: normal;
                                     }
 									
 									.button:hover{background-color: #fff; color:#333;}
+									
+									.column1 {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+.column2 {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+
+.column3 {
+  float: left;
+  width: 15%;
+  padding: 40px 10px 0 10px;
+}
+
+.column4 {
+  float: left;
+  width: 75%;
+  padding: 10px;
+}
