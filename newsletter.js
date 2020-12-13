@@ -1,5 +1,7 @@
+var emailUser = document.getElementsById("email");
+
 function newsletterCheck() {
-	var emailUser = document.getElementsById("email");
+	
 	if(emailUser.value.length == "0"){
 		alert("Tidak berhasil mendaftarkan newsletter karena email kosong");
 	} else if(emailUser.value.length < "10") {
