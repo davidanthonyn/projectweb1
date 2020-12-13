@@ -438,14 +438,6 @@ font-weight: normal;
 											cursor: pointer;
 										}
 										
-										.experience {
-                    margin: 0 auto;
-                    padding: 2px 15px;
-                    background: #666565;
-                    color: white;
-                    height: 248px;
-									}
-									
 									.button {
                                       padding: 1px 14px;
                                       text-align: center;
