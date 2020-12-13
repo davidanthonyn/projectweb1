@@ -93,7 +93,11 @@ var helpers = {
         this.updateTotal();
 		
 		document.querySelector('#checkout').addEventListener('click', function (e) {
+			if(cart.total=="0"){
         alert("Mohon memilih salah satu produk.");
+			} else {
+				onclick=location.href='../../Bagian Sanctus/kurir.html';
+			}
 		});
  
     },
