@@ -41,6 +41,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 										$_SESSION['username'] = $username;
 										header("location:sigadgetsigninsuccess.php");
 									} else if($_SESSION["account_userlevel"] == "admin") {
+										$_SESSION['username'] = $username;
 										header("location:sigadgetdashboard.php");
 									}
 							
