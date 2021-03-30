@@ -35,7 +35,9 @@ $conn->close();
   <title>SI Gadget Admin Dashboard</title>
 </head>
 <body>
+<h1>SI Gadget Admin Dashboard</h1>
 <br><br>
+
 <form method="POST" action="sigadgetdashboard.php">
 <input type="button" value="Show All Transaction" onclick="location.href='sigadgetdashboardtransactions.php'" /><br><br>
 
