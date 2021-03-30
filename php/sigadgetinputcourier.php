@@ -7,7 +7,7 @@ $dbname = "sigadget";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // register account
-	if(isset($_POST['registerproduct'])) {
+	if(isset($_POST['registercourier'])) {
 		$name = mysqli_real_escape_string($conn,$_POST['couriername']);
 		$type = mysqli_real_escape_string($conn,$_POST['couriertype']);
 		$price = mysqli_real_escape_string($conn,$_POST['courierprice']);

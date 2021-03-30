@@ -13,14 +13,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 		$price = mysqli_real_escape_string($conn,$_POST['price']);
 		$stock = mysqli_real_escape_string($conn,$_POST['stock']);
 
-			$query = "SELECT Jenis_Produk FROM jenisproduk WHERE Jenis_Produk='$type'";
-			$result = mysqli_query($conn, $query);
-			
-				if(mysqli_num_rows($result) == 0) {
-					array_push($errors, "Product type didn't exists!");		
-				} else {
-					$insert = mysqli_query($conn,"INSERT INTO `produk`(`ID_Produk`, `Nama_Produk`, `ID_Jenis_Produk`, `Harga_Produk`, `Stok_Produk`, `Created_at`) 
-					VALUES ('NULL','$name','$x','$price','$stock',now())");
+					$insert = mysqli_query($conn,"INSERT INTO `produk`(`ID_Produk`, `Nama_Produk`, `Jenis_Produk`, `Harga_Produk`, `Stok_Produk`, `Created_at`) 
+					VALUES ('NULL','$name','$type','$price','$stock',now())");
 					
 					$conn->close();
 					
@@ -31,8 +25,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 									echo mysqli_error();
 								}
 				}
-
-	}
 ?>
 <!DOCTYPE html>
 <html>
