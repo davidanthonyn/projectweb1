@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>SI Gadget Products Sales</title>
 <style>
 table {
   width:100%;
