@@ -52,7 +52,7 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'idasc') {
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
 	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -88,8 +88,8 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'smartphone') 
 	echo "<tr><td>" . $row["ID_Produk"] . "</td><td>" . $row["Nama_Produk"] . "</td><td>" . 
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
-	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -125,8 +125,8 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'accessories')
 	echo "<tr><td>" . $row["ID_Produk"] . "</td><td>" . $row["Nama_Produk"] . "</td><td>" . 
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
-	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -162,8 +162,8 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'pricedesc') {
 	echo "<tr><td>" . $row["ID_Produk"] . "</td><td>" . $row["Nama_Produk"] . "</td><td>" . 
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
-	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -199,8 +199,8 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'havestock') {
 	echo "<tr><td>" . $row["ID_Produk"] . "</td><td>" . $row["Nama_Produk"] . "</td><td>" . 
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
-	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -236,8 +236,8 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'timedesc') {
 	echo "<tr><td>" . $row["ID_Produk"] . "</td><td>" . $row["Nama_Produk"] . "</td><td>" . 
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
-	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -274,7 +274,7 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stockunderfiv
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
 	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -311,7 +311,7 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stockempty') 
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
 	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -323,7 +323,7 @@ $conn->close();
 
 // output data order by product pending
 if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stockpending') {
-	echo "<h3>Show All Products That Stock Empty</h3>";
+	echo "<h3>Show All Products That Status Pending</h3>";
 	$sql = "SELECT * FROM produk WHERE Status_Produk='Pending'";
 	$result = $conn->query($sql);	
 	
@@ -348,7 +348,7 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stockpending'
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
 	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -360,7 +360,7 @@ $conn->close();
 
 // output data order by product published
 if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stockpublished') {
-	echo "<h3>Show All Products That Stock Empty</h3>";
+	echo "<h3>Show All Products That Status Published</h3>";
 	$sql = "SELECT * FROM produk WHERE Status_Produk='Published'";
 	$result = $conn->query($sql);	
 	
@@ -385,7 +385,7 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stockpublishe
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
 	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -397,7 +397,7 @@ $conn->close();
 
 // output data order by product non activate
 if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stocknonactivate') {
-	echo "<h3>Show All Products That Stock Empty</h3>";
+	echo "<h3>Show All Products That Status Non-Activate</h3>";
 	$sql = "SELECT * FROM produk WHERE Status_Produk='Non-Activate'";
 	$result = $conn->query($sql);	
 	
@@ -422,7 +422,7 @@ if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'stocknonactiv
 	$row["Jenis_Produk"] . "</td><td>" . $row["Harga_Produk"] . 
 	  "</td><td>" . $row["Stok_Produk"] . "</td><td>" . $row["Status_Produk"] . "</td><td>" . $row["Created_at"] . "</td><td>" . $row["Updated_at"] . 
 	  "</td><td><a href= 'sigadgetupdateproduct.php?id=$row[ID_Produk]'>Edit</a></td>
-	  <td><a href= 'sigadgetdeleteproduct.php?id=$row[ID_Produk]'>Delete</a></td></tr>";
+	  <td><a href= 'sigadgetdelete.php?opproduk=delete&id=$row[ID_Produk]'>Delete</a></td></tr>";
   }
 } else {
   echo "0 results";
@@ -452,6 +452,7 @@ $conn->close();
 <option value="stockempty">Show All Products That Stock Empty</option>
 </select>
 <input type="submit" name="submit" value="Get Data" /><br><br>
+<input type="button" value="Insert New Product" onclick="location.href='sigadgetinputproduct.php'" /><br><br>
 <input type="button" value="Back" onclick="location.href='sigadgetdashboard.php'" />
 </form>
 

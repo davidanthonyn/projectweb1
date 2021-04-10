@@ -22,21 +22,28 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 					array_push($errors, "Username already exists!");		
 				} else {
 					$passhash = password_hash($password,PASSWORD_DEFAULT);
-					$insert = mysqli_query($conn,"INSERT INTO `user`(`ID_User`, `username`, `password`, `userlevel`, `Nama_Lengkap`, `email`, `No_Telepon`, `Alamat`, 
+					$insert = mysqli_query($conn,"INSERT INTO `user`(`ID_User`, `username`, `password`, `userlevel`, `userstatus`, `Nama_Lengkap`, `email`, `No_Telepon`, `Alamat`, 
 					`Created_at`, `Updated_at`) 
-					VALUES ('NULL','$username','$passhash','admin','$fullname','$email','$phonenumber','$address',now(),now())");
+					VALUES ('NULL','$username','$passhash','admin','Activate','$fullname','$email','$phonenumber','$address',now(),now())");
 					
 					$conn->close();
 					
-					header('location: sigadgetinputsuccess.php');
-				
-								if(!$insert)
-								{
-									echo mysqli_error();
-								}
 				}
+				
+								if($insert) {
+									?>
+																				<script>
+																				alert('Add admin success.');
+																				window.location.href='sigadgetadmins.php';
+																				</script>
+																				
+																			<?php
+									
+								} else {
+									echo mysqli_error();
+				}
+	}				
 
-	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,14 +61,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
   <br><br>
 	Email : <input type="text" name="email" placeholder="Enter Email" Required>
   <br><br>
-	Phone Number : <input type="number" name="phonenumber" placeholder="Enter Phone Number" maxlength="15" Required>
+	Phone Number(08) : <input type="number" name="phonenumber" placeholder="Enter Phone Number"  min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, 12);" Required>
   <br><br>
 	Alamat(Termasuk Kota & Provinsi) : <input type="text" name="address" placeholder="Enter Address" Required>
   <br><br>
 
   <input type="submit" name="registeraccountadmin" value="Register">
   <br><br>
-  <input type="button" value="Cancel" onclick="location.href='sigadgetdashboard.php'" />
+  <input type="button" value="Cancel" onclick="location.href='sigadgetadmins.php'" />
 </form>
 
 </body>

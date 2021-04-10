@@ -29,6 +29,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 							$_SESSION["account_username"] = $row_account["username"];
 							$_SESSION["account_password"] = $row_account["password"];
 							$_SESSION["account_userlevel"] = $row_account["userlevel"];
+							$_SESSION["account_userstatus"] = $row_account["userstatus"];
 							$_SESSION["account_fullname"] = $row_account["Nama_Lengkap"];
 							$_SESSION["account_email"] = $row_account["email"];
 							$_SESSION["account_phonenumber"] = $row_account["No_Telepon"];
@@ -37,7 +38,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 							$_SESSION["account_update"] = $row_account["Updated_at"];
 							$_SESSION['username'] = $username;
 							
-									if($_SESSION["account_userlevel"] == "member") {
+									if($_SESSION["account_userstatus"] == "Disabled") {
+										array_push($errors, "Your account has been deleted!");
+									} else if($_SESSION["account_userlevel"] == "member") {
 										$_SESSION['username'] = $username;
 										header("location:sigadgetsigninsuccess.php");
 									} else if($_SESSION["account_userlevel"] == "admin") {
@@ -65,7 +68,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
   Password : <input type="password" name="password" placeholder="Enter Password" Required>
   <br><br>
   <input type="submit" name="login" value="Login"><br><br>
-  <input type="button" value="Register" onclick="location.href='sigadgetsignup.php'" />
+  <input type="button" value="Register" onclick="location.href='sigadgetsignup.php'" /><br>
+  <p><a href="sigadgetforgotpassword.php">Forgot Password</a></p>
 </form>
 
 </body>

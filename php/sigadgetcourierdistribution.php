@@ -12,18 +12,23 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 		$type = mysqli_real_escape_string($conn,$_POST['couriertype']);
 		$price = mysqli_real_escape_string($conn,$_POST['courierprice']);
 
-					$insert = mysqli_query($conn,"INSERT INTO `kurir`(`ID_Kurir`, `Nama_Kurir`, `Jenis_Kurir`, `Harga_Kurir`, `Created_at`) 
+					$insert = mysqli_query($conn,"INSERT INTO `kurir`(`ID_Kurir`, `Nama_Kurir`, `Produk_Kurir`, `Harga_Kurir`, `Created_at`) 
 					VALUES ('NULL','$name','$type','$price',now())");
 					
 					$conn->close();
 					
-					header('location: sigadgetinputsuccess.php');
-				
-								if(!$insert)
-								{
+					if($insert) {
+									?>
+																				<script>
+																				alert('Register courier success, back to dashboard');
+																				window.location.href='sigadgetcourierdistribution.php';
+																				</script>
+																				
+																			<?php
+									
+								} else {
 									echo mysqli_error();
-								}
-				
+				}
 
 	}
 ?>
@@ -37,7 +42,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 <form method="POST" action="sigadgetinputcourier.php">
 	Nama Kurir : <input type="text" name="couriername" placeholder="Enter Courier Name" Required>
   <br><br>
-	Jenis Kurir : <input type="text" name="couriertype" placeholder="Enter Courier Type" Required>
+	Produk Kurir : <input type="text" name="couriertype" placeholder="Enter Courier Type" Required>
   <br><br>
 	Tarif Kurir : <input type="text" name="courierprice" placeholder="Enter Courier Price" Required>
   <br><br>

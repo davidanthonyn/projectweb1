@@ -28,7 +28,21 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // output data order by transaction id
 if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'iddesc') {
 	echo "<h3>Show All Transactions By Order ID Transaction Ascending</h3>";
-	$sql = "SELECT * FROM transaksi ORDER BY ID_Transaksi";
+	
+	$sql = "SELECT transaksi.ID_Transaksi,user.Nama_Lengkap, 
+	pembayaran.Nama_Pembayaran, pembayaran.Jenis_Pembayaran, pembayaranuser.Status_Pembayaran, pembayaranuser.Updated_at, 
+	kurir.Nama_Kurir, kurir.Produk_Kurir, pengiriman.Nomor_Resi, kurir.Harga_Kurir, pengiriman.Status_Pengiriman, 
+	produk.Nama_Produk, penjualan.Jumlah_Terjual, penjualan.Total_Harga, pembayaranuser.Created_at 
+	FROM transaksi,user,pembayaran,pembayaranuser,pengiriman,kurir,produk,penjualan 
+	WHERE transaksi.ID_User=user.ID_User AND 
+	transaksi.ID_Pembayaran=pembayaranuser.ID_Pembayaran AND 
+	pembayaran.Kode_Pembayaran=pembayaranuser.Kode_Pembayaran AND 
+	transaksi.ID_Transaksi=pengiriman.ID_Transaksi AND 
+	pengiriman.ID_Kurir=kurir.ID_Kurir AND
+	produk.ID_Produk = penjualan.ID_Produk AND 
+	transaksi.ID_Penjualan = penjualan.ID_Penjualan 
+	ORDER BY ID_Transaksi";
+
 	$result = $conn->query($sql);
 		
 	if ($result->num_rows > 0) {
@@ -36,21 +50,20 @@ if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'iddes
 		echo "<table>
 			<tr>
 				<th>ID Transaksi</th>
-				<th>ID User</th>
-				<th>ID Produk</th>
-				<th>Jumlah Beli</th>
-				<th>ID Pembayaran</th>
-				<th>ID Kurir</th>
-				<th>Waktu Pembelian</th>
-				<th>Status Transaksi</th>
+				<th>Nama User</th>
+				<th>Nama / Jenis Pembayaran / Status Pembayaran / Waktu Pembayaran</th>
+				<th>Kurir / Nomor Resi / Biaya Kurir / Status Pengiriman</th>
+				<th>Nama Produk / Kuantitas / Total Harga</th>
+				<th>Waktu Dibuat Transaksi</th>
 			</tr>";
 		
   // output data of each row
   while($row = $result->fetch_assoc()) {
-	  echo "<tr><td>" . $row["ID_Transaksi"] . "</td><td>" . $row["ID_User"] . "</td><td>" . 
-	  $row["ID_Produk"] . "</td><td>" . $row["Jumlah_Beli"] . 
-	  "</td><td>" . $row["ID_Pembayaran"] . "</td><td>" . $row["ID_Kurir"] .  
-	  "</td><td>" . $row["Waktu_Pembelian"] . "</td><td>" . $row["Status_Transaksi"] . "</td></tr>";
+	  echo "<tr><td>" . $row["ID_Transaksi"] . "</td><td>" . $row["Nama_Lengkap"] . "</td><td>" . 
+	  $row["Nama_Pembayaran"] . " / " . $row["Jenis_Pembayaran"] . " / " . $row["Status_Pembayaran"] . " / " . $row["Updated_at"] . "</td><td>" 
+	  . $row["Nama_Kurir"] . " " . $row["Produk_Kurir"] .  " / " . $row["Nomor_Resi"] . " / " . $row["Harga_Kurir"] . " / " . $row["Status_Pengiriman"] . "</td><td>" 
+	  . $row["Nama_Produk"] . " / " . $row["Jumlah_Terjual"] . " / " . $row["Total_Harga"] . "</td><td>" 
+	  . $row["Created_at"] . "</td></tr>";
   }
 } else {
   echo "0 results";
@@ -63,8 +76,21 @@ $conn->close();
 // output data order by proceed only
 if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'proceed') {
 	echo "<h3>Show All Proceed Transactions</h3>";
-	echo "";
-	$sql = "SELECT * FROM transaksi WHERE Status_Transaksi='Diproses'";
+
+	$sql = "SELECT transaksi.ID_Transaksi,user.Nama_Lengkap, 
+	pembayaran.Nama_Pembayaran, pembayaran.Jenis_Pembayaran, pembayaranuser.Status_Pembayaran, pembayaranuser.Updated_at, 
+	kurir.Nama_Kurir, kurir.Produk_Kurir, pengiriman.Nomor_Resi, kurir.Harga_Kurir, pengiriman.Status_Pengiriman, 
+	produk.Nama_Produk, penjualan.Jumlah_Terjual, penjualan.Total_Harga, pembayaranuser.Created_at 
+	FROM transaksi,user,pembayaran,pembayaranuser,pengiriman,kurir,produk,penjualan 
+	WHERE transaksi.ID_User=user.ID_User AND 
+	transaksi.ID_Pembayaran=pembayaranuser.ID_Pembayaran AND 
+	pembayaran.Kode_Pembayaran=pembayaranuser.Kode_Pembayaran AND 
+	transaksi.ID_Transaksi=pengiriman.ID_Transaksi AND 
+	pengiriman.ID_Kurir=kurir.ID_Kurir AND
+	produk.ID_Produk = penjualan.ID_Produk AND 
+	transaksi.ID_Penjualan = penjualan.ID_Penjualan AND 
+	pengiriman.Status_Pengiriman='Diproses'";
+	
 	$result = $conn->query($sql);
 		
 	if ($result->num_rows > 0) {
@@ -72,21 +98,20 @@ if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'proce
 		echo "<table>
 			<tr>
 				<th>ID Transaksi</th>
-				<th>ID User</th>
-				<th>ID Produk</th>
-				<th>Jumlah Beli</th>
-				<th>ID Pembayaran</th>
-				<th>ID Kurir</th>
-				<th>Waktu Pembelian</th>
-				<th>Status Transaksi</th>
+				<th>Nama User</th>
+				<th>Nama / Jenis Pembayaran / Status Pembayaran / Waktu Pembayaran</th>
+				<th>Kurir / Nomor Resi / Biaya Kurir / Status Pengiriman</th>
+				<th>Nama Produk / Kuantitas / Total Harga</th>
+				<th>Waktu Dibuat Transaksi</th>
 			</tr>";
 			
   // output data of each row
   while($row = $result->fetch_assoc()) {
-	echo "<tr><td>" . $row["ID_Transaksi"] . "</td><td>" . $row["ID_User"] . "</td><td>" . 
-	  $row["ID_Produk"] . "</td><td>" . $row["Jumlah_Beli"] . 
-	  "</td><td>" . $row["ID_Pembayaran"] . "</td><td>" . $row["ID_Kurir"] .  
-	  "</td><td>" . $row["Waktu_Pembelian"] . "</td><td>" . $row["Status_Transaksi"] . "</td></tr>";
+	echo "<tr><td>" . $row["ID_Transaksi"] . "</td><td>" . $row["Nama_Lengkap"] . "</td><td>" . 
+	  $row["Nama_Pembayaran"] . " / " . $row["Jenis_Pembayaran"] . " / " . $row["Status_Pembayaran"] . " / " . $row["Updated_at"] . "</td><td>" 
+	  . $row["Nama_Kurir"] . " " . $row["Produk_Kurir"] .  " / " . $row["Nomor_Resi"] . " / " . $row["Harga_Kurir"] . " / " . $row["Status_Pengiriman"] . "</td><td>" 
+	  . $row["Nama_Produk"] . " / " . $row["Jumlah_Terjual"] . " / " . $row["Total_Harga"] . "</td><td>" 
+	  . $row["Created_at"] . "</td></tr>";
   }
 } else {
   echo "0 results";
@@ -99,32 +124,42 @@ $conn->close();
 // output data order by today
 if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'today') {
 	echo "<h3>Show All Today Transactions</h3>";
-	echo "";
-	$sql = "SELECT * FROM transaksi WHERE DATE(Waktu_Pembelian) = CURDATE()";
+
+	$sql = "SELECT transaksi.ID_Transaksi,user.Nama_Lengkap, 
+	pembayaran.Nama_Pembayaran, pembayaran.Jenis_Pembayaran, pembayaranuser.Status_Pembayaran, pembayaranuser.Updated_at, 
+	kurir.Nama_Kurir, kurir.Produk_Kurir, pengiriman.Nomor_Resi, kurir.Harga_Kurir, pengiriman.Status_Pengiriman, 
+	produk.Nama_Produk, penjualan.Jumlah_Terjual, penjualan.Total_Harga, pembayaranuser.Created_at 
+	FROM transaksi,user,pembayaran,pembayaranuser,pengiriman,kurir,produk,penjualan 
+	WHERE transaksi.ID_User=user.ID_User AND 
+	transaksi.ID_Pembayaran=pembayaranuser.ID_Pembayaran AND 
+	pembayaran.Kode_Pembayaran=pembayaranuser.Kode_Pembayaran AND 
+	transaksi.ID_Transaksi=pengiriman.ID_Transaksi AND 
+	pengiriman.ID_Kurir=kurir.ID_Kurir AND
+	produk.ID_Produk = penjualan.ID_Produk AND 
+	transaksi.ID_Penjualan = penjualan.ID_Penjualan AND 
+	DATE(pembayaranuser.Created_at)=CURDATE()";
+	
 	$result = $conn->query($sql);
-	
-	
-	
+
 	if ($result->num_rows > 0) {
 		
 		echo "<table>
 			<tr>
 				<th>ID Transaksi</th>
-				<th>ID User</th>
-				<th>ID Produk</th>
-				<th>Jumlah Beli</th>
-				<th>ID Pembayaran</th>
-				<th>ID Kurir</th>
-				<th>Waktu Pembelian</th>
-				<th>Status Transaksi</th>
+				<th>Nama User</th>
+				<th>Nama / Jenis Pembayaran / Status Pembayaran / Waktu Pembayaran</th>
+				<th>Kurir / Nomor Resi / Biaya Kurir / Status Pengiriman</th>
+				<th>Nama Produk / Kuantitas / Total Harga</th>
+				<th>Waktu Dibuat Transaksi</th>
 			</tr>";
 			
   // output data of each row
   while($row = $result->fetch_assoc()) {
-	echo "<tr><td>" . $row["ID_Transaksi"] . "</td><td>" . $row["ID_User"] . "</td><td>" . 
-	  $row["ID_Produk"] . "</td><td>" . $row["Jumlah_Beli"] . 
-	  "</td><td>" . $row["ID_Pembayaran"] . "</td><td>" . $row["ID_Kurir"] .  
-	  "</td><td>" . $row["Waktu_Pembelian"] . "</td><td>" . $row["Status_Transaksi"] . "</td></tr>";
+	echo "<tr><td>" . $row["ID_Transaksi"] . "</td><td>" . $row["Nama_Lengkap"] . "</td><td>" . 
+	  $row["Nama_Pembayaran"] . " / " . $row["Jenis_Pembayaran"] . " / " . $row["Status_Pembayaran"] . " / " . $row["Updated_at"] . "</td><td>" 
+	  . $row["Nama_Kurir"] . " " . $row["Produk_Kurir"] .  " / " . $row["Nomor_Resi"] . " / " . $row["Harga_Kurir"] . " / " . $row["Status_Pengiriman"] . "</td><td>" 
+	  . $row["Nama_Produk"] . " / " . $row["Jumlah_Terjual"] . " / " . $row["Total_Harga"] . "</td><td>" 
+	  . $row["Created_at"] . "</td></tr>";
   }
 } else {
   echo "0 results";

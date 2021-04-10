@@ -47,7 +47,13 @@ $check = mysqli_fetch_array($checkdata);
 									$conn->close();
 									
 														if($update) {
-															header('location: sigadgetinputsuccess.php');
+															?>
+																				<script>
+																				alert('Update product success.');
+																				window.location.href='sigadgetdashboardproducts.php';
+																				</script>
+																				
+																			<?php
 														} else {
 																echo mysqli_error();
 														}
@@ -69,7 +75,13 @@ $check = mysqli_fetch_array($checkdata);
 									$conn->close();
 									
 														if($update) {
-															header('location: sigadgetinputsuccess.php');
+															?>
+																				<script>
+																				alert('Update product success.');
+																				window.location.href='sigadgetdashboardproducts.php';
+																				</script>
+																				
+																			<?php
 														} else {
 																echo mysqli_error();
 														}

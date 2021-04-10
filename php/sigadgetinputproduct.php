@@ -49,7 +49,13 @@ $statusMsg = '';
 									$conn->close();
 									
 														if($insert) {
-															header('location: sigadgetinputsuccess.php');
+															?>
+																				<script>
+																				alert('Input product success.');
+																				window.location.href='sigadgetdashboardproducts.php';
+																				</script>
+																				
+																			<?php
 														} else {
 																echo mysqli_error();
 														}
@@ -117,7 +123,7 @@ $statusMsg = '';
 
   <input type="submit" name="registerproduct" value="Register Product">
   <br><br>
-  <input type="button" value="Back" onclick="location.href='sigadgetdashboard.php'" />
+  <input type="button" value="Back" onclick="location.href='sigadgetdashboardproducts.php'" />
 </form>
 
 </body>
