@@ -1,10 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sigadget";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "sigadgetconnection.php";
 $statusMsg = '';
 
 $checkdata = mysqli_query($conn,"SELECT * FROM produk WHERE ID_Produk = '$_GET[id]'");
@@ -154,7 +149,7 @@ $check = mysqli_fetch_array($checkdata);
 	Product Image : 
 	
 	<br><br><?php
-						$conn = new mysqli($servername, $username, $password, $dbname);
+						include "sigadgetconnection.php";
 						$sql = "SELECT image FROM produk WHERE ID_Produk ='$_GET[id]'";
 						$result = mysqli_query($conn, $sql);
 						while($row = mysqli_fetch_array($result)) {

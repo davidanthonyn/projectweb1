@@ -1,11 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sigadget";
-$errors = array();
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "sigadgetconnection.php";
 
 // register account
 	if(isset($_POST['forgotpassword'])) {

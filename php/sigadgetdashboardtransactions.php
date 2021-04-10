@@ -18,12 +18,7 @@ th, td {
 	<body>
 		<h1> Dashboard Transaction </h1>
 			<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sigadget";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "sigadgetconnection.php";
 
 // output data order by transaction id
 if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'iddesc') {

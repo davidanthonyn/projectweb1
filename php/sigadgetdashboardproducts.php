@@ -18,12 +18,7 @@ th, td {
 	<body>
 		<h1> Dashboard Products </h1>
 			<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sigadget";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "sigadgetconnection.php";
 
 // output data order by product id ASC
 if(isset($_POST['sortallproduct']) && $_POST['sortallproduct'] == 'idasc') {

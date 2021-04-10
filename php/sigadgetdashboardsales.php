@@ -18,12 +18,7 @@ th, td {
 	<body>
 	<h1> Dashboard Sales </h1>
 			<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sigadget";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "sigadgetconnection.php";
 
 // output data sales by quantity desc
 if(isset($_POST['sortallsales']) && $_POST['sortallsales'] == 'qtydesc') {

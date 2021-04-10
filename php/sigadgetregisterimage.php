@@ -1,13 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sigadget";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "sigadgetconnection.php";
 $statusMsg = '';
-
-
 
 if(isset($_POST['registerimage'])) {
 $targetDir = "image/";
