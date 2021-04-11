@@ -89,13 +89,14 @@ $sql = "SELECT * FROM image";
 		echo "<table>
 			<tr>
 				<th>ID Gambar</th>
+				<th>Nama Gambar</th>
 				<th>File Gambar</th>
 				<th>Action</th>
 			</tr>";
 			
   // output data of each row
   while($row = $result->fetch_assoc()) {
-	  echo "<tr><td>" . $row["ID_image"] . "</td><td><img src='image/{$row['Filename']}' width='100%' height='100%'></td>
+	  echo "<tr><td>" . $row["ID_image"] . "</td><td>" . $row["Filename"] . "</td><td><img src='image/{$row['Filename']}' width='100px' height='100px'></td>
 	  <td><a href= 'sigadgetdelete.php?opimage=delete&id=$row[ID_image]'>Delete</a></td></tr>";
   }
 } else {
