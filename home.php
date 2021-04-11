@@ -78,7 +78,6 @@ $sqlseven = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 																																																														</ul>
 
                                                                                                                             <li><a href="Bagian David/account.php">Login</a>
-																																																															<li><a href="Bagian David/Keranjang Belanja/cart.php">Keranjang Belanja</a></li>
 																																																															</li>
 
         </ul>
@@ -213,13 +212,13 @@ function showSlides(n) {
 	}
 </script>
 <?php
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-}
 
 $conn->close();
 
