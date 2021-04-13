@@ -469,7 +469,6 @@ form a{
 																																																														</ul>
 
                                                                                                                             <li><a href="../Bagian David/account.php">Login</a>
-																																																															<li><a href="../Bagian David/Keranjang Belanja/cart.php">Keranjang Belanja</a></li>
 																																																															</li>
 
         </ul>
@@ -555,7 +554,7 @@ form a{
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
 

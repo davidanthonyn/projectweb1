@@ -1,3 +1,16 @@
+<?php
+include "../sigadgetconnection.php";
+
+session_start();
+
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: ../Bagian David/iPhoneproducts.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -277,7 +290,7 @@ font-weight: normal;
             </ul>
           </li>
 
-                              	<li><a href="../Bagian Migel/HalamanAndroid.php">Android</a>
+                              	<li><a href="../Bagian David/androidproducts.php">Android</a>
 																			<ul class="dropdown-list">
 																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
@@ -286,7 +299,7 @@ font-weight: normal;
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.php">Aksesoris</a>
+																																		<li><a href="../Bagian David/accessoriesproducts.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -303,9 +316,40 @@ font-weight: normal;
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.php">Login</a>
-																																																															<li><a href="../Bagian David/Keranjang Belanja/cart.php">Keranjang Belanja</a></li>
-																																																															</li>
+                                                                                                                            <li>
+																															<?php
+																															if(empty($_SESSION['account_username'])) {
+																																echo "<a href='../Bagian David/account.php'>Login</a>";
+																																} else if(!empty($_SESSION['account_username'])) {
+																																	echo "<a><strong>$_SESSION[account_username]</strong></a>";
+																																	echo "<ul class='dropdown-list'>";
+																																	echo "<form method='GET' action='../home.php' enctype='multipart/form-data'>";
+																																	echo "<li><a class='dropdown' href='../customaccount.php'>Account</a></li>";
+																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
+																																	echo "</form>";
+																																	
+																																}
+																															?>
+																															</ul>
+																																																			<li>
+																																																						<?php
+																																																						if(empty($_SESSION['account_username'])) {
+																																																							} else if(!empty($_SESSION['account_username'])) {
+																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
+																																																								echo "<ul class='dropdown-list'>";
+																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
+																																																									}
+																																																							}
+																																																						?>
+																																																						</ul>
+																																																								</li>
 
         </ul>
     </div>
@@ -323,41 +367,25 @@ font-weight: normal;
 <hr>
 <div class="small-container">
 <div class="row">
-	<div class="col-4" onclick="location.href='iPhoneSEProducts.php';">
-		<img src="Gallery/iPhone/iPhone SE/iPhoneSEDisplayBLACK.png">
-		<h4>iPhone SE</h4>
-		<p>Rp 7.999.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhone11ProMaxProduct.php';">
-		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_max_space_grey_1_6_1.jpg">
-		<h4>iPhone 11 Pro Max</h4>
-		<p>Rp 22.999.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhone11ProProduct.php';">
-		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_space_grey_1_4_1_1.jpg">
-		<h4>iPhone 11 Pro</h4>
-		<p>Rp 18.999.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhone11Product.php';">
-		<img src="Gallery/iPhone/iPhone 11/apple_iphone_11_black_1_2_1_1_1.jpg">
-		<h4>iPhone 11</h4>
-		<p>Rp 11.499.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhoneXSMaxProduct.php';">
-		<img src="Gallery/iPhone/iPhone XS/iphone-xs-max-space-gray_1_2_1_2_3.jpg">
-		<h4>iPhone XS Max</h4>
-		<p>Rp 14.999.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhoneXSProduct.php';">
-		<img src="Gallery/iPhone/iPhone XS/iphone-xs-gold_1_1_1_4_2.jpg">
-		<h4>iPhone XS</h4>
-		<p>Rp 12.999.000</p>
-	</div>
-	<div class="col-4" onclick="location.href='iPhoneXRProduct.php';">
-		<img src="Gallery/iPhone/iPhone XR/iphone-xr-blue_1_1_1_6_1.jpg">
-		<h4>iPhone XR</h4>
-		<p>Rp 10.999.000</p>
-	</div>
+	<?php
+							//SQL All Products Published
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Status_Produk='Published' AND Jenis_Produk='Smartphone' AND Brand='Apple'";
+							$result = $conn->query($sql);	
+							
+							if ($result->num_rows > 0) {
+								
+								 while($row = $result->fetch_assoc()) {
+								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk] $row[Storage] $row[Warna]</h4>";
+												echo "<p>$row[Harga_Produk]</p>";
+													echo "</div></a>";
+								 }
+								} else {
+						  echo "0 results";
+						}
+	?>
 
 	</div>
 </div>
@@ -404,7 +432,7 @@ font-weight: normal;
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
 
