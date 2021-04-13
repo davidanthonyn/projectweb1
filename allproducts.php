@@ -1,50 +1,25 @@
+<?php
+include "../sigadgetconnection.php";
+
+session_start();
+
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: allproducts.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="styles.php" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="footer.css" rel="stylesheet">
-  <style>
-	#banner {
-		overflow : hidden;
-	  }
-	  #banner figure
-	  {
-		  position: relative;
-		  width : 500%;
-		  margin : 0;
-		  left : 0;
-		  animation :5s slider infinite;
-	  }
-	  #slider figure img
-	  {
-		  width : 20%;
-		  float : left;
-	  }
-	@keyframes slider {
-		0% 
-		{
-			left : 0;
-		}
-		100%
-		{
-			left : -42%;
-		}
-	}
-	  .flex-container {
-  display: flex;
-  background-color: transparent;
-  margin-left: 280px;
-}
-
-.flex-container > div {
-  background-color: #f1f1f1;
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
-}
+  <style> 
 	body {
 	font-family: 'Roboto', sans-serif;
 	}
@@ -58,6 +33,7 @@
 		border: solid 2px #666;
 		border-radius: 50px;
 		background-color: #fff;
+		href: url(home.php);
 		}
 
 			.navbar-left{
@@ -242,11 +218,6 @@
 					  text-align: center;
 					}
 
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-}
 
 /* Clear floats after the columns */
 .row:after {
@@ -255,148 +226,177 @@
   clear: both;
 }
 
-p1{
-font-size: 30px;
+.row {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+justify-content: space-around;
+} 
+
+.categories {
+margin: 5px 0;
 }
 
-p{
-font-size: 15px;
+.small-container {
+max-width: 60%;
+margin: auto;
 }
 
+.col-4 {
+flex-basis: 20%;
+min-width: 100px;
+margin-left: 5%;
+margin-bottom: 20px;
+transition: transform 0.5s;
+border-style: ridge;
+}
 
+.col-4 img {
+	width: 100%;
+}
 
+h4 {
+color: #555;
+font-weight: normal;
+}
 
+.col-4 p {
+	font-size: 14px;
+}
+
+.col-4:hover {
+	transform: translateY(-5px);
+}
 
 
   </style>
-  <title>SI Gadget | Menjual Smartphone dan Aksesoris</title>
+  <title>iPhone | SI Gadget</title>
+  <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
+
 <!----navigation--->
 <nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.html';"></div></div>
+    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo" onclick="location.href='../home.php';"></div></div>
     <div class="navbar-right"  style="position: relative; left: 140px">
         <ul>
-            <li><a href="../Bagian David/iPhoneproducts.html">iPhone</a>
+            <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.html">iPhone SE</a></li>
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.html">iPhone 11 Pro</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.html">iPhone 11</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXS.html">iPhone XS</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.html">iPhone XR</a></li>
+                    <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
+                    <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
+					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
+					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXS.php">iPhone XS</a></li>
+					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
             </ul>
           </li>
 
-                              	<li><a href="../Bagian Migel/HalamanAndroid.html">Android</a>
+                              	<li><a href="Bagian Migel/HalamanAndroid.php">Android</a>
 																			<ul class="dropdown-list">
-																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.html">Huawei</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.html">Samsung</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/xiaomi.new.html">Xiaomi</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/asus.new.html">ASUS</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/realme.html">Realme</a></li>
+																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
+																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
+																					<li><a class="dropdown" href="../Bagian Migel/xiaomi.new.php">Xiaomi</a></li>
+																					<li><a class="dropdown" href="../Bagian Migel/asus.new.php">ASUS</a></li>
+																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.html">Aksesoris</a>
+																																		<li><a href="Bagian Tius/halamanaksesoris.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
-																																				<li><a class="dropdown" href="../Bagian Tius/headphone.html">Headphone</a></li>
-																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.html">Powerbank</a></li>
-																																				<li><a class="dropdown" href="../Bagian Tius/aksesorislain.html">Aksesoris Lain</a></li>
+																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
+																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
+																																				<li><a class="dropdown" href="../Bagian Tius/aksesorislain.php">Aksesoris Lain</a></li>
 																																			</ul>
                                                                     </li>
 
-																																																			<li><a href="../Bagian Sanctus/eventpromo.html">Event and Promo</a>
+																																																			<li><a href="../Bagian Sanctus/eventpromo.php">Event and Promo</a>
 
 																																																													<li><a href="#">Layanan</a>
 																																																														<ul class="dropdown-list">
-																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.html">About</a></li>
-																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.html">Lokasi Toko</a></li>
-																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.html">Repair</a></li>
+																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.php">About</a></li>
+																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
+																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.html">Login</a>
-																																																															<li><a href="../Bagian David/Keranjang Belanja/cart.html">Keranjang Belanja</a></li>
-																																																															</li>
+                                                                                                                            <li>
+																															<?php
+																															if(empty($_SESSION['account_username'])) {
+																																echo "<a href='Bagian David/account.php'>Login</a>";
+																																} else if(!empty($_SESSION['account_username'])) {
+																																	echo "<a>$_SESSION[account_username]</a>";
+																																	echo "<ul class='dropdown-list'>";
+																																	echo "<form method='GET' action='allproducts.php' enctype='multipart/form-data'>";
+																																	echo "<li><a class='dropdown' href='customaccount.php'>Account</a></li>";
+																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
+																																	echo "</form>";
+																																	
+																																}
+																															?>
+																															</ul>
+																																	
+																																	
+																																																			<li>
+																																																						<?php
+																																																						if(empty($_SESSION['account_username'])) {
+																																																							} else if(!empty($_SESSION['account_username'])) {
+																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+																																																								echo "<a>Dashboard</a>";
+																																																								echo "<ul class='dropdown-list'>";
+																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
+																																																									}
+																																																							}
+																																																						?>
+																																																						</ul>
+																																																								</li>
 
         </ul>
     </div>
 </nav>
 
-<p><img src = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Realme-realme-_logo_box-RGB-01.png" alt= "asus" width="200" height="100" ></p>
-<p> 
-	<center> 
-		<div id="banner">
-			<figure>
-				<img src="https://media5.newsnationtv.com/images/2020/03/05/realme6-92.jpg" alt="">
-				<img src="https://media5.newsnationtv.com/images/2020/03/05/realme6-92.jpg" alt="">
-				<img src="https://media5.newsnationtv.com/images/2020/03/05/realme6-92.jpg" alt="">
-				<img src="https://media5.newsnationtv.com/images/2020/03/05/realme6-92.jpg" alt="">
-				<img src="https://media5.newsnationtv.com/images/2020/03/05/realme6-92.jpg" alt="">
-				
-			</figure>
-		</div>
-	</center>
-
-<p>
-<center>
-	<div style="margin-top: 100px;"><p1> Pilih Smartphone Anda  <p1></div>
-</center>
-</p>
-<br><br>
-
-<center><p> Produk Terbaru <p><center>
-
-
-<ul class="gallery">
-	<div class="flex-container">
-<li type="none"> <img src ="https://fdn2.gsmarena.com/vv/bigpic/realme-6.jpg" style="position: relative; left: -300px;" alt= "realme" width="300" height="300"> <p>
-<p style="position: relative; left: -300px;">Realme 6  <p>
-	<p style="position: relative; left: -300px;">Spesifikasi :<p>
-<p style="position: relative; left: -300px;">Ram : 4/6/8 GB <p>
-	<p style="position: relative; left: -300px;"> Resolusi: 1080x2400 pixel<p>
-	<p style="position: relative; left: -300px;"> Prokteksi Layar : Corning Gorilla Glass 3<p>
-	<p style="position: relative; left: -300px;"> Harga : Rp 2.995.000 - Rp 3.550.000<p>
- </li>
- 
- <li type="none"> <img src ="https://www.localstartupfest.id/wp-content/uploads/REALME-X2-Pro-hp-realme-terbaru.jpg" style="position: relative; left: -200px;" alt= "realme" width="300" height="300"> <p>
-<p style="position: relative; left: -200px;">Realme X2 Pro <p>
-	<p style="position: relative; left: -200px;">Spesifikasi :<p>
-<p style="position: relative; left: -200px;">Ram : 6/8/12 GB <p>
-	<p style="position: relative; left: -200px;">Resolusi: 1080x2400 pixel <p>
-	<p style="position: relative; left: -200px;"> Proteksi Layar : Corning Gorilla Glass 5<p>
-	<p style="position: relative; left: -200px;"> Harga : Rp 7.500.000 - Rp 7.950.000<p>
-
- </li>
- 
- 
-<li type="none"> <img src ="https://www.localstartupfest.id/wp-content/uploads/REALME-XT-730G.jpg" style="position: relative; right: 100px;" alt= "realme" width="300" height="300"><p>
-<p style="position: relative; right: 100px;" > Realme XT 730G <p>
-	<p style="position: relative; right: 100px;">Spesifikasi :<p>
-	<p style="position: relative; right: 100px;">Ram : 4/6/8 GB <p>
-	<p style="position: relative; right: 100px;">Resolusi: 1080x2340 pixel <p>
-	<p style="position: relative; right: 100px;"> Proteksi Layar : Corning Gorilla Glass 5 <p>
-	<p style="position: relative; right: 100px;"> Harga : 2.499.000 - 3.450.000<p>
-
-</li>
-
-<li type="none"> <img src ="https://www.localstartupfest.id/wp-content/uploads/REALME-Q.jpg" style="position: relative; right: 10px;" alt= "realme" width="300" height="300"> <p>
-<p style="position: relative; right: 10px;" > Realme Q <p>
-	<p style="position: relative; right: 10px;">Spesifikasi :<p>
-	<p style="position: relative; right: 10px;">Ram : 4/6/8 GB <p>
-	<p style="position: relative; right: 10px;">Resolusi: 1080x2340 pixel<p>
-	<p style="position: relative; right: 10px;">Proteksi Layar : Corning Gorilla Glass 3+<p>
-	<p style="position: relative; right: 10px;"> Harga : 2.000.000 - 2.999.000<p>
-
-</li>
+<!-----featured categories------>
+<div class="categories">
+	<div class="row">
+		<div class="col-3"></div>
 </div>
-</ul>
+</div>
 
+<!-----featured products------>
+<h2 style="text-align: center;">iPhone</h2>
+<hr>
+<div class="small-container">
+<div class="row">
+	<?php
+	$sql = "SELECT Nama_Produk,Harga_Produk,image FROM produk WHERE Status_Produk='Published' AND Jenis_Produk='Smartphone' AND Brand='Apple'";
+	$result = $conn->query($sql);	
+	
+	if ($result->num_rows > 0) {
+		
+		 while($row = $result->fetch_assoc()) {
+		 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+			 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+			 echo "<img src='../image/{$row['image']}' >";
+					echo "<h4>$row[Nama_Produk]</h4>";
+						echo "<p>$row[Harga_Produk]</p>";
+							echo "</div></a>";
+		 }
+		} else {
+  echo "0 results";
+}
+	?>
+
+	</div>
+</div>
 
 <!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
     ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
     <div class="newsletter">
     	<p class="animate__animated animate__fadeInDown" style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
-    		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="Email" size="60">
-    		<input class="button animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="submit" value="KIRIM" onclick="newsletterCheck()">
+    		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
+    		<input class="button animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="submit" value="KIRIM">
     	</p>
     </div>
     <!-- penjelasan SI Gadget -->
