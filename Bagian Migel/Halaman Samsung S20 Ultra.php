@@ -1,3 +1,16 @@
+<?php
+include "../sigadgetconnection.php";
+
+session_start();
+
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: ../Bagian Migel/Halaman Samsung S20 Ultra.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -305,7 +318,7 @@ font-size: 15px;
             </ul>
           </li>
 
-                              	<li><a href="../Bagian Migel/HalamanAndroid.php">Android</a>
+                              	<li><a href="../Bagian David/androidproducts.php">Android</a>
 																			<ul class="dropdown-list">
 																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
@@ -314,7 +327,7 @@ font-size: 15px;
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.php">Aksesoris</a>
+																																		<li><a href="../Bagian David/accessoriesproducts.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -331,9 +344,40 @@ font-size: 15px;
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.php">Login</a>
-																																																															<li><a href="../Bagian David/Keranjang Belanja/cart.php">Keranjang Belanja</a></li>
-																																																															</li>
+                                                                                                                            <li>
+																															<?php
+																															if(empty($_SESSION['account_username'])) {
+																																echo "<a href='../Bagian David/account.php'>Login</a>";
+																																} else if(!empty($_SESSION['account_username'])) {
+																																	echo "<a><strong>$_SESSION[account_username]</strong></a>";
+																																	echo "<ul class='dropdown-list'>";
+																																	echo "<form method='GET' action='../home.php' enctype='multipart/form-data'>";
+																																	echo "<li><a class='dropdown' href='../customaccount.php'>Account</a></li>";
+																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
+																																	echo "</form>";
+																																	
+																																}
+																															?>
+																															</ul>
+																																																			<li>
+																																																						<?php
+																																																						if(empty($_SESSION['account_username'])) {
+																																																							} else if(!empty($_SESSION['account_username'])) {
+																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
+																																																								echo "<ul class='dropdown-list'>";
+																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
+																																																									}
+																																																							}
+																																																						?>
+																																																						</ul>
+																																																								</li>
 
         </ul>
     </div>
@@ -450,7 +494,7 @@ font-size: 15px;
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
 
