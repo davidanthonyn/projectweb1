@@ -1,6 +1,16 @@
 <?php
 include "sigadgetconnection.php";
 
+if(empty($_SESSION['account_username'])) {
+	header('location: home.php');
+} else if(!empty($_SESSION['account_username'])) {
+if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+	
+	} else {
+		header('location: home.php');
+	}
+}
+
 //Mengganti pembayaran dari pending menjadi terbayar
 if($_GET['oppbayar']=="pendingtobayar") {
 	$idbayar=$_GET['idbayar'];

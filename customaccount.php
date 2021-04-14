@@ -3,24 +3,66 @@ include "sigadgetconnection.php";
 
 session_start();
 
+if(empty($_SESSION['account_username'])) {
+	header('location: home.php');
+}
+
+$checkdata = mysqli_query($conn,"SELECT * FROM user WHERE username = '$_SESSION[account_username]'");
+$check = mysqli_fetch_array($checkdata);
+
+
+
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
 		header('location: home.php');
 }
 
-$sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
-$sqltwo = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='Iklan iPhone 11 Pro smartfren.png'");
-$sqlthree = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='Iklan iPhone 11.png'");
-$sqlfour = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='Iklan AirPods Pro.png'");
-$sqlfive = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='user exp.jpg'");
-$sqlsix = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='free-ongkir.jpg'");
-$sqlseven = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='accsr.jpg'");
-$sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-Apple-store-Retail-in-Asia3.jpg'");
+if(isset($_POST['updatedata'])) {
+		$username = mysqli_real_escape_string($conn,$_POST['username']);
+		$fullname = mysqli_real_escape_string($conn,$_POST['fullname']);
+		$email = mysqli_real_escape_string($conn,$_POST['email']);
+		$phonenumber = mysqli_real_escape_string($conn,$_POST['phonenumber']);
+		$address = mysqli_real_escape_string($conn,$_POST['address']);
+						
+						$update = mysqli_query($conn, "UPDATE `user` SET username='$username', Nama_Lengkap='$fullname', email='$email', No_Telepon='$phonenumber', Updated_at=now(), Alamat='$address' WHERE ID_User='$check[ID_User]'");
+						
+						
+									
+														if($update) {
+															session_destroy();
+															
+															session_start();
+															
+															$checkdatasecond = mysqli_query($conn,"SELECT * FROM user WHERE ID_User='$check[ID_User]'");
+															$checksecond = mysqli_fetch_array($checkdatasecond);
+															$_SESSION["account_id"] = $checksecond["ID_User"];
+															$_SESSION["account_username"] = $checksecond["username"];
+															$_SESSION["account_password"] = $checksecond["password"];
+															$_SESSION["account_userlevel"] = $checksecond["userlevel"];
+															$_SESSION["account_userstatus"] = $checksecond["userstatus"];
+															$_SESSION["account_fullname"] = $checksecond["Nama_Lengkap"];
+															$_SESSION["account_email"] = $checksecond["email"];
+															$_SESSION["account_phonenumber"] = $checksecond["No_Telepon"];
+															$_SESSION["account_address"] = $checksecond["Alamat"];
+															$_SESSION["account_create"] = $checksecond["Created_at"];
+															$_SESSION["account_update"] = $checksecond["Updated_at"];
+															
+															
+															?>
+																				<script>
+																				alert('Update data success.');
+																				window.location.href='home.php';
+																				</script>
+																				
+																			<?php
+														}
+				}
+				
 
-	
-	while($row=mysqli_fetch_array($sql)) {
-		
+$sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
+
+while($row=mysqli_fetch_array($sql)) {
 		
 ?>
 <!DOCTYPE html>
@@ -34,7 +76,15 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 	<script src="script.js" defer></script>
 	<script src="newsletter.js" defer></script>
 	<style>
-	
+form {
+   width: 50%;
+        margin-left : 25%
+}
+
+.input-element{
+font-size: 100px; // for say a select
+width: 400px;
+}
 	</style>
 
   <title>SI Gadget | Menjual Smartphone dan Aksesoris</title>
@@ -124,75 +174,33 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 </nav>
 
 
+<h2 style="text-align: Center;"><?php echo $check['username'] ?>'s Account</h2>
 
-<?php while($rowtwo=mysqli_fetch_array($sqltwo)) { ?>
+<form method="POST" action="customaccount.php" enctype="multipart/form-data">
 
-<div class="slideshow-container" style="position: relative;overflow-x: hidden;" body="background-size: cover;">
-<div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-								<img src="image/<?php echo $rowtwo['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11Pro.php'"> <?php } while($rowthree=mysqli_fetch_array($sqlthree)) {?>
-</div>
+	Username : <input type="text" name="username" value="<?php echo $check['username'] ?>" placeholder="Enter Username" Required>
+  <br><br>
+	Nama Lengkap : <input type="text" name="fullname" placeholder="Enter Full Name" value="<?php echo $check['Nama_Lengkap'] ?>" Required>
+  <br><br>
+	Email : <input type="text" name="email" placeholder="Enter Email" value="<?php echo $check['email'] ?>" Required>
+  <br><br>
+	Nomor Telepon : <input type="text" name="phonenumber" placeholder="Enter Email" value="<?php echo $check['No_Telepon'] ?>" Required>
+  <br><br>
+	Alamat : <textarea name="address" placeholder="Enter Address"><?php echo $check['Alamat'] ?></textarea>
+  <br><br>
 
-<div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-  <img src="image/<?php echo $rowthree['Filename']; ?>" style="width:100%" onclick="document.location='Bagian Tius/headphone.php'"> <?php } while($rowfour=mysqli_fetch_array($sqlfour)) {?>
-</div>
+   <input type="submit" name="updatedata" value="Update Data">	
 
-<div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-  <img src="image/<?php echo $rowfour['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11.php'"> <?php } while($rowfive=mysqli_fetch_array($sqlfive)) {?>
-</div>
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
-
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-
-</script>
+  
+  <br><br>
+  <input type="submit" name="changepassword" value="Change Password">
+  <br><br>
+  <input type="submit" name="deleteaccount" value="Delete Account">
+  <br><br>
+  <input type="button" value="Back" onclick="location.href='home.php'" />
+</form>
 <br><br>
-<img class="experiencedays" src="image/<?php echo $rowfive['Filename']; ?>" alt="Experience Days" width="25%" height="25%"> <?php } while($rowsix=mysqli_fetch_array($sqlsix)) {?>
-<img class="experiencedays" src="image/<?php echo $rowsix['Filename']; ?>" alt="Free Ongkir" width="25%" height="25%"> <?php } while($rowseven=mysqli_fetch_array($sqlseven)) {?>
-<img class="experiencedays" src="image/<?php echo $rowseven['Filename']; ?>" alt="Accessories" width="25%" height="25%" onclick="location.href='Bagian Tius/halamanaksesoris.php';"> <?php } while($roweight=mysqli_fetch_array($sqleight)) {?>
 
-
-<br><br>
-<div>
-<img src="image/<?php echo $roweight['Filename']; ?>" alt="Toko Elektronik" width="100%" height="100%" onclick="document.location='Bagian Sanctus/About.php'"> <?php } ?>
-</div>
 
 <!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
     ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
@@ -239,21 +247,6 @@ function showSlides(n) {
     					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
-
-
-<!---js for toggle menu------>
-<script>
-	var MenuItems = document.getElementById("MenuItems");
-	
-	MenuItems.style.maxHeight = "0px";
-	
-	function menutoggle(){
-		if(MenuItems.style.maxHeight == "0px"){
-			 MenuItems.style.maxHeight == "200px";
-		} else {
-			MenuItems.style.maxHeight == "0px";
-	}
-</script>
 <?php
 
 $conn->close();
