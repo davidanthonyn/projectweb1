@@ -25,6 +25,15 @@ if(isset($_POST['updatedata'])) {
 		$phonenumber = mysqli_real_escape_string($conn,$_POST['phonenumber']);
 		$address = mysqli_real_escape_string($conn,$_POST['address']);
 						
+						if($username == $_SESSION["account_username"] && $fullname == $_SESSION["account_fullname"] && $email == $_SESSION["account_email"] && $phonenumber == $_SESSION["account_phonenumber"] && $address == $_SESSION["account_address"]) {
+							?>
+																				<script>
+																				alert('So, you pressed the update button, huh? I see what you did, lol.');
+																				window.location.href='customaccount.php';
+																				</script>
+																				
+																			<?php
+						} else {
 						$update = mysqli_query($conn, "UPDATE `user` SET username='$username', Nama_Lengkap='$fullname', email='$email', No_Telepon='$phonenumber', Updated_at=now(), Alamat='$address' WHERE ID_User='$check[ID_User]'");
 						
 						
@@ -52,12 +61,13 @@ if(isset($_POST['updatedata'])) {
 															?>
 																				<script>
 																				alert('Update data success.');
-																				window.location.href='home.php';
+																				window.location.href='customaccount.php';
 																				</script>
 																				
 																			<?php
 														}
 				}
+}
 				
 
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
@@ -84,6 +94,10 @@ form {
 .input-element{
 font-size: 100px; // for say a select
 width: 400px;
+}
+
+textarea {
+  resize: none;
 }
 	</style>
 
@@ -174,7 +188,22 @@ width: 400px;
 </nav>
 
 
-<h2 style="text-align: Center;"><?php echo $check['username'] ?>'s Account</h2>
+<?php
+function endsWith($string, $endString)
+{
+    $len = strlen($endString);
+    if ($len == 0) {
+        return true;
+    }
+    return (substr($string, -$len) === $endString);
+}
+  
+
+if(endsWith($check['username'],"s"))
+    echo "<h2 style='text-align: Center;'>$check[username]' Account</h2>";
+else
+    echo "<h2 style='text-align: Center;'>$check[username]'s Account</h2>";
+?>
 
 <form method="POST" action="customaccount.php" enctype="multipart/form-data">
 
@@ -186,16 +215,16 @@ width: 400px;
   <br><br>
 	Nomor Telepon : <input type="text" name="phonenumber" placeholder="Enter Email" value="<?php echo $check['No_Telepon'] ?>" Required>
   <br><br>
-	Alamat : <textarea name="address" placeholder="Enter Address"><?php echo $check['Alamat'] ?></textarea>
+	Alamat (Max 100 Karakter) : <textarea name="address" placeholder="Enter Address" rows="8" cols="50" maxlength="100"><?php echo $check['Alamat'] ?></textarea>
   <br><br>
 
    <input type="submit" name="updatedata" value="Update Data">	
 
   
   <br><br>
-  <input type="submit" name="changepassword" value="Change Password">
+  <input type="button" value="Change Password" onclick="location.href='Bagian David/changepassword.php'" />
   <br><br>
-  <input type="submit" name="deleteaccount" value="Delete Account">
+  <input type="button" value="Delete Account" onclick="location.href='Bagian David/deleteaccount.php'" />
   <br><br>
   <input type="button" value="Back" onclick="location.href='home.php'" />
 </form>
