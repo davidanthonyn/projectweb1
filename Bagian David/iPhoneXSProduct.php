@@ -1,3 +1,16 @@
+<?php
+include "../sigadgetconnection.php";
+
+session_start();
+
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: iPhoneXSProduct.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -281,10 +294,10 @@ ul.no-bullets {
 
 <!----navigation--->
 <nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
+    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo" onclick="location.href='../home.php';"></div></div>
     <div class="navbar-right"  style="position: relative; left: 140px">
         <ul>
-            <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
+            <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
@@ -294,7 +307,7 @@ ul.no-bullets {
             </ul>
           </li>
 
-                              	<li><a href="../Bagian Migel/HalamanAndroid.php">Android</a>
+                              	<li><a href="Bagian Migel/HalamanAndroid.php">Android</a>
 																			<ul class="dropdown-list">
 																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
@@ -303,7 +316,7 @@ ul.no-bullets {
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.php">Aksesoris</a>
+																																		<li><a href="Bagian Tius/halamanaksesoris.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -320,9 +333,42 @@ ul.no-bullets {
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.php">Login</a>
-																																																															<li><a href="../Bagian David/Keranjang Belanja/cart.php">Keranjang Belanja</a></li>
-																																																															</li>
+                                                                                                                            <li>
+																															<?php
+																															if(empty($_SESSION['account_username'])) {
+																																echo "<a href='Bagian David/account.php'>Login</a>";
+																																} else if(!empty($_SESSION['account_username'])) {
+																																	echo "<a>$_SESSION[account_username]</a>";
+																																	echo "<ul class='dropdown-list'>";
+																																	echo "<form method='GET' action='home.php' enctype='multipart/form-data'>";
+																																	echo "<li><a class='dropdown' href='customaccount.php'>Account</a></li>";
+																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
+																																	echo "</form>";
+																																	
+																																}
+																															?>
+																															</ul>
+																																	
+																																	
+																																																			<li>
+																																																						<?php
+																																																						if(empty($_SESSION['account_username'])) {
+																																																							} else if(!empty($_SESSION['account_username'])) {
+																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+																																																								echo "<a>Dashboard</a>";
+																																																								echo "<ul class='dropdown-list'>";
+																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
+																																																									}
+																																																							}
+																																																						?>
+																																																						</ul>
+																																																								</li>
 
         </ul>
     </div>

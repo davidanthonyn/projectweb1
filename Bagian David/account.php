@@ -81,12 +81,6 @@ include "../sigadgetconnection.php";
 							$_SESSION["account_password"] = $row_account["password"];
 							$_SESSION["account_userlevel"] = $row_account["userlevel"];
 							$_SESSION["account_userstatus"] = $row_account["userstatus"];
-							$_SESSION["account_fullname"] = $row_account["Nama_Lengkap"];
-							$_SESSION["account_email"] = $row_account["email"];
-							$_SESSION["account_phonenumber"] = $row_account["No_Telepon"];
-							$_SESSION["account_address"] = $row_account["Alamat"];
-							$_SESSION["account_create"] = $row_account["Created_at"];
-							$_SESSION["account_update"] = $row_account["Updated_at"];
 							
 									if($_SESSION["account_userstatus"] == "Disabled") {
 										?>
@@ -94,9 +88,22 @@ include "../sigadgetconnection.php";
 										alert('Your account has been deleted.');
 										</script>
 										<?php
-									} else if($_SESSION["account_userlevel"] == "member") {
+										session_destroy();
+									} else if($_SESSION["account_userlevel"] == "member" && $_SESSION["account_userstatus"] != "Disabled") {
+										$_SESSION["account_fullname"] = $row_account["Nama_Lengkap"];
+										$_SESSION["account_email"] = $row_account["email"];
+										$_SESSION["account_phonenumber"] = $row_account["No_Telepon"];
+										$_SESSION["account_address"] = $row_account["Alamat"];
+										$_SESSION["account_create"] = $row_account["Created_at"];
+										$_SESSION["account_update"] = $row_account["Updated_at"];
 										header("location:../home.php");
-									} else if($_SESSION["account_userlevel"] == "admin") {
+									} else if($_SESSION["account_userlevel"] == "admin" && $_SESSION["account_userstatus"] != "Disabled") {
+										$_SESSION["account_fullname"] = $row_account["Nama_Lengkap"];
+										$_SESSION["account_email"] = $row_account["email"];
+										$_SESSION["account_phonenumber"] = $row_account["No_Telepon"];
+										$_SESSION["account_address"] = $row_account["Alamat"];
+										$_SESSION["account_create"] = $row_account["Created_at"];
+										$_SESSION["account_update"] = $row_account["Updated_at"];
 										header("location:../home.php");
 									}
 							

@@ -3,68 +3,12 @@ include "../sigadgetconnection.php";
 
 session_start();
 
-if(!empty($_SESSION['account_username'])) {
-	header('location: ../home.php');
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: iPhoneproducts.php');
 }
 
-if(isset($_POST['forgotpassword'])) {
-		$oldpassword = mysqli_real_escape_string($conn,$_POST['oldpassword']);
-		$newpassword = mysqli_real_escape_string($conn,$_POST['newpassword']);
-		$newpasswordagain = mysqli_real_escape_string($conn,$_POST['newpasswordagain']);
-		$passhashnew = password_hash($newpassword,PASSWORD_DEFAULT);
-		
-		
-		if(count($errors) == 0) {
-					
-					if(password_verify($oldpassword, $_SESSION['account_password'])) {
-						if($newpassword == $newpasswordagain) {
-							$passhash = password_hash($newpassword,PASSWORD_DEFAULT);
-							$update = mysqli_query($conn, "UPDATE `user` SET password='$passhashnew',Updated_at=now() WHERE username='$_SESSION[account_username]'");
-									
-														if($update) {
-															session_destroy();
-															
-															session_start();
-															
-															$checkdatasecond = mysqli_query($conn,"SELECT * FROM user WHERE ID_User='$check[ID_User]'");
-															$checksecond = mysqli_fetch_array($checkdatasecond);
-															$_SESSION["account_id"] = $checksecond["ID_User"];
-															$_SESSION["account_username"] = $checksecond["username"];
-															$_SESSION["account_password"] = $checksecond["password"];
-															$_SESSION["account_userlevel"] = $checksecond["userlevel"];
-															$_SESSION["account_userstatus"] = $checksecond["userstatus"];
-															$_SESSION["account_fullname"] = $checksecond["Nama_Lengkap"];
-															$_SESSION["account_email"] = $checksecond["email"];
-															$_SESSION["account_phonenumber"] = $checksecond["No_Telepon"];
-															$_SESSION["account_address"] = $checksecond["Alamat"];
-															$_SESSION["account_create"] = $checksecond["Created_at"];
-															$_SESSION["account_update"] = $checksecond["Updated_at"];
-															?>
-																				<script>
-																				alert('Change password success, back to account.');
-																				window.location.href='../customaccount.php';
-																				</script>
-																			<?php
-														} else {
-															?>
-																				<script>
-																				alert('Change password failed.');
-																				window.location.href='../customaccount.php';
-																				</script>	
-																				<?php
-								}	
-						}
-						array_push($errors, "Password baru dan Password baru kedua tidak sama, password belum terganti!");
-		}
-		array_push($errors, "Password lama salah, password belum terganti!");
-	}
-}
-				
-
-$sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
-
-while($row=mysqli_fetch_array($sql)) {
-		
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +18,6 @@ while($row=mysqli_fetch_array($sql)) {
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link href="styles.php" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style> 
 	body {
@@ -275,11 +218,6 @@ while($row=mysqli_fetch_array($sql)) {
 					  text-align: center;
 					}
 
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-}
 
 /* Clear floats after the columns */
 .row:after {
@@ -330,178 +268,19 @@ font-weight: normal;
 	transform: translateY(-5px);
 }
 
-.btn-cart {
-  border: none;
-  outline: 0;
-  padding: 10px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 15px;
-}
-
-ul.no-bullets {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cart-page {
-	margin: 80px auto;
-}
-
-table {
-width: 100%;
-border-collapse: collapse;
-}
-
-.cart-info {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-th {
-	text-align: left;
-	padding: 5px;
-	Color: #fff;
-	background: #27a3ff;
-	font-weight: normal;
-}
-
-td {
-	padding: 10px 5px;
-}
-
-td input {
-	width: 40px;
-	height: 30px;
-	padding: 5px;
-}
-
-td a {
-	color: #27a3ff;
-	font-size: 12px;
-}
-
-td img {
-	width: 80px;
-	height: 80px;
-	margin-right: 10px;
-
-}
-
-.total-price {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.total-price table {
-	border-top: 3px solid #27a3ff;
-	width: 100%;
-	max-width: 405px;
-}
-
-td:last-child {
-text-align: right;
-}
-
-th: last-child {
-text-align: right;
-}
-
-.account-page {
-	padding: 50px 0;
-	background: radial-gradient(#fff, #27a3ff);
-}
-
-.form-container {
-	background: #fff;
-	width: 300px;
-	height: 400px;
-	position: relative;
-	text-align: center;
-	padding: 20px 0;
-	margin: auto;
-	box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
-	overflow: hidden;
-}
-
-.form-container span {
-	font-weight: bold;
-	padding: 0 10px;
-	color: #555;
-	cursor: pointer;
-	width: 100px;
-	display: inline-block;
-}
-
-.form-btn {
-	display: inline-block;
-}
-
-.form-container form {
-	max-width: 300px;
-	padding: 0 20px;
-	position: absolute;
-	top: 130px;
-	transition: transform 1s;
-}
-
-form input {
-	width: 100%;
-	height: 30px;
-	margin: 10px 0;
-	padding 0 10px;
-	border: 1px solid #ccc;
-}
-
-form .btn {
-	width: 100%;
-	border: none;
-	cursor: pointer;
-	margin: 10px 0;
-}
-
-form .btn:focus {
-	outline: none;
-}
-
-#LoginForm{
-	left: -300px;
-}
-
-#RegForm {
-	left: 0;
-}
-
-form a{
-	font-size: 12px;
-}
-
-#Indicator{
-	width: 100px;
-	border: none;
-	background: #27a3ff;
-	height: 3px;
-	margin-top: 8px;
-	transform: translateX(100px);
-	transition: transform 1s;
-}
 
   </style>
-  <title>Login/Register | SI Gadget</title>
-  <link rel="shortcut icon" type="image" href="../image/<?php echo $row['Filename']; ?>"> <?php } ?>
+  <title>iPhone | SI Gadget</title>
+  <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
 
 <!----navigation--->
 <nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
+    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo" onclick="location.href='../home.php';"></div></div>
     <div class="navbar-right"  style="position: relative; left: 140px">
         <ul>
-            <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
+            <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
@@ -511,7 +290,7 @@ form a{
             </ul>
           </li>
 
-                              	<li><a href="../Bagian Migel/HalamanAndroid.php">Android</a>
+                              	<li><a href="Bagian Migel/HalamanAndroid.php">Android</a>
 																			<ul class="dropdown-list">
 																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
@@ -520,7 +299,7 @@ form a{
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.php">Aksesoris</a>
+																																		<li><a href="Bagian Tius/halamanaksesoris.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -537,47 +316,95 @@ form a{
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.php">Login</a>
-																																																															</li>
+                                                                                                                            <li>
+																															<?php
+																															if(empty($_SESSION['account_username'])) {
+																																echo "<a href='Bagian David/account.php'>Login</a>";
+																																} else if(!empty($_SESSION['account_username'])) {
+																																	echo "<a>$_SESSION[account_username]</a>";
+																																	echo "<ul class='dropdown-list'>";
+																																	echo "<form method='GET' action='iPhoneproducts.php' enctype='multipart/form-data'>";
+																																	echo "<li><a class='dropdown' href='customaccount.php'>Account</a></li>";
+																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
+																																	echo "</form>";
+																																	
+																																}
+																															?>
+																															</ul>
+																																	
+																																	
+																																																			<li>
+																																																						<?php
+																																																						if(empty($_SESSION['account_username'])) {
+																																																							} else if(!empty($_SESSION['account_username'])) {
+																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+																																																								echo "<a>Dashboard</a>";
+																																																								echo "<ul class='dropdown-list'>";
+																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
+																																																									}
+																																																							}
+																																																						?>
+																																																						</ul>
+																																																								</li>
 
         </ul>
     </div>
 </nav>
 
-<!-----accountpage------>
-<div class="account-page">
-	<div class="container">
-		<div class="row">
-			<div class="col-2">
-				<img src="../smartphone.png" width="75%">
-			</div>
-			<div class="col-2">
-				<div class="form-container">
-					<div class="form-btn">
-					<span onclick="login()">OTP</span>
-					<span onclick="register()">Forgot Password</span>
-					<hr id="Indicator"></hr>
-					</div>
-					
-					<form id="RegForm">
-						<input type="text" placeholder="Email" id="email">
-						<input type="submit" class="btn-cart" onclick="return checkEmail()">
-						<a href="account.php">Login</a>
-					</form>
-					
-					<form id="LoginForm">
-						<input type="password" placeholder="OTP" id="OTP">
-						<input type="password" placeholder="New Password" id="password1">
-						<input type="password" placeholder="New Password Again" id="password2">
-						<input type="submit" class="btn-cart" onclick="return checkOtp()">
-						<a href="account.php">Login</a>
-					</form>
-					
-					
+<!-----featured categories------>
+<div class="categories">
+	<div class="row">
+		<div class="col-3"></div>
+</div>
+</div>
 
-				</div>
-			</div>
-		</div>
+<!-----featured products------>
+<h2 style="text-align: center;">iPhone</h2>
+<hr>
+<div class="small-container">
+<div class="row">
+	<div class="col-4" onclick="location.href='iPhoneSEProducts.php';">
+		<img src="Gallery/iPhone/iPhone SE/iPhoneSEDisplayBLACK.png">
+		<h4>iPhone SE</h4>
+		<p>Rp 7.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhone11ProMaxProduct.php';">
+		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_max_space_grey_1_6_1.jpg">
+		<h4>iPhone 11 Pro Max</h4>
+		<p>Rp 22.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhone11ProProduct.php';">
+		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_space_grey_1_4_1_1.jpg">
+		<h4>iPhone 11 Pro</h4>
+		<p>Rp 18.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhone11Product.php';">
+		<img src="Gallery/iPhone/iPhone 11/apple_iphone_11_black_1_2_1_1_1.jpg">
+		<h4>iPhone 11</h4>
+		<p>Rp 11.499.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhoneXSMaxProduct.php';">
+		<img src="Gallery/iPhone/iPhone XS/iphone-xs-max-space-gray_1_2_1_2_3.jpg">
+		<h4>iPhone XS Max</h4>
+		<p>Rp 14.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhoneXSProduct.php';">
+		<img src="Gallery/iPhone/iPhone XS/iphone-xs-gold_1_1_1_4_2.jpg">
+		<h4>iPhone XS</h4>
+		<p>Rp 12.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhoneXRProduct.php';">
+		<img src="Gallery/iPhone/iPhone XR/iphone-xr-blue_1_1_1_6_1.jpg">
+		<h4>iPhone XR</h4>
+		<p>Rp 10.999.000</p>
+	</div>
+
 	</div>
 </div>
 
@@ -623,83 +450,9 @@ form a{
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
-
-<!----js for toggle menu--->
-<script>
-	var MenuItems = document.getElementById("MenuItems");
-	
-	MenuItems.style.maxHeight = "0px";
-	
-	function menutoggle(){
-		if(MenuItems.style.maxHeight == "0px")
-			{
-				MenuItems.style.maxHeight = "200px";
-			}
-		else
-			{
-				MenuItems.style.maxHeight = "0px";
-			}
-	}
-</script>
-
-<!----js for toggle form--->
-<script>
-	var OTPForm = document.getElementById("LoginForm");
-	var FPForm = document.getElementById("RegForm");
-	var Indicator = document.getElementById("Indicator");
-	
-	var emailPengguna = document.getElementById("email");
-	var passwordSatu = document.getElementById("password1");
-	var passwordDua = document.getElementById("password2");
-	var otepe = document.getElementById("OTP");
-	
-	function login() {
-		OTPForm.style.transform = "translateX(300px)";
-		FPForm.style.transform = "translateX(300px)";
-		Indicator.style.transform = "translateX(0px)";
-	}
-	
-	function register() {
-		OTPForm.style.transform = "translateX(0px)";
-		FPForm.style.transform = "translateX(0px)";
-		Indicator.style.transform = "translateX(100px)";
-	}
-	
-	function checkEmail() {
-		if(emailPengguna.value.length == "0") {
-			alert("Email tidak boleh kosong");
-			window.location.href= "forgotpassword.php";
-			return false;
-		} else {
-			alert("Email terkirim(OTP: 123456)");
-			window.location.href= "forgotpassword.php";
-			return false;
-		}
-	}
-	
-	function checkOtp() {
-		if(passwordSatu.value.length == "0" || passwordDua.value.length == "0" || otepe.value.length == "0" ) {
-			alert("Form tidak boleh kosong");
-			return false;
-		} else if(otepe.value!="123456") {
-			alert("OTP harus 123456");
-			return false;
-			} else if(passwordSatu.value != passwordDua.value) {
-			alert("Password tidak sama");
-			return false;
-				} else {
-					alert("Change password success, now user can login.");
-					window.location.href= "account.php";
-					return false;
-				}
-	}
-</script>
-
-
-
 
 </body>
 </html>

@@ -400,13 +400,19 @@ ul.no-bullets {
 			<h4 id="demo"><?php echo "Rp $check[Harga_Produk]"; ?></h4>
 
 
-				<br>
-							<button hidden id="down" onclick="setQuantity('down');">-</button>
-							<input hidden type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
-							<button hidden id="up" onclick="setQuantity('up');">+</button>
-							<a href="../Bagian David/Keranjang Belanja/keranjangbelanjaiPhone11.php" class="btn-cart">Beli</a>
-							<br><br><br>
-							
+				<br>		
+				<?php
+					if($check['Stok_Produk']<1) {
+						echo "<p>Sold out</p>";
+						echo "<br>";
+					} else if($check['Stok_Produk']>1) {
+						echo "<button hidden id='down' onclick='setQuantity(down);'>-</button>";
+						echo "<input hidden type='number' id='quantity' value='1' min='1' style='position:relative;left:5px;' readonly>";
+							echo "<button hidden id='up' onclick='setQuantity(up);'>+</button>";
+							echo "<a href='../Bagian David/Keranjang Belanja/keranjangbelanjaiPhone11.php' class='btn-cart'>Beli</a>";
+							echo "<br><br><br>";
+					}
+				?>
 							
 							<h3>Spesifikasi</h3><hr>
 							<table style="width:100%;table-layout: fixed;">
@@ -511,22 +517,45 @@ ul.no-bullets {
 <div class="small-container">
 <div class="row">
 		<?php
-	$sql = "SELECT Nama_Produk,Harga_Produk,image FROM produk WHERE Status_Produk='Published'";
+	$sql = "SELECT Nama_Produk,Harga_Produk,image,Stok_Produk FROM produk WHERE Status_Produk='Published'";
 	$result = $conn->query($sql);	
 	
 	if ($result->num_rows > 0) {
 		
 		 while($row = $result->fetch_assoc()) {
-		 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
-			 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
-			 echo "<img src='../image/{$row['image']}' >";
-					echo "<h4>$row[Nama_Produk]</h4>";
-						echo "<p>$row[Harga_Produk]</p>";
-							echo "</div></a>";
-		 }
-		} else {
-  echo "0 results";
-}
+		  //Stok tersedia dan diatas 10, tidak diberi watermark apapun
+									 if($row['Stok_Produk']>10) {
+								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk]</h4>";
+												echo "<p>$row[Harga_Produk]</p>";
+													echo "</div></a>";
+													
+													//Stok tersedia dan dibawah sama dengan 10, diberi watermark "Produk hampir habis"
+									 } else if($row['Stok_Produk']<5 && $row['Stok_Produk']>0) {
+										 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+											echo "<img src='../image/{$row['image']}' >";
+												echo "<h4>$row[Nama_Produk]</h4>";
+													echo "<p>$row[Harga_Produk]</p>";
+													echo "<p>Produk hampir habis</p>";
+														echo "</div></a>";
+										 
+										 //Stok habis, diberi watermark "Sold Out"
+									} else if($row['Stok_Produk']<1) {
+										echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+											echo "<img src='../image/{$row['image']}' >";
+												echo "<h4>$row[Nama_Produk]</h4>";
+													echo "<p>$row[Harga_Produk]</p>";
+													echo "<p>Sold out</p>";
+														echo "</div></a>";
+									}
+								 }
+								} else {
+						  echo "0 results";
+						}
 	?>
 
 	</div>
