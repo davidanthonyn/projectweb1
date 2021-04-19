@@ -404,7 +404,10 @@ ul.no-bullets {
 							<button hidden id="down" onclick="setQuantity('down');">-</button>
 							<input hidden type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
 							<button hidden id="up" onclick="setQuantity('up');">+</button>
-							<a href="../Bagian David/Keranjang Belanja/keranjangbelanjaiPhone11.php" class="btn-cart">Beli</a>
+							<?php 
+							$_SESSION["productbuy"] = $check["Nama_Produk"];
+							echo "<a href='../Bagian Tius/sigadgetnavigation.php' class='btn-cart'>Beli</a>";
+							?>
 							<br><br><br>
 							
 							
