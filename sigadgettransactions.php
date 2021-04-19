@@ -194,7 +194,7 @@ if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'iddes
 	  $row["Nama_Pembayaran"] . " / " . $row["Jenis_Pembayaran"] . " / " . $row["Status_Pembayaran"] . " / " . $row["Updated_at"] . "</td><td>" 
 	  . $row["Nama_Kurir"] . " " . $row["Produk_Kurir"] .  " / " . $row["Nomor_Resi"] . " / " . $row["Harga_Kurir"] . " / " . $row["Status_Pengiriman"] . "</td><td>" 
 	  . $row["Nama_Produk"] . " / " . $row["Jumlah_Terjual"] . " / " . $row["Total_Harga"] . "</td><td>" 
-	  . $row["Created_at"] . "</td><td><a href= 'sigadgetemergencyedit.php?idtransaksi=$row[ID_Transaksi]&idpembayaran=$row[ID_Pembayaran]&idpengiriman=$row[ID_Pengiriman]'>Emergency Edit</a></td>";
+	  . $row["Created_at"] . "</td><td><a href= 'sigadgetemergencyedit.php?idtransaksi=$row[ID_Transaksi]'>Emergency Edit</a></td>";
 	  
 	  if($row['Status_Pembayaran']=='Pending') {
 		echo "<td><a href= 'sigadgetchanges.php?oppbayar=pendingtobayar&idbayar=$row[ID_Pembayaran]&idkirim=$row[ID_Pengiriman]'>Pending to Terbayar</a></td>";

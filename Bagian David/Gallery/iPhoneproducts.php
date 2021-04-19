@@ -1,11 +1,24 @@
+<?php
+include "../sigadgetconnection.php";
+
+session_start();
+
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: iPhoneproducts.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link href="styles.php" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style> 
 	body {
 	font-family: 'Roboto', sans-serif;
@@ -205,6 +218,7 @@
 					  text-align: center;
 					}
 
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -231,7 +245,7 @@ margin: auto;
 .col-4 {
 flex-basis: 20%;
 min-width: 100px;
-margin-left: 10%;
+margin-left: 5%;
 margin-bottom: 20px;
 transition: transform 0.5s;
 border-style: ridge;
@@ -256,17 +270,17 @@ font-weight: normal;
 
 
   </style>
-  <title>iPhone XS Series | SI Gadget</title>
+  <title>iPhone | SI Gadget</title>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
 
 <!----navigation--->
 <nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
+    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo" onclick="location.href='../home.php';"></div></div>
     <div class="navbar-right"  style="position: relative; left: 140px">
         <ul>
-            <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
+            <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
@@ -276,7 +290,7 @@ font-weight: normal;
             </ul>
           </li>
 
-                              	<li><a href="../Bagian Migel/HalamanAndroid.php">Android</a>
+                              	<li><a href="Bagian Migel/HalamanAndroid.php">Android</a>
 																			<ul class="dropdown-list">
 																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
@@ -285,7 +299,7 @@ font-weight: normal;
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.php">Aksesoris</a>
+																																		<li><a href="Bagian Tius/halamanaksesoris.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -302,9 +316,42 @@ font-weight: normal;
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
 																																																														</ul>
 
-                                                                                                                            <li><a href="../Bagian David/account.php">Login</a>
-																																																															<li><a href="../Bagian David/Keranjang Belanja/cart.php">Keranjang Belanja</a></li>
-																																																															</li>
+                                                                                                                            <li>
+																															<?php
+																															if(empty($_SESSION['account_username'])) {
+																																echo "<a href='Bagian David/account.php'>Login</a>";
+																																} else if(!empty($_SESSION['account_username'])) {
+																																	echo "<a>$_SESSION[account_username]</a>";
+																																	echo "<ul class='dropdown-list'>";
+																																	echo "<form method='GET' action='iPhoneproducts.php' enctype='multipart/form-data'>";
+																																	echo "<li><a class='dropdown' href='customaccount.php'>Account</a></li>";
+																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
+																																	echo "</form>";
+																																	
+																																}
+																															?>
+																															</ul>
+																																	
+																																	
+																																																			<li>
+																																																						<?php
+																																																						if(empty($_SESSION['account_username'])) {
+																																																							} else if(!empty($_SESSION['account_username'])) {
+																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
+																																																								echo "<a>Dashboard</a>";
+																																																								echo "<ul class='dropdown-list'>";
+																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
+																																																									}
+																																																							}
+																																																						?>
+																																																						</ul>
+																																																								</li>
 
         </ul>
     </div>
@@ -318,10 +365,30 @@ font-weight: normal;
 </div>
 
 <!-----featured products------>
-<h2 style="text-align: center;">iPhone XS</h2>
+<h2 style="text-align: center;">iPhone</h2>
 <hr>
 <div class="small-container">
 <div class="row">
+	<div class="col-4" onclick="location.href='iPhoneSEProducts.php';">
+		<img src="Gallery/iPhone/iPhone SE/iPhoneSEDisplayBLACK.png">
+		<h4>iPhone SE</h4>
+		<p>Rp 7.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhone11ProMaxProduct.php';">
+		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_max_space_grey_1_6_1.jpg">
+		<h4>iPhone 11 Pro Max</h4>
+		<p>Rp 22.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhone11ProProduct.php';">
+		<img src="Gallery/iPhone/iPhone 11 Pro/apple_iphone_11_pro_space_grey_1_4_1_1.jpg">
+		<h4>iPhone 11 Pro</h4>
+		<p>Rp 18.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhone11Product.php';">
+		<img src="Gallery/iPhone/iPhone 11/apple_iphone_11_black_1_2_1_1_1.jpg">
+		<h4>iPhone 11</h4>
+		<p>Rp 11.499.000</p>
+	</div>
 	<div class="col-4" onclick="location.href='iPhoneXSMaxProduct.php';">
 		<img src="Gallery/iPhone/iPhone XS/iphone-xs-max-space-gray_1_2_1_2_3.jpg">
 		<h4>iPhone XS Max</h4>
@@ -331,6 +398,11 @@ font-weight: normal;
 		<img src="Gallery/iPhone/iPhone XS/iphone-xs-gold_1_1_1_4_2.jpg">
 		<h4>iPhone XS</h4>
 		<p>Rp 12.999.000</p>
+	</div>
+	<div class="col-4" onclick="location.href='iPhoneXRProduct.php';">
+		<img src="Gallery/iPhone/iPhone XR/iphone-xr-blue_1_1_1_6_1.jpg">
+		<h4>iPhone XR</h4>
+		<p>Rp 10.999.000</p>
 	</div>
 
 	</div>
