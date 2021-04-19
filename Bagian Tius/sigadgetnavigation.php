@@ -437,7 +437,7 @@ font-weight: normal;
 				 <?php $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
 																	$result = mysqli_query($conn, $sql);
 																	$resultCheck = mysqli_fetch_array($result);
-																	echo $resultCheck['Harga_Produk'];   ?>
+																	echo number_format ($resultCheck['Harga_Produk']);   ?>
 				 </td>
             </tr>
 			
@@ -475,9 +475,10 @@ font-weight: normal;
 	
     if(isset($_POST['hitung'])){
         $nama    =$resultCheck['Nama_Produk'];
-        $harga    =$_POST['harga'];
+        $harga    =$resultCheck['Harga_Produk'];
+		$hargafinal = (float) $harga;
         $qty    =$_POST['qty'];
-        $total    =$harga*$qty;
+        $total    =$hargafinal*$qty;
         echo "
             <table border='1' cellpadding='4'>
                 <tr>
@@ -488,7 +489,7 @@ font-weight: normal;
                 </tr>
                 <tr>
                     <td>$nama</td>
-                    <td align='right'>";echo number_format($harga,0,',','.');echo "</td>
+                    <td align='right'>";echo number_format($hargafinal,0,',','.');echo "</td>
                     <td align='right'>";echo number_format($qty,0,',','.');echo "</td>
                     <td align='right'>";echo number_format($total,0,',','.');echo "</td>
                 </tr>
@@ -526,7 +527,7 @@ $subject = mysqli_query($conn, $subjectName);
  
  echo "<input type='radio' name='radiobutton' value='{$data['Nama_Kurir']}'>" ,
 											"<value='{$data['Produk_Kurir']}'>" ,
-											"<value='{$data['Harga_Kurir']}'>"
+											"<value='{$data ['Harga_Kurir']}'>"
 		. $data['Nama_Kurir'] . " / " . $data['Produk_Kurir'] . " / " . $data['Harga_Kurir'] . '</br>';
 		
 	
