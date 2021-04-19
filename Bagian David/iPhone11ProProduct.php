@@ -354,7 +354,7 @@ ul.no-bullets {
 							<button hidden id="down" onclick="setQuantity('down');">-</button>
 							<input hidden type="number" id="quantity" value="1" min="1" style="position:relative;left:5px;" readonly>
 							<button hidden id="up" onclick="setQuantity('up');">+</button>
-							<a href="../Bagian David/Keranjang Belanja/keranjangbelanjaiPhone11Pro.php" class="btn-cart">Beli</a>
+							<a href="../php/sigadgetnavigation.php" class="btn-cart">Beli</a>
 							<br><br>
 							<h3>Detail Produk</h3>
 							<p>Sistem tiga kamera transformatif yang menambahkan kemampuan luar biasa tanpa kerumitan. Lompatan tak tertandingi dalam hal kekuatan baterai. Dan chip luar biasa dengan pembelajaran mesin yang semakin canggih dan menghilangkan batasan kemampuan ponsel pintar. Selamat datang di iPhone pertama yang karena kecanggihannya layak disebut Pro.</p>
