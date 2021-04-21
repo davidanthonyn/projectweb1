@@ -445,7 +445,7 @@ font-weight: normal;
                 <td>Jumlah Item Barang</td>
                 <td>:</td>
                 <td>
-                    <select name="qty">
+                    <select name="qty" required>
                         <option value="">- Jumlah -</option>
                         <?php
                             for($x=1;$x<=50;$x++){
@@ -496,6 +496,9 @@ font-weight: normal;
             </table>
         ";
     }
+	
+	if(isset($_POST['hitung'])){
+		
 ?>
 
 <p> Akan dibeli oleh : </p> 
