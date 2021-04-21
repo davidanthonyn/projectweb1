@@ -310,8 +310,6 @@ font-weight: normal;
   <title>Product Navigation</title>
 </head>
 <body>
-
- <title>iPhone | SI Gadget</title>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
@@ -380,11 +378,11 @@ font-weight: normal;
 																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadminds.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
@@ -421,7 +419,7 @@ font-weight: normal;
     
     if ($resultCheck > 0){
         
-              echo "<img src='../image/contoh.png' class='img-responsive floating-image left'>";
+              echo "<img src='../image/$resultCheck[image]' class='img-responsive floating-image left'>";
        echo  "<h2>$resultCheck[Nama_Produk]</h2>";
 
 	}
@@ -498,6 +496,7 @@ font-weight: normal;
     }
 	
 	if(isset($_POST['hitung'])){
+	}
 		
 ?>
 
