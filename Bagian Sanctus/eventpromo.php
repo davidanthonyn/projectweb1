@@ -423,10 +423,11 @@ Daftar animasinya ada di website https://animate.style -->
 
 <!-- Ini adalah Navigasi, Navigasi adalah Kepala dari Website.. Untuk mempermudah user, menjelajahi web.
 Direkomendasikan Copas dari sini-->
+<!----navigation--->
 <nav class="navbar">
     <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
     <div class="navbar-right"  style="position: relative; left: 140px">
-        <ul class="animate__animated animate__fadeInDown">
+        <ul>
             <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
                     <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
@@ -486,11 +487,11 @@ Direkomendasikan Copas dari sini-->
 																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
