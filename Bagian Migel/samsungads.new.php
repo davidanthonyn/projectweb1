@@ -348,11 +348,11 @@ font-size: 15px;
 																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadminds.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
