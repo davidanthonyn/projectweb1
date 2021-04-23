@@ -591,6 +591,7 @@ form a{
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.php">About</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
+																																																															<li><a class="dropdown" href="../Bagian David/nomorresi.php">Track Resi</a></li>
 																																																														</ul>
 
                                                                                                                             <li>
@@ -620,7 +621,7 @@ form a{
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}

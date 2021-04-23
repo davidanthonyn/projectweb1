@@ -3,56 +3,21 @@ include "../sigadgetconnection.php";
 
 session_start();
 
-if(empty($_SESSION['account_username'])) {
-	header('location: ../home.php');
-}
-
-$checkdata = mysqli_query($conn,"SELECT * FROM user WHERE username = '$_SESSION[account_username]'");
-$check = mysqli_fetch_array($checkdata);
-
-
-
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
-		header('location: ../home.php');
+		header('location: home.php');
 }
-
-if(isset($_POST['deletedata'])) {
-		$password = mysqli_real_escape_string($conn,$_POST['password']);
-		
-		if(count($errors) == 0) {
-					
-					if(password_verify($password, $_SESSION['account_password'])) {
-							$update = mysqli_query($conn, "UPDATE `user` SET userstatus='Disabled',Updated_at=now() WHERE username='$_SESSION[account_username]'");
-									
-														if($update) {
-															session_destroy();
-															?>
-																				<script>
-																				alert('Delete data success, back to home.');
-																				window.location.href='../home.php';
-																				</script>
-																			<?php
-														} else {
-															?>
-																				<script>
-																				alert('Delete data failed.');
-																				window.location.href='../home.php';
-																				</script>	
-																				<?php
-								}	
-						}
-		}
-		array_push($errors, "Password salah, akun Anda belum dinyatakan terhapus!");
-}
-				
 
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
-
-while($row=mysqli_fetch_array($sql)) {
-		
+	
+	while($row=mysqli_fetch_array($sql)) {
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,21 +26,17 @@ while($row=mysqli_fetch_array($sql)) {
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link href="../styles.php" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-	<script src="../script.js" defer></script>
-	<script src="../newsletter.js" defer></script>
 	<style>
-form {
-   width: 50%;
-        margin-left : 25%
+	table {
+  width:100%;
 }
-
-.input-element{
-font-size: 100px; // for say a select
-width: 400px;
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
-
-textarea {
-  resize: none;
+th, td {
+  padding: 15px;
+  text-align: left;
 }
 	</style>
 
@@ -122,7 +83,6 @@ textarea {
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.php">About</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
-																																																															<li><a class="dropdown" href="../Bagian David/nomorresi.php">Track Resi</a></li>
 																																																														</ul>
 
                                                                                                                             <li>
@@ -163,89 +123,73 @@ textarea {
         </ul>
     </div>
 </nav>
+<br>
 
-<?php
-function endsWith($string, $endString)
-{
-    $len = strlen($endString);
-    if ($len == 0) {
-        return true;
-    }
-    return (substr($string, -$len) === $endString);
-}
-  
-
-if(endsWith($check['username'],"s"))
-    echo "<h2 style='text-align: Center;'>$check[username]' Delete Account</h2>";
-else
-    echo "<h2 style='text-align: Center;'>$check[username]'s Delete Account</h2>";
-?>
-
-<form method="POST" action="deleteaccount.php" enctype="multipart/form-data">
-
-	Password : <input type="password" name="password" placeholder="Enter Password" Required>
-  <br><br>
-	<p>Dengan memasukkan password yang benar dan mengklik submit, Anda menyatakan setuju untuk menghapus akun Anda selamanya.</p>
-
-   <input type="submit" name="deletedata" value="Delete">
-
-  <input type="button" value="Back" onclick="location.href='../customaccount.php'" />
-  
-  <?php include('../sigadgeterrors.php'); ?>
-  
+<center>
+<h3>Nomor Resi</h3>
+<form method="POST" action="nomorresi.php">
+	
+	<input type="number" name="keyword" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, 12);" autocomplete="off">
+	
+	<button type="submit" name="cari">Cari</button><br><br>
 </form>
-<br><br>
+<br>
+<center>
 
-
-<!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
-    ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
-    <div class="newsletter">
-    	<p class="animate__animated animate__fadeInDown" style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
-    		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="Email" size="60">
-    		<input class="button animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="submit" value="KIRIM" onclick="newsletterCheck()">
-    	</p>
-    </div>
-    <!-- penjelasan SI Gadget -->
-    <div class="experience">
-    <p class="animate__animated animate__fadeInLeft" style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
-    					<div class="column animate__animated animate__fadeInLeft">
-    						<ul style="list-style-type:none">
-    							<li>Jika Anda ingin bantuan atau memiliki masukan, silakan hubungi kami: </li><br>
-    							<li>Jam 9.30 - 17.30(Senin s/d Minggu).</li>
-    							<li>Email: customercare@sigadget.com</li>
-    							<li>Phone: 911</li>
-    							<li>WA: 081234567890</li>
-    						</ul>
-    					</div>
-    															<div class="column animate__animated animate__fadeInLeft">
-    																	<ul style="list-style-type:none">
-    																		<li>Kami menerima metode pembayaran:</li><br>
-    																		<li>OVO</li>
-    																		<li>GO-PAY</li>
-    																		<li>Cash on Delivery(COD)</li>
-    																		<li>Debit card</li>
-    																		<li>Credit card</li>
-    																	</ul>
-    															</div>
-
-    																							<div class="column animate__animated animate__fadeInLeft">
-    																									<ul style="list-style-type:none">
-    																										<li>Kurir pengiriman:</li><br>
-    																										<li>JNE</li>
-    																										<li>JET Express</li>
-    																										<li>SiCepat</li>
-    																									</ul>
-    																							</div>
-    </div>
-
-    					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
-    					</div>
-    <!--Copas footer sampai sini -->
 <?php
-
+//Transaksi berdasarkan pencarian
+if(isset($_POST["cari"])) {
+	$transaksi = ($_POST["keyword"]);
+	
+	$sql = "SELECT pengiriman.Nomor_Resi,kurir.Nama_Kurir,kurir.Produk_Kurir,pengiriman.Alamat,
+	user.Nama_Lengkap,pengiriman.Created_at,pengiriman.Updated_at,pengiriman.Status_Pengiriman
+	FROM pengiriman,kurir,user 
+	WHERE kurir.ID_Kurir = pengiriman.ID_Kurir AND 
+	user.ID_User = pengiriman.ID_User AND 
+	pengiriman.Nomor_Resi = '$transaksi'";
+	
+	$result = $conn->query($sql);
+		
+	if ($result->num_rows > 0) {
+		
+		echo "<table style='width:75%'>
+			<tr>
+				<th>Nomor Resi</th>
+				<th>Kurir</th>
+				<th>Layanan</th>
+				<th>Tujuan</th>
+				<th>Penerima</th>
+				<th>Waktu</th>
+				<th>Status</th>
+			</tr>";
+		
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+	  echo "<tr><td>" . $row["Nomor_Resi"] . "</td><td>" . $row["Nama_Kurir"] . "</td><td>" . 
+	  $row["Produk_Kurir"] . "</td><td>" . $row["Alamat"] . "</td><td>" . $row["Nama_Lengkap"] . "</td>";
+	  
+	  if($row['Status_Pengiriman']=='Diproses') {
+			echo "<td>" . $row["Created_at"] . "</td>";
+		} else if($row['Status_Pengiriman']=='Dikirim') {
+			echo "<td>" . $row["Updated_at"] . "</td>";
+		} else if($row['Status_Pengiriman']=='Diterima') {
+			echo "<td>" . $row["Updated_at"] . "</td>";
+		}
+		
+	  echo "<td>" . $row["Status_Pengiriman"] .  "</td></tr>";
+	
+  }
+  echo "</table>";
+  echo "<p>Waktu menyesuaikan status pengiriman.</p>";
+} else {
+  echo "Nomor Resi tidak ditemukan.";
+}
 $conn->close();
+}
 
 ?>
+
+
+
 </body>
 </html>
