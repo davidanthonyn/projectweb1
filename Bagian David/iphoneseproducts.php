@@ -370,7 +370,7 @@ font-weight: normal;
 <div class="row">
 	<?php
 							//SQL All Products Published
-							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk LIKE '%iPhone 12 Pro%' AND Status_Produk='Published'";
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk LIKE '%iPhone SE%' AND Status_Produk='Published'";
 							$result = $conn->query($sql);	
 							
 							if ($result->num_rows > 0) {

@@ -355,11 +355,11 @@ color: white;
         <ul>
             <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12products.php">iPhone 12</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXS.php">iPhone XS</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
+					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
             </ul>
           </li>
 
@@ -449,7 +449,7 @@ color: white;
 
 <br>
 
-<button class="glow-on-hover" type="button" onclick="location.href='iPhoneSEProducts.php';">Beli Sekarang</button>
+<button class="glow-on-hover" type="button" onclick="location.href='../Bagian David/iphoneseproducts.php';">Beli Sekarang</button>
 
 <br>
 
