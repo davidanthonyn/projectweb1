@@ -408,7 +408,7 @@ color: white;
 <h2 class="judul">Liquid Retina yang sepenuhnya baru - LCD tercanggih di industri ponsel. Face ID yang lebih cepat lagi. Chip paling cerdas dan Andal dalam ponsel pintar. Dan sebuah terobosan sistem kamera. iPhone Xr. Sangat mengagumkan dari sisi mana pun Anda melihatnya.</h2>
 <br>
 
-<button class="glow-on-hover" type="button" href="" onclick="location.href='iPhoneXRProduct.php';">Beli Sekarang</button>
+<button class="glow-on-hover" type="button" href="" onclick="location.href='iPhonexrproducts.php';">Beli Sekarang</button>
 <br>
 
 <img src="Gallery/iPhone/iPhone XR/iphone-xr.webp" alt="iPhone XR" width="100%" height="75%">

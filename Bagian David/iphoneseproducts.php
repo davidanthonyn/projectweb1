@@ -6,7 +6,7 @@ session_start();
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
-		header('location: ../Bagian David/iphone12proproducts.php');
+		header('location: ../Bagian David/iphoneseproducts.php');
 }
 
 ?>
@@ -270,7 +270,7 @@ font-weight: normal;
 
 
   </style>
-  <title>iPhone | SI Gadget</title>
+  <title>iPhone SE | SI Gadget</title>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
@@ -364,7 +364,7 @@ font-weight: normal;
 </div>
 
 <!-----featured products------>
-<h2 style="text-align: center;">All Products</h2>
+<h2 style="text-align: center;">iPhone SE Products</h2>
 <hr>
 <div class="small-container">
 <div class="row">

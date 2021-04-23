@@ -6,7 +6,7 @@ session_start();
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
-		header('location: PromotioniPhone11.php');
+		header('location: ../Bagian David/iphone12products.php');
 }
 
 ?>
@@ -17,9 +17,9 @@ if(isset($_GET['logout'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="styles.php" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="styles.css" rel="stylesheet">
-  <style>
+  <style> 
 	body {
 	font-family: 'Roboto', sans-serif;
 	}
@@ -33,6 +33,7 @@ if(isset($_GET['logout'])) {
 		border: solid 2px #666;
 		border-radius: 50px;
 		background-color: #fff;
+		href: url(home.php);
 		}
 
 			.navbar-left{
@@ -217,6 +218,7 @@ if(isset($_GET['logout'])) {
 					  text-align: center;
 					}
 
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -224,94 +226,55 @@ if(isset($_GET['logout'])) {
   clear: both;
 }
 
-#backgroundhitam {
-background-color: Black;
+.row {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+justify-content: space-around;
+} 
+
+.categories {
+margin: 5px 0;
 }
 
-#backgroundputih {
-background-color: White;
+.small-container {
+max-width: 60%;
+margin: auto;
 }
 
-table {
-  margin-left: auto; 
-  margin-right: auto;
+.col-4 {
+flex-basis: 20%;
+min-width: 100px;
+margin-left: 5%;
+margin-bottom: 20px;
+transition: transform 0.5s;
+border-style: ridge;
 }
 
-.judul {
-text-align:center;
-color: black;
+.col-4 img {
+	width: 100%;
+}
+
+h4 {
+color: #555;
+font-weight: normal;
+}
+
+.col-4 p {
+	font-size: 14px;
+}
+
+.col-4:hover {
+	transform: translateY(-5px);
 }
 
 
-.glow-on-hover {
-    width: 120px;
-    height: 40px;
-	border: 1px solid white;
-	border-collapse: collapse;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-	display: block;
-	margin: 0 auto;
-}
-
-	.glow-on-hover:before {
-		content: '';
-		background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-		position: absolute;
-		top: -2px;
-		left:-2px;
-		background-size: 400%;
-		z-index: -1;
-		filter: blur(5px);
-		width: calc(100% + 4px);
-		height: calc(100% + 4px);
-		animation: glowing 20s linear infinite;
-		opacity: 0;
-		transition: opacity .3s ease-in-out;
-		border-radius: 10px;
-	}
-
-		.glow-on-hover:active {
-			color: #000
-		}
-
-			.glow-on-hover:active:after {
-				background: transparent;
-			}
-
-				.glow-on-hover:hover:before {
-					opacity: 1;
-				}
-
-					.glow-on-hover:after {
-						z-index: -1;
-						content: '';
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						background: #111;
-						left: 0;
-						top: 0;
-						border-radius: 10px;
-					}
-
-						@keyframes glowing {
-							0% { background-position: 0 0; }
-							50% { background-position: 400% 0; }
-							100% { background-position: 0 0; }
-						}
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </style>
-  <title>iPhone 11 | SI Gadget</title>
+  <title>iPhone 12 | SI Gadget</title>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
+
 <!----navigation--->
 <nav class="navbar">
     <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
@@ -319,7 +282,7 @@ color: black;
         <ul>
             <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
-					<li><a class="dropdown" href="../Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
                     <li><a class="dropdown" href="../Bagian David/iphone12products.php">iPhone 12</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
@@ -392,69 +355,41 @@ color: black;
         </ul>
     </div>
 </nav>
-<p style="text-align:center; font-size: 15px; position: relative; left: -532px;">Home / iPhone 11</p>
+
+<!-----featured categories------>
+<div class="categories">
+	<div class="row">
+		<div class="col-3"></div>
+</div>
+</div>
+
+<!-----featured products------>
+<h2 style="text-align: center;">iPhone 12 Products</h2>
 <hr>
+<div class="small-container">
+<div class="row">
+	<?php
+							//SQL All Products Published
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='iPhone 12' AND Status_Produk='Published'";
+							$result = $conn->query($sql);	
+							
+							if ($result->num_rows > 0) {
+								
+								 while($row = $result->fetch_assoc()) {
+								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk] $row[Storage] $row[Warna]</h4>";
+												echo "<p>$row[Harga_Produk]</p>";
+													echo "</div></a>";
+								 }
+								} else {
+						  echo "0 results";
+						}
+	?>
 
-<table style="width:80%">
-
-<tr id="backgroundputih">
-<td>
-<h2 class="judul">iPhone 11</h2>
-
-<h1 class="judul" style="font-size: 50px;">Pas segala-galanya.</h1>
-<p style="text-align:center">Sistem kamera ganda yang sepenuhnya baru.</p>
-<p style="text-align:center">Kekuatan baterai sepanjang hari. Kaca terkuat pada ponsel pintar.</p>
-<p style="text-align:center">Chip tercepat Apple yang pernah ada.</p>
-<br>
-<button class="glow-on-hover" type="button" onclick="location.href='iphone11products.php';">Beli Sekarang</button>
-<img src="Gallery/iPhone/iPhone 11/iPhone 11 Body.png" alt="detail iPhone 11" width="60%" height="70%" style="margin-left: auto; margin-right: auto; display: block;">
-<br>
-
-<center>
-<img src="Gallery/iPhone/iPhone 11/iphone-11-reg3-min.jpg" alt="iPhone 11" width="100%" height="100%"><br><br><br>
-<img src="Gallery/iPhone/iPhone 11/iphone-11-reg4-min.jpg" alt="detail iPhone 11" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11/iphone-11-reg5-min.jpg" alt="detail iPhone 11" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11/iphone-11-reg6-min.jpg" alt="detail iPhone 11" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11/iphone-11-reg7-min.jpg" alt="detail iPhone 11" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11/iphone-11-reg10-min.jpg" alt="detail iPhone 11" width="100%" height="100%">
-</center>
-</td>
-</tr>
-<br>
-
-<tr id="iphonetengahputih">
-<td>
-<br><br>
-<img src="Gallery/iPhone/iPhone 11/iphone-11-pro-reg7-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="70%">
-<img src="Gallery/iPhone/iPhone 11 Pro/Lp_Product_Center_iPhone_11_Series.jpg" alt="detail iPhone 11 Pro" width="100%" height="60%">
-<img src="Gallery/iPhone/iPhone 11/Lp_Product_Center.jpg" alt="detail iPhone 11 Pro" width="100%" height="70%">
-
-
-
-
-<tr style="background-color:Gray;">
-<td>
-<br><br>
-<ol style="color:white; font-size: 12px;">
-<li>Kekuatan baterai bervariasi tergantung penggunaan dan konfigurasi. Lihat apple.com/batteries untuk informasi selengkapnya.</li>
-<br>
-<li>Layar memiliki sudut melengkung yang mengikuti desain lekukan yang indah, dan semua sudut ini berada di dalam bidang persegi standar. Jika diukur dalam bentuk persegi standar, diagonal layarnya berukuran 5,85 inci (iPhone 11 Pro), 6,46 inci (iPhone 11 Pro Max), atau 6,06 inci (iPhone 11). Area bidang layar berukuran lebih kecil.</li>
-
-<br>
-
-<ul style="list-style-type: none; color:white; font-size: 12px;">
-<li>Beberapa fitur mungkin tidak tersedia untuk semua negara atau semua wilayah.</li>
-<br><li>Sebagian laba dari setiap pembelian (PRODUCT)RED akan disalurkan ke Global Fund untuk memerangi COVID-19.</li>
-<br><li>*Rp 69.000/bulan setelah percobaan gratis. Satu paket langganan untuk tiap grup Keluarga Berbagi. Penawaran berlaku selama 3 bulan setelah aktivasi perangkat yang memenuhi syarat, mulai 1 November 2019. Paket diperbarui otomatis kecuali dibatalkan. Pembatasan dan ketentuan lain berlaku.</li>
-</ul>
-</tr>
-</td>
-</table>
-
-
-
-
-<br><br><br><br><br>
+	</div>
+</div>
 
 <!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
     ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
@@ -498,7 +433,7 @@ color: black;
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
 

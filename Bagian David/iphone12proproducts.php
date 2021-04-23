@@ -364,7 +364,7 @@ font-weight: normal;
 </div>
 
 <!-----featured products------>
-<h2 style="text-align: center;">All Products</h2>
+<h2 style="text-align: center;">iPhone 12 Pro Products</h2>
 <hr>
 <div class="small-container">
 <div class="row">
