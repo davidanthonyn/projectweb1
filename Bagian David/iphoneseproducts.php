@@ -6,7 +6,7 @@ session_start();
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
-		header('location: PromotioniPhoneXS.php');
+		header('location: ../Bagian David/iphoneseproducts.php');
 }
 
 ?>
@@ -17,9 +17,9 @@ if(isset($_GET['logout'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="styles.php" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="styles.css" rel="stylesheet">
-  <style>
+  <style> 
 	body {
 	font-family: 'Roboto', sans-serif;
 	}
@@ -33,6 +33,7 @@ if(isset($_GET['logout'])) {
 		border: solid 2px #666;
 		border-radius: 50px;
 		background-color: #fff;
+		href: url(home.php);
 		}
 
 			.navbar-left{
@@ -217,6 +218,7 @@ if(isset($_GET['logout'])) {
 					  text-align: center;
 					}
 
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -224,94 +226,55 @@ if(isset($_GET['logout'])) {
   clear: both;
 }
 
-#backgroundhitam {
-background-color: Black;
+.row {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+justify-content: space-around;
+} 
+
+.categories {
+margin: 5px 0;
 }
 
-#backgroundputih {
-background-color: White;
+.small-container {
+max-width: 60%;
+margin: auto;
 }
 
-table {
-  margin-left: auto; 
-  margin-right: auto;
+.col-4 {
+flex-basis: 20%;
+min-width: 100px;
+margin-left: 5%;
+margin-bottom: 20px;
+transition: transform 0.5s;
+border-style: ridge;
 }
 
-.judul {
-text-align:center;
-color: white;
+.col-4 img {
+	width: 100%;
+}
+
+h4 {
+color: #555;
+font-weight: normal;
+}
+
+.col-4 p {
+	font-size: 14px;
+}
+
+.col-4:hover {
+	transform: translateY(-5px);
 }
 
 
-.glow-on-hover {
-    width: 120px;
-    height: 40px;
-	border: 1px solid white;
-	border-collapse: collapse;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-	display: block;
-	margin: 0 auto;
-}
-
-	.glow-on-hover:before {
-		content: '';
-		background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-		position: absolute;
-		top: -2px;
-		left:-2px;
-		background-size: 400%;
-		z-index: -1;
-		filter: blur(5px);
-		width: calc(100% + 4px);
-		height: calc(100% + 4px);
-		animation: glowing 20s linear infinite;
-		opacity: 0;
-		transition: opacity .3s ease-in-out;
-		border-radius: 10px;
-	}
-
-		.glow-on-hover:active {
-			color: #000
-		}
-
-			.glow-on-hover:active:after {
-				background: transparent;
-			}
-
-				.glow-on-hover:hover:before {
-					opacity: 1;
-				}
-
-					.glow-on-hover:after {
-						z-index: -1;
-						content: '';
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						background: #111;
-						left: 0;
-						top: 0;
-						border-radius: 10px;
-					}
-
-						@keyframes glowing {
-							0% { background-position: 0 0; }
-							50% { background-position: 400% 0; }
-							100% { background-position: 0 0; }
-						}
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </style>
-  <title>iPhone XS | SI Gadget</title>
+  <title>iPhone SE | SI Gadget</title>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
+
 <!----navigation--->
 <nav class="navbar">
     <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
@@ -319,11 +282,11 @@ color: white;
         <ul>
             <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12products.php">iPhone 12</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXS.php">iPhone XS</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
+					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
             </ul>
           </li>
 
@@ -351,6 +314,7 @@ color: white;
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.php">About</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
+																																																															<li><a class="dropdown" href="../Bagian David/nomorresi.php">Track Resi</a></li>
 																																																														</ul>
 
                                                                                                                             <li>
@@ -380,7 +344,7 @@ color: white;
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
@@ -391,146 +355,41 @@ color: white;
         </ul>
     </div>
 </nav>
-<p style="text-align:center; font-size: 15px; position: relative; left: -532px;">Home / iPhone XS</p>
+
+<!-----featured categories------>
+<div class="categories">
+	<div class="row">
+		<div class="col-3"></div>
+</div>
+</div>
+
+<!-----featured products------>
+<h2 style="text-align: center;">iPhone SE Products</h2>
 <hr>
+<div class="small-container">
+<div class="row">
+	<?php
+							//SQL All Products Published
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk LIKE '%iPhone SE%' AND Status_Produk='Published'";
+							$result = $conn->query($sql);	
+							
+							if ($result->num_rows > 0) {
+								
+								 while($row = $result->fetch_assoc()) {
+								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk] $row[Storage] $row[Warna]</h4>";
+												echo "<p>$row[Harga_Produk]</p>";
+													echo "</div></a>";
+								 }
+								} else {
+						  echo "0 results";
+						}
+	?>
 
-<table style="width:80%">
-
-<tr id="backgroundhitam">
-<td>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_1_web.png" alt="iPhone XS" width="100%" height="100%">
-
-<h1 class="judul" style="font-size: 50px;">Selamat datang di layar besar.</h1>
-<h2 class="judul">Super Retina dalam dua ukuran - termasuk layar terbesar yang pernah ada di iPhone. Face ID yang lebih cepat</h2>
-<h2 class="judul">lagi. Chip paling cerdas dan Andal dalam ponsel pintar. Dan sebuah terobosan sistem kamera ganda. iPhone Xs</h2>
-<h2 class="judul">adalah segala sesuatu yang Anda sukai dari iPhone. Dibawa ke titik maksimum.</h2>
-<br>
-	
-
-<button class="glow-on-hover" type="button" onclick="document.location='iPhoneXSProducts.php'">Beli Sekarang</button>
-<br>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_2_web.png" alt="iPhone XS" width="100%" height="100%">
-<h1 class="judul">Super Retina XDR. Besar dan lebih besar.</h2>
-<h1 style="color: #FBD480; text-align: center">Layar OLED yang dibuat khusus di</h1>
-<h1 style="color: #FBD480; text-align: center">iPhone XS menghadirkan warna</h1>
-<h1 style="color: #FBD480; text-align: center">paling akurat di industri ponsel, HDR, </h1>
-<h1 style="color: #FBD480; text-align: center">dan hitam pekat. Dan iPhone XS Max</h1>
-<h1 style="color: #FBD480; text-align: center">memiliki layar terbesar yang pernah</h1>
-<h1 style="color: #FBD480; text-align: center">ada di iPhone.</h1>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_4_web.png" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 class="judul">Layar sepenuhnya yang membedakannya. Lihat </h1>
-<h1 class="judul">betapa banyak ruang untuk melakukan semua</h1>
-<h1 class="judul">yang Anda sukai.</h1>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_5_web.png" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 style="color: #FFE6DC; text-align: center;">Terbuat dari kaca terbaik.</h1>
-<h1 style="color: #EDAB5C; text-align: center;">Kaca terkuat yang pernah ada di ponsel</h1>
-<h1 style="color: #EDAB5C; text-align: center;">pintar. Warna emas baru yang</h1>
-<h1 style="color: #EDAB5C; text-align: center;">memukau, dihasilkan oleh proses</h1>
-<h1 style="color: #9B71A1; text-align: center;">tingkat atomik. Tepian baja tahan</h1>
-<h1 style="color: #9B71A1; text-align: center;">karat sekelas alat bedah medis dan</h1>
-<h1 style="color: #9B71A1; text-align: center;">dikerjakan menggunakan mesin</h1>
-<h1 style="color: #9B71A1; text-align: center;">secara presisi. Serta tahan debu</h1>
-<h1 style="color: #9B71A1; text-align: center;">dan air di level baru.</h1>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_7_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 class="judul">Baja tahan karat sekelas alat bedah medis.</h1>
-<p style="color: white; text-align: center;">Apple menggunakan logam paduan khusus yang diproses menggunakan mesin secara presisi untuk menciptakan tepian struktural dalam tiga warna.</p><br><br>
-<h1 class="judul">Pemrosesan warna PVD.</h1>
-<p style="color: white; text-align: center;">Warna emas dan abu-abu menggunakan proses deposisi uap fisik (PVD) canggih pada tepian baja tahan karat untuk menghasilkan warna dan reflektivitas yang berpadu menawan dengan kaca.</p><br><br>
-<h1 class="judul">Pengisian daya nirkabel.</h1>
-<p style="color: white; text-align: center;">Kaca belakang memungkinkan pengisian daya iPhone XS secara nirkabel. Dan daya terisi lebih cepat dibanding iPhone X.</p><br><br>
-
-<h1 style="color: #FEE9E0; text-align: center;">Face ID canggih. Keamanan menjadi sederhana ketika wajah</h1>
-<h1 style="color: #FEE9E0; text-align: center;">Anda adalah kata sandi Anda. Anda dapat membuka kunci iPhone</h1>
-<h1 style="color: #FEE9E0; text-align: center;">dan masuk ke aplikasi, akun, dan lainnya dengan menatap sekilas.</h1>
-<h1 style="color: #FEE9E0; text-align: center;">Inilah autentikasi wajah paling aman yang pernah ada di ponsel pintar. </h1>
-<h1 style="color: #FEE9E0; text-align: center;">Dan kini bekerja lebih cepat lagi.</h1>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_9_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 style="color: #FEE9E0; text-align: center;">A12 Bionic yang sangat cerdas.</h1><br>
-<h2 style="color: #EA9F71; text-align: center;">Inilah chip paling cerdas dan andal dalam ponsel pintar,</h2>
-<h2 style="color: #EA9F71; text-align: center;">dengan Neural Engine Apple generasi berikutnya.</h2>
-<h2 style="color: #DC6651; text-align: center;">Untuk pengalaman Augmented Reality yang luar biasa.</h2>
-<h2 style="color: #F6767F; text-align: center;">Potret memukau dengan Depth Control. Serta kecepatan</h2>
-<h2 style="color: #F6767F; text-align: center;">dan kelancaran dalam segala hal yang Anda lakukan.</h2>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_11_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_12_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 style="color: #FEE9E0; text-align: center;">Terobosan sistem kamera ganda.</h1><br>
-<h2 style="color: #EA9F71; text-align: center;">Kamera paling populer di dunia kini menandai era baru fotografi.</h2>
-<h2 style="color: #EA9F71; text-align: center;">Saat sensor inovatif bekerja dengan ISP dan Neural Engine untuk</h2>
-<h2 style="color: #EA9F71; text-align: center;">membantu Anda menciptakan foto yang belum pernah dibayangkan sebelumnya.</h2>
-
-<br><br><br>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_14_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<h1 class="judul">Smart HDR.</h1>
-<p style="color: white; text-align: center;">Frame sekunder baru, sensor yang lebih cepat, dan chip A12 Bionic Andal menghadirkan lebih banyak detail sorotan dan bayangan di foto Anda.</p><br><br>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_15_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<h1 class="judul">Pixel lebih besar dan lebih dalam.</h1>
-<p style="color: white; text-align: center;">Sensor baru menciptakan fidelity gambar yang lebih baik, akurasi warna yang lebih tinggi, dan mengurangi noise dalam foto berpencahayaan rendah.</p><br><br>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_16_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<h1 class="judul">Efek bokeh yang disempurnakan.</h1>
-<p style="color: white; text-align: center;">Foto mode Potret kini terlihat lebih profesional berkat pemburaman latar belakang yang canggih.</p><br><br>
-
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_17_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<h1 class="judul">Depth Control yang sepenuhnya baru.</h1>
-<p style="color: white; text-align: center;">Kini Anda dapat menyesuaikan kedalaman bidang pada hasil foto setelah memotret.</p><br><br>
-
-<h1 class="judul">Kamera belakang ganda 12 MP</h1>
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_18_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 class="judul">Kamera TrueDepth</h1>
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_19_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-<h1 style="color: #FFE6DC; text-align: center;">Satu lagi.</h1>
-<h2 style="color: #EA9F71; text-align: center;">iPhone XS menghadirkan nirkabel ultra cepat untuk kecepatan unduh super cepat.</h2>
-<h2 style="color: #EA9F71; text-align: center;">Dan dengan penyimpanan hingga 512 GB, inilah iPhone berkapasitas terbesar.</h2>
-<img src="Gallery/iPhone/iPhone XS/iPhone-Xs_21_web.webp" alt="detail iPhone 11 Pro" width="100%" height="100%">
-
-
-</td>
-</tr>
-<br>
-
-
-
-<tr style="background-color: #222222;">
-<td>
-<br><br>
-<ol style="color:white; font-size: 12px;">
-<li>Layar memiliki sudut melengkung yang mengikuti desain lekukan yang indah, dan semua sudut ini berada di dalam bidang persegi standar. Jika diukur dalam bentuk persegi standar, diagonal layarnya berukuran 5,85 inci (iPhone XS) dan 6,46 inci (iPhone XS Max). Area bidang layar berukuran lebih kecil.</li>
-<br><br>
-<li>iPhone XS dan iPhone XS Max tahan cipratan, air, dan debu dan diuji dalam kondisi laboratorium terkontrol dengan level IP68 menurut standar IEC 60529 (kedalaman maksimum 2 meter hingga selama 30 menit). Ketahanan terhadap cipratan, air, dan debu tidak berlaku secara permanen dan daya tahan mungkin berkurang akibat penggunaan sehari-hari. Jangan coba mengisi daya iPhone yang basah; lihat panduan pengguna untuk instruksi pembersihan dan pengeringan. Kerusakan akibat cairan tidak ditanggung dalam garansi.</li>
-<br><br>
-<li>Pengisi daya nirkabel Qi dijual terpisah.</li>
-<br><br>
-<li>A12 Bionic dibandingkan dengan A11 Bionic.</li>
-<br><br>
-<li>Memerlukan paket data. Untuk lebih jelasnya, tanyakan kepada operator Anda. Kecepatan akan bervariasi menurut kondisi lokasi.</li>
-<br><br>
-<ul style="list-style-type: none;">
-<li>Beberapa fitur mungkin tidak tersedia untuk semua negara atau semua wilayah.</li>
-</ul>
-</tr>
-</td>
-</table>
-
-
-
-
-<br><br><br><br><br>
+	</div>
+</div>
 
 <!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
     ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
@@ -574,7 +433,7 @@ color: white;
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
 
