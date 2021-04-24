@@ -27,8 +27,8 @@ include "sigadgetconnection.php";
 
 	}
 
-	include "sigadgetheader.php";
-
+	
+     include "sigadgetheader.php";
 ?>
 
 

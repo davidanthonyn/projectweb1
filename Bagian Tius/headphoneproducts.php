@@ -3,90 +3,23 @@ include "../sigadgetconnection.php";
 
 session_start();
 
-
-if(empty($_SESSION['account_username'])) {
-	header('location: ../Bagian David/account.php');
-}
-
-$checkdata = mysqli_query($conn,"SELECT * FROM user WHERE username = '$_SESSION[account_username]'");
-$check = mysqli_fetch_array($checkdata);
-
-
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
-		header('location: ../home.php');
+		header('location: ../Bagian David/iphone12proproducts.php');
 }
 
-if(empty($_SESSION['account_username']) && empty($_SESSION['productbuy'])) {
- header('location: ../home.php');
-} 
-
-$sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
-
-while($row=mysqli_fetch_array($sql)) {}
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-  width:100%;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-     .row .h2 .h3{
-         margin: 40px auto 20px;
-         padding: 17px 12px;
-         position: relative;
-         max-width: 80px;
-		 float:right;
-    
-    }
-    
-    .small-container .floating-image{
-        max-width: 400px;
-		width : 20%;
-    }
-    
-    .small-container .floating-image .left
-    {
-        float: left;
-        
-    }
-	
-	.tulisankurir {
-		 margin: 20px 340px 200px 35px;
-         padding: 25px 12px;
-         position: relative;
-         max-width: 800px;
-		  
-	
-	}
-	
-	.btn-cart {
-  border: none;
-  outline: 0;
-  padding: 10px 100px ;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 25%;
-  font-size: 15px;
-  margin: 0px 340px 200px 35px;
-  position: 400px;
-}
-	
-	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="styles.php" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style> 
 	body {
 	font-family: 'Roboto', sans-serif;
 	}
@@ -293,6 +226,12 @@ th, td {
   clear: both;
 }
 
+.row {
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+justify-content: space-around;
+} 
 
 .categories {
 margin: 5px 0;
@@ -328,11 +267,10 @@ font-weight: normal;
 .col-4:hover {
 	transform: translateY(-5px);
 }
-	
-</style>
-  <title>Product Navigation</title>
-</head>
-<body>
+
+
+  </style>
+  <title>Headphone | SI Gadget</title>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 <body>
@@ -344,11 +282,11 @@ font-weight: normal;
         <ul>
             <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
+                    <li><a class="dropdown" href="../Bagian David/iphone12products.php">iPhone 12</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXS.php">iPhone XS</a></li>
 					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
+					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
             </ul>
           </li>
 
@@ -376,6 +314,7 @@ font-weight: normal;
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.php">About</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
 																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
+																																																															<li><a class="dropdown" href="../Bagian David/nomorresi.php">Track Resi</a></li>
 																																																														</ul>
 
                                                                                                                             <li>
@@ -405,7 +344,7 @@ font-weight: normal;
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
@@ -417,172 +356,86 @@ font-weight: normal;
     </div>
 </nav>
 
-<h1 style="text-align:center;" >Product Navigation</h1><br>
+<!-----featured categories------>
+<div class="categories">
+	<div class="row">
+		<div class="col-3"></div>
+</div>
+</div>
 
-
-<br>
-<!----Produk Detail---->
-
- 
+<!-----featured products------>
+<h2 style="text-align: center;">Headphone Products</h2>
+<hr>
 <div class="small-container">
-<div class="row">    
-
-<h3>Form Hitung Total Bayar</h3>
-    <form method="POST">
-        <table>
-            <tr>
-                <td>Nama Barang</td>
-                <td>:</td>
-                <td>
-				
-				<?php
-    $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
-    $result = mysqli_query($conn, $sql);
-	$resultCheck = mysqli_fetch_array($result);
-    
-    if ($resultCheck > 0){
-        
-              echo "<img src='../image/$resultCheck[image]' class='img-responsive floating-image left'>";
-       echo  "<h2>$resultCheck[Nama_Produk]</h2>";
-
-	}
+<div class="row">
+	<?php
+							//SQL All Products Published
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Konektivitas_Headphone FROM produk WHERE Jenis_Produk='Accessories' AND Status_Produk='Published'";
+							$result = $conn->query($sql);	
+							
+							if ($result->num_rows > 0) {
+								
+								 while($row = $result->fetch_assoc()) {
+								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk] $row[Konektivitas_Headphone]</h4>";
+												echo "<p>$row[Harga_Produk]</p>";
+													echo "</div></a>";
+								 }
+								} else {
+						  echo "0 results";
+						}
 	?>
 
-	   </td>
-            </tr>
-            <tr>
-			<td>Harga</td>
-                <td>:</td>
-				
-                 <td> <text type="number_format" name="harga" >
-				 <?php $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
-																	$result = mysqli_query($conn, $sql);
-																	$resultCheck = mysqli_fetch_array($result);
-																	echo number_format ($resultCheck['Harga_Produk']);   ?>
-				 </td>
-            </tr>
-			
-            <tr>
-                <td>Jumlah Item Barang</td>
-                <td>:</td>
-                <td>
-                    <select name="qty" required>
-                        <option value="">- Jumlah -</option>
-                        <?php
-                            for($x=1;$x<=50;$x++){
-                        ?>
-                        <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>
-                    <input type="submit" name="hitung" value="Hitung">
-                    <input type="reset" name="reset" value="Reset">
-                </td>
-            </tr>
-        </table>
-    </form>
-    <hr />
-
-
-    <h3>Hasil :</h3>
-<?php
- $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
- 
-	
-    if(isset($_POST['hitung'])){
-        $nama    =$resultCheck['Nama_Produk'];
-        $harga    =$resultCheck['Harga_Produk'];
-		$hargafinal = (float) $harga;
-        $qty    =$_POST['qty'];
-        $total    =$hargafinal*$qty;
-		$totalstring = (string) $total;
-		$qtystring = (string) $qty;
-        echo "
-            <table border='1' cellpadding='4'>
-                <tr>
-                    <td>Nama Barang</td>
-                    <td>Harga</td>
-                    <td>Banyaknya</td>
-                    <td>Total Harga</td>
-                </tr>
-                <tr>
-                    <td>$nama</td>
-                    <td align='right'>";echo number_format($hargafinal,0,',','.');echo "</td>
-                    <td align='right'>";echo number_format($qty,0,',','.');echo "</td>
-                    <td align='right'>";echo number_format($total,0,',','.');echo "</td>
-                </tr>
-            </table>
-        ";
-    }
-	
-	if(isset($_POST['hitung'])){
-		
-	
-	$subjectName = "SELECT * FROM kurir";
-
-
-$subject = mysqli_query($conn, $subjectName);
-?>
-<div class="tulisankurir">
-<h4> Select Courier : </h4>
- 
- <form method="post" action=" ">
- 
- <?php
- 
- while($data = mysqli_fetch_array($subject)) {
- 
- echo "<input type='radio' name='radiobutton' value='{$data['Nama_Kurir']}'>" ,
-											"<value='{$data['Produk_Kurir']}'>" ,
-											"<value='{$data ['Harga_Kurir']}'>"
-		. $data['Nama_Kurir'] . " / " . $data['Produk_Kurir'] . " / " . $data['Harga_Kurir'] . '</br>';
-		
-	if(isset($_POST[$data['ID_Kurir']]) && $_POST[$data['ID_Kurir']] == 'pricedesc') {
-	<option value="pricedesc">Show All Sales Based on Total Price Descending</option>
-	}
-	
-	
-}
-
-		
-	}
-			
-		
-?>
-
-
-<br>
-
-<p> Akan dibeli oleh : </p> 
-<p> <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </p> 
-<p> <?php echo $_SESSION['account_phonenumber'] ?> </p> 
-<br>
-<p> Alamat : </p> 
-<p> <?php echo $_SESSION['account_address'] ?> </p> 
-
-   </div>
-    </div>
-	
-
-<button type="submit" class="btn-cart" name="simpan">Next</button>
-
-<?php 	
-
-		 if(isset($_POST['simpan'])){
-			 $_SESSION["total_harga"] = $totalstring;
-			 $_SESSION["kuantitas"] = $qtystring;
-			 $_SESSION["account_id"] = $checksecond["ID_User"];
-		 }
-	
-	?>
- </form>
 	</div>
+</div>
+
+<!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
+    ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
+    <div class="newsletter">
+    	<p class="animate__animated animate__fadeInDown" style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
+    		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
+    		<input class="button animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="submit" value="KIRIM">
+    	</p>
+    </div>
+    <!-- penjelasan SI Gadget -->
+    <div class="experience">
+    <p class="animate__animated animate__fadeInLeft" style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
+    					<div class="column animate__animated animate__fadeInLeft">
+    						<ul style="list-style-type:none">
+    							<li>Jika Anda ingin bantuan atau memiliki masukan, silakan hubungi kami: </li><br>
+    							<li>Jam 9.30 - 17.30(Senin s/d Minggu).</li>
+    							<li>Email: customercare@sigadget.com</li>
+    							<li>Phone: 911</li>
+    							<li>WA: 081234567890</li>
+    						</ul>
+    					</div>
+    															<div class="column animate__animated animate__fadeInLeft">
+    																	<ul style="list-style-type:none">
+    																		<li>Kami menerima metode pembayaran:</li><br>
+    																		<li>OVO</li>
+    																		<li>GO-PAY</li>
+    																		<li>Cash on Delivery(COD)</li>
+    																		<li>Debit card</li>
+    																		<li>Credit card</li>
+    																	</ul>
+    															</div>
+
+    																							<div class="column animate__animated animate__fadeInLeft">
+    																									<ul style="list-style-type:none">
+    																										<li>Kurir pengiriman:</li><br>
+    																										<li>JNE</li>
+    																										<li>JET Express</li>
+    																										<li>SiCepat</li>
+    																									</ul>
+    																							</div>
+    </div>
+
+    					<div class="bottomnav">
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
+    					</div>
+    <!--Copas footer sampai sini -->
+
 </body>
 </html>
