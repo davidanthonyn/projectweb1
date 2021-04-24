@@ -21,17 +21,6 @@ $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphon
 	<script src="script.js" defer></script>
 	<script src="newsletter.js" defer></script>
 	<style>
-	table {
-  width:100%;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
 
 body {
 	font-family: 'Roboto', sans-serif;
