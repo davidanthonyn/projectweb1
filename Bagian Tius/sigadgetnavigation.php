@@ -38,7 +38,7 @@ th, td {
          margin: 40px auto 20px;
          padding: 17px 12px;
          position: relative;
-         max-width: 800px;
+         max-width: 80px;
 		 float:right;
     
     }
@@ -55,13 +55,27 @@ th, td {
     }
 	
 	.tulisankurir {
-		 margin: 20px 340px 200px 350px;
+		 margin: 20px 340px 200px 35px;
          padding: 25px 12px;
          position: relative;
          max-width: 800px;
 		  
 	
 	}
+	
+	.btn-cart {
+  border: none;
+  outline: 0;
+  padding: 10px 100px ;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 25%;
+  font-size: 15px;
+  margin: 0px 340px 200px 35px;
+  position: 400px;
+}
 	
 	
 	body {
@@ -466,6 +480,8 @@ font-weight: normal;
         </table>
     </form>
     <hr />
+
+
     <h3>Hasil :</h3>
 <?php
  $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
@@ -496,30 +512,15 @@ font-weight: normal;
     }
 	
 	if(isset($_POST['hitung'])){
-	}
 		
-?>
-
-<p> Akan dibeli oleh : </p> 
-<p> <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </p> 
-<p> <?php echo $_SESSION['account_phonenumber'] ?> </p> 
-<br>
-<p> Alamat : </p> 
-<p> <?php echo $_SESSION['account_address'] ?> </p> 
-
-   </div>
-    </div>
 	
-	<br>
-	
-	<?php
 	$subjectName = "SELECT * FROM kurir";
 
 
 $subject = mysqli_query($conn, $subjectName);
 ?>
 <div class="tulisankurir">
-<h4> Select Courier </h4>
+<h4> Select Courier : </h4>
  
  <form method="post" action=" ">
  
@@ -533,9 +534,31 @@ $subject = mysqli_query($conn, $subjectName);
 		. $data['Nama_Kurir'] . " / " . $data['Produk_Kurir'] . " / " . $data['Harga_Kurir'] . '</br>';
 		
 	
+	
 }
 
+		
+	}
+			
+		
 ?>
+
+
+<br>
+
+<p> Akan dibeli oleh : </p> 
+<p> <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </p> 
+<p> <?php echo $_SESSION['account_phonenumber'] ?> </p> 
+<br>
+<p> Alamat : </p> 
+<p> <?php echo $_SESSION['account_address'] ?> </p> 
+
+   </div>
+    </div>
+	
+
+<button type="submit" class="btn-cart" name="simpan">Next</button>
+
 
  </form>
 	</div>
