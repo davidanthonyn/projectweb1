@@ -3,63 +3,14 @@ include "../sigadgetconnection.php";
 
 session_start();
 
-if(!empty($_SESSION['account_username'])) {
-	header('location: ../home.php');
+if(!empty($_SESSION["forgot_passwordemail"])) {
+	echo "<p>Email anda: $_SESSION[forgot_passwordemail]</p>";
+	
+	$checkdata = mysqli_query($conn,"SELECT * FROM user WHERE email = '$_SESSION[forgot_passwordemail]'");
+$check = mysqli_fetch_array($checkdata);
+} else {
+	
 }
-
-if(isset($_POST['forgotpassword'])) {
-		$oldpassword = mysqli_real_escape_string($conn,$_POST['oldpassword']);
-		$newpassword = mysqli_real_escape_string($conn,$_POST['newpassword']);
-		$newpasswordagain = mysqli_real_escape_string($conn,$_POST['newpasswordagain']);
-		$passhashnew = password_hash($newpassword,PASSWORD_DEFAULT);
-		
-		
-		if(count($errors) == 0) {
-					
-					if(password_verify($oldpassword, $_SESSION['account_password'])) {
-						if($newpassword == $newpasswordagain) {
-							$passhash = password_hash($newpassword,PASSWORD_DEFAULT);
-							$update = mysqli_query($conn, "UPDATE `user` SET password='$passhashnew',Updated_at=now() WHERE username='$_SESSION[account_username]'");
-									
-														if($update) {
-															session_destroy();
-															
-															session_start();
-															
-															$checkdatasecond = mysqli_query($conn,"SELECT * FROM user WHERE ID_User='$check[ID_User]'");
-															$checksecond = mysqli_fetch_array($checkdatasecond);
-															$_SESSION["account_id"] = $checksecond["ID_User"];
-															$_SESSION["account_username"] = $checksecond["username"];
-															$_SESSION["account_password"] = $checksecond["password"];
-															$_SESSION["account_userlevel"] = $checksecond["userlevel"];
-															$_SESSION["account_userstatus"] = $checksecond["userstatus"];
-															$_SESSION["account_fullname"] = $checksecond["Nama_Lengkap"];
-															$_SESSION["account_email"] = $checksecond["email"];
-															$_SESSION["account_phonenumber"] = $checksecond["No_Telepon"];
-															$_SESSION["account_address"] = $checksecond["Alamat"];
-															$_SESSION["account_create"] = $checksecond["Created_at"];
-															$_SESSION["account_update"] = $checksecond["Updated_at"];
-															?>
-																				<script>
-																				alert('Change password success, back to account.');
-																				window.location.href='../customaccount.php';
-																				</script>
-																			<?php
-														} else {
-															?>
-																				<script>
-																				alert('Change password failed.');
-																				window.location.href='../customaccount.php';
-																				</script>	
-																				<?php
-								}	
-						}
-						array_push($errors, "Password baru dan Password baru kedua tidak sama, password belum terganti!");
-		}
-		array_push($errors, "Password lama salah, password belum terganti!");
-	}
-}
-				
 
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
 
@@ -593,7 +544,7 @@ form a{
 					</div>
 					
 					<form id="RegForm">
-						<input type="text" placeholder="Email" id="email">
+						<input type="text" placeholder="Email" id="email" name="email">
 						<input type="submit" class="btn-cart" onclick="return checkEmail()">
 						<a href="account.php">Login</a>
 					</form>
@@ -707,8 +658,23 @@ form a{
 			window.location.href= "forgotpassword.php";
 			return false;
 		} else {
-			alert("Email terkirim(OTP: 123456)");
-			window.location.href= "forgotpassword.php";
+			<?php
+			$email = mysqli_real_escape_string($conn,$_POST['email']);
+			$query = "SELECT * FROM user WHERE email='$email'";
+					$result = mysqli_query($conn, $query);
+			
+			if(mysqli_num_rows($result) == 1) {
+			$row_account = mysqli_fetch_array($result);
+			$_SESSION["forgot_passwordemail"] = $row_account["email"];
+			} else if(mysqli_num_rows($result) == 0) {
+				?>
+				alert("Email tidak ditemukan");
+				<?php echo("location.href = 'forgotpassword.php';");?>
+				<?php
+			}
+			?>
+			alert("Email tersimpan OTP: 123456");
+			<?php echo("location.href = 'forgotpassword.php';");?>
 			return false;
 		}
 	}
@@ -724,6 +690,11 @@ form a{
 			alert("Password tidak sama");
 			return false;
 				} else {
+					
+					
+					
+					
+					
 					alert("Change password success, now user can login.");
 					window.location.href= "account.php";
 					return false;
