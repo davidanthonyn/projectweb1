@@ -49,7 +49,7 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
             <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
                     <li><a class="dropdown" href="Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
-                    <li><a class="dropdown" href="Bagian David/PromotioniPhone11.php">iPhone 12</a></li>
+                    <li><a class="dropdown" href="Bagian David/iphone12products.php">iPhone 12</a></li>
 					<li><a class="dropdown" href="Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
 					<li><a class="dropdown" href="Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
 					<li><a class="dropdown" href="Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
@@ -80,6 +80,7 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 																																																															<li><a class="dropdown" href="Bagian Sanctus/About.php">About</a></li>
 																																																															<li><a class="dropdown" href="Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
 																																																															<li><a class="dropdown" href="Bagian Sanctus/repair.php">Repair</a></li>
+																																																															<li><a class="dropdown" href="Bagian David/nomorresi.php">Track Resi</a></li>
 																																																														</ul>
 
                                                                                                                             <li>
@@ -107,11 +108,11 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
@@ -129,15 +130,15 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 
 <div class="slideshow-container" style="position: relative;overflow-x: hidden;" body="background-size: cover;">
 <div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-								<img src="image/<?php echo $rowtwo['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11Pro.php'"> <?php } while($rowthree=mysqli_fetch_array($sqlthree)) {?>
+								<img src="image/<?php echo $rowtwo['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11Pro.php'"> <?php } while($rowfour=mysqli_fetch_array($sqlfour)) {?>
 </div>
 
 <div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-  <img src="image/<?php echo $rowthree['Filename']; ?>" style="width:100%" onclick="document.location='Bagian Tius/headphone.php'"> <?php } while($rowfour=mysqli_fetch_array($sqlfour)) {?>
+  <img src="image/<?php echo $rowfour['Filename']; ?>" style="width:100%" onclick="document.location='Bagian Tius/headphone.php'"> <?php } while($rowthree=mysqli_fetch_array($sqlthree)) {?>
 </div>
 
 <div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-  <img src="image/<?php echo $rowfour['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11.php'"> <?php } while($rowfive=mysqli_fetch_array($sqlfive)) {?>
+  <img src="image/<?php echo $rowthree['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11.php'"> <?php } while($rowfive=mysqli_fetch_array($sqlfive)) {?>
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -185,7 +186,7 @@ function showSlides(n) {
 </script>
 <br><br>
 <img class="experiencedays" src="image/<?php echo $rowfive['Filename']; ?>" alt="Experience Days" width="25%" height="25%"> <?php } while($rowsix=mysqli_fetch_array($sqlsix)) {?>
-<img class="experiencedays" src="image/<?php echo $rowsix['Filename']; ?>" alt="Free Ongkir" width="25%" height="25%"> <?php } while($rowseven=mysqli_fetch_array($sqlseven)) {?>
+<img class="experiencedays" src="image/<?php echo $rowsix['Filename']; ?>" alt="Free Ongkir" width="25%" height="25%" onclick="location.href='Bagian David/nomorresi.php';"> <?php } while($rowseven=mysqli_fetch_array($sqlseven)) {?>
 <img class="experiencedays" src="image/<?php echo $rowseven['Filename']; ?>" alt="Accessories" width="25%" height="25%" onclick="location.href='Bagian Tius/halamanaksesoris.php';"> <?php } while($roweight=mysqli_fetch_array($sqleight)) {?>
 
 

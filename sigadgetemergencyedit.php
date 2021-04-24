@@ -61,15 +61,15 @@ th, td {
         <ul>
             <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
 			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
-                    <li><a class="dropdown" href="Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
+                    <li><a class="dropdown" href="Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
+                    <li><a class="dropdown" href="Bagian David/iphone12products.php">iPhone 12</a></li>
 					<li><a class="dropdown" href="Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
-					<li><a class="dropdown" href="Bagian David/PromotioniPhoneXS.php">iPhone XS</a></li>
 					<li><a class="dropdown" href="Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
+					<li><a class="dropdown" href="Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
             </ul>
           </li>
 
-                              	<li><a href="Bagian Migel/HalamanAndroid.php">Android</a>
+                              	<li><a href="Bagian David/androidproducts.php">Android</a>
 																			<ul class="dropdown-list">
 																					<li><a class="dropdown" href="Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="Bagian Migel/samsungads.new.php">Samsung</a></li>
@@ -78,7 +78,7 @@ th, td {
 																					<li><a class="dropdown" href="Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="Bagian Tius/halamanaksesoris.php">Aksesoris</a>
+																																		<li><a href="Bagian David/accessoriesproducts.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -93,6 +93,7 @@ th, td {
 																																																															<li><a class="dropdown" href="Bagian Sanctus/About.php">About</a></li>
 																																																															<li><a class="dropdown" href="Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
 																																																															<li><a class="dropdown" href="Bagian Sanctus/repair.php">Repair</a></li>
+																																																															<li><a class="dropdown" href="Bagian David/nomorresi.php">Track Resi</a></li>
 																																																														</ul>
 
                                                                                                                             <li>
@@ -100,7 +101,7 @@ th, td {
 																															if(empty($_SESSION['account_username'])) {
 																																echo "<a href='Bagian David/account.php'>Login</a>";
 																																} else if(!empty($_SESSION['account_username'])) {
-																																	echo "<a>$_SESSION[account_username]</a>";
+																																	echo "<a><strong>$_SESSION[account_username]</strong></a>";
 																																	echo "<ul class='dropdown-list'>";
 																																	echo "<form method='GET' action='home.php' enctype='multipart/form-data'>";
 																																	echo "<li><a class='dropdown' href='customaccount.php'>Account</a></li>";
@@ -117,14 +118,14 @@ th, td {
 																																																						if(empty($_SESSION['account_username'])) {
 																																																							} else if(!empty($_SESSION['account_username'])) {
 																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
-																																																								echo "<a>Dashboard</a>";
+																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetadminds.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}
