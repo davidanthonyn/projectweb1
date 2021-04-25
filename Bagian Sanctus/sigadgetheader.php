@@ -1,16 +1,16 @@
 <?php
-include "sigadgetconnection.php";
+include "../sigadgetconnection.php";
 
 
 session_start();
 
 if(empty($_SESSION['account_username'])) {
-	header('location: home.php');
+	header('location: ../home.php');
 } else if(!empty($_SESSION['account_username'])) {
 if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
 	
 	} else {
-		header('location: home.php');
+		header('location: ../home.php');
 	}
 }
 
@@ -18,7 +18,7 @@ if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='ad
 if(isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['account_username']);
-		header('location: home.php');
+		header('location: ../home.php');
 }
 
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
@@ -38,7 +38,7 @@ $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphon
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-  <link href="styles.php" rel="stylesheet">
+  <link href="../styles.php" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<script src="script.js" defer></script>
 	<script src="newsletter.js" defer></script>
@@ -57,6 +57,11 @@ th, td {
 
 body {
 	font-family: 'Roboto', sans-serif;
+	width: 100%;
+	height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 	}
 	
 		.logo{
@@ -259,6 +264,89 @@ body {
   clear: both;
 }
 
+.container {
+    padding: 200px 15px 0px 15px;
+    margin-right: auto;
+    margin-left: auto;
+	text-align: center;
+}
+
+.container .col {
+	display: inline-block;
+	text-decoration: none;
+	color : #b243ba;
+	border: 2px solid #b243ba;
+	padding: 10px 10px;
+	text-align: center;
+}
+
+.container .col:hover {
+	background-color: #cccccc;
+	color : 
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .container .col {
+    float: left;
+    width: 50%;
+  }
+}
+
+
+/* 3 columns (768px) */
+
+@media only screen and (min-width:768px) {
+  .container .col {
+    width: 33.333%;
+  }
+}
+
+
+/* 4 columns (992px) */
+
+@media only screen and (min-width:992px) {
+  .container .col {
+    width: 25%;
+  }
+}
+
+input[type=button]{
+    padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #b243ba;
+  border: 2px solid #b243ba;
+}
+
+input[type=button]:hover{
+    background-color : #b243ba;
+    color : white;
+}
+
+
 	</style>
 
   <title>SI Gadget | Menjual Smartphone dan Aksesoris</title>
@@ -329,11 +417,11 @@ body {
 																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetproducts.php'>Products</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetsales.php'>Sales</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcouriers.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetcustomers.php'>Customers</a></li>";
+																																																								echo "<li><a class='dropdown' href='sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
 																																																									}
 																																																							}

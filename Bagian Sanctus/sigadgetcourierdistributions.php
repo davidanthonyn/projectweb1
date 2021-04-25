@@ -1,5 +1,5 @@
 <?php
-include "sigadgetconnection.php";
+include "sigadgetheader.php";
 
 // register account
 	if(isset($_POST['registercourier'])) {
@@ -27,8 +27,6 @@ include "sigadgetconnection.php";
 
 	}
 
-	
-     include "sigadgetheader.php";
 ?>
 
 

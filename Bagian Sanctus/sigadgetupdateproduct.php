@@ -5,7 +5,7 @@ $statusMsg = '';
 $checkdata = mysqli_query($conn,"SELECT * FROM produk WHERE ID_Produk = '$_GET[id]'");
 $check = mysqli_fetch_array($checkdata);
 
-// register product
+// register account
 	if(isset($_POST['updateproduct'])) {
 		$id = mysqli_real_escape_string($conn,$_POST['productid']);
 		$name = mysqli_real_escape_string($conn,$_POST['productname']);
@@ -27,7 +27,7 @@ $check = mysqli_fetch_array($checkdata);
 		$typeheadphone = mysqli_real_escape_string($conn,$_POST['typeheadphone']);
 		$connectionheadphone = mysqli_real_escape_string($conn,$_POST['connectionheadphone']);
 		
-		$targetDir = "../image/";
+		$targetDir = "image/";
 		$fileName = basename($_FILES["file"]["name"]);
 		$targetFilePath = $targetDir . $fileName;
 		$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
@@ -45,7 +45,7 @@ $check = mysqli_fetch_array($checkdata);
 															?>
 																				<script>
 																				alert('Update product success.');
-																				window.location.href='sigadgetproducts.php';
+																				window.location.href='sigadgetdashboardproducts.php';
 																				</script>
 																				
 																			<?php
@@ -73,98 +73,7 @@ $check = mysqli_fetch_array($checkdata);
 															?>
 																				<script>
 																				alert('Update product success.');
-																				window.location.href='sigadgetproducts.php';
-																				</script>
-																				
-																			<?php
-														} else {
-																echo mysqli_error();
-														}
-									
-								} else {
-									 $statusMsg = "Sorry, there was an error uploading your file.";
-								}
-					
-				} else {
-					$statusMsg = 'JPG/JPEG/PNG/SVG files only';
-				}
-			
-		} else {
-			$statusMsg = 'Please select a file to upload.';
-		}
-}
-
-
-// duplicate product
-	if(isset($_POST['duplicateproduct'])) {
-		$name = mysqli_real_escape_string($conn,$_POST['productname']);
-		$type = mysqli_real_escape_string($conn,$_POST['producttype']);
-		$price = mysqli_real_escape_string($conn,$_POST['price']);
-		$stock = mysqli_real_escape_string($conn,$_POST['stock']);
-		$status = mysqli_real_escape_string($conn,$_POST['status']);
-		$brand = mysqli_real_escape_string($conn,$_POST['brand']);
-		$color = mysqli_real_escape_string($conn,$_POST['color']);
-		$connectproduct = mysqli_real_escape_string($conn,$_POST['connectproduct']);
-		$software = mysqli_real_escape_string($conn,$_POST['os']);
-		$chip = mysqli_real_escape_string($conn,$_POST['chip']);
-		$memory = mysqli_real_escape_string($conn,$_POST['ram']);
-		$storage = mysqli_real_escape_string($conn,$_POST['rom']);
-		$screen = mysqli_real_escape_string($conn,$_POST['screen']);
-		$frontcamera = mysqli_real_escape_string($conn,$_POST['frontcamera']);
-		$backcamera = mysqli_real_escape_string($conn,$_POST['backcamera']);
-		$battery = mysqli_real_escape_string($conn,$_POST['battery']);
-		$typeheadphone = mysqli_real_escape_string($conn,$_POST['typeheadphone']);
-		$connectionheadphone = mysqli_real_escape_string($conn,$_POST['connectionheadphone']);
-		
-		$targetDir = "../image/";
-		$fileName = basename($_FILES["file"]["name"]);
-		$targetFilePath = $targetDir . $fileName;
-		$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-		
-		//Without picture
-		if(empty($_FILES["file"]["name"])) {
-									
-									$duplicate = mysqli_query($conn,"INSERT INTO `produk`(`ID_Produk`, `Nama_Produk`, `Jenis_Produk`, `Harga_Produk`, `Stok_Produk`, `Status_Produk`, `Created_at`, 
-									`Updated_at`, `Brand`, `Warna`, `Jaringan`, `OS`, `Chipset`, `RAM`, `Storage`, `Layar`, `Kamera_Depan`, `Kamera_Belakang`, 
-									`Baterai`, `Tipe_Headphone`, `Konektivitas_Headphone`) 
-									VALUES ('NULL','$name','$type','$price','$stock','$status',now(),now(),'$brand','$color','$connectproduct','$software','$chip','$memory',
-									'$storage','$screen','$frontcamera','$backcamera','$battery','$typeheadphone','$connectionheadphone')");
-									
-									$conn->close();
-									
-														if($duplicate) {
-															?>
-																				<script>
-																				alert('Duplicate product success.');
-																				window.location.href='sigadgetproducts.php';
-																				</script>
-																				
-																			<?php
-														} else {
-																echo mysqli_error();
-														}
-		//With picture
-		} else if(!empty($_FILES["file"]["name"])) {
-			//File formats that allow
-			$allow = array('jpg', 'jpeg', 'png', 'svg');
-			
-				if(in_array($fileType, $allow)) {
-						//Upload file to server
-								if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-									//Update database
-									$duplicate = mysqli_query($conn,"INSERT INTO `produk`(`ID_Produk`, `Nama_Produk`, `Jenis_Produk`, `Harga_Produk`, `Stok_Produk`, `Status_Produk`, `Created_at`, 
-									`Updated_at`, `image`, `Brand`, `Warna`, `Jaringan`, `OS`, `Chipset`, `RAM`, `Storage`, `Layar`, `Kamera_Depan`, `Kamera_Belakang`, 
-									`Baterai`, `Tipe_Headphone`, `Konektivitas_Headphone`) 
-									VALUES ('NULL','$name','$type','$price','$stock','$status',now(),now(),'$fileName','$brand','$color','$connectproduct','$software','$chip','$memory',
-									'$storage','$screen','$frontcamera','$backcamera','$battery','$typeheadphone','$connectionheadphone')");
-									
-									$conn->close();
-									
-														if($update) {
-															?>
-																				<script>
-																				alert('Duplicate product uccess.');
-																				window.location.href='sigadgetproducts.php';
+																				window.location.href='sigadgetdashboardproducts.php';
 																				</script>
 																				
 																			<?php
@@ -239,7 +148,7 @@ $check = mysqli_fetch_array($checkdata);
 						$sql = "SELECT image FROM produk WHERE ID_Produk ='$_GET[id]'";
 						$result = mysqli_query($conn, $sql);
 						while($row = mysqli_fetch_array($result)) {
-								echo "<img src='../image/{$row['image']}' width='20%' height='20%'>";
+								echo "<img src='image/{$row['image']}' width='20%' height='20%'>";
 										echo "</div>";
 						}
 	?>
@@ -251,8 +160,6 @@ $check = mysqli_fetch_array($checkdata);
 	
 
   <input type="submit" name="updateproduct" value="Update Product">
-  <br><br>
-  <input type="submit" name="duplicateproduct" value="Duplicate Product with new Edit">
   <br><br>
   <input type="button" value="Back" onclick="location.href='sigadgetproducts.php'" />
 </form>
