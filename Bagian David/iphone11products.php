@@ -26,7 +26,7 @@ include "sigadgetheadercustomer.php";
 								 while($row = $result->fetch_assoc()) {
 									 
 
-									 //Stok ter11dia dan diatas 10, tidak diberi watermark apapun
+									 //Stok tersedia dan diatas 10, tidak diberi watermark apapun
 									 if($row['Stok_Produk']>=10) {
 								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
 									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
@@ -35,8 +35,8 @@ include "sigadgetheadercustomer.php";
 												echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "</div></a>";
 													
-													//Stok ter11dia dan dibawah sama dengan 10, diberi watermark "Produk hampir habis"
-									 } el11 if($row['Stok_Produk']<5 && $row['Stok_Produk']>0) {
+													//Stok tersedia dan dibawah sama dengan 10, diberi watermark "Produk hampir habis"
+									 } else if($row['Stok_Produk']<5 && $row['Stok_Produk']>0) {
 										 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
 											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 											echo "<img src='../image/{$row['image']}' >";
@@ -46,7 +46,7 @@ include "sigadgetheadercustomer.php";
 														echo "</div></a>";
 										 
 										 //Stok habis, diberi watermark "Sold Out"
-									} el11 if($row['Stok_Produk']<1) {
+									} else if($row['Stok_Produk']<1) {
 										echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
 											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 											echo "<img src='../image/{$row['image']}' >";
@@ -56,7 +56,7 @@ include "sigadgetheadercustomer.php";
 														echo "</div></a>";
 									}
 								 }
-								} el11 {
+								} else {
 						  echo "0 results";
 						}
 	?>
@@ -64,8 +64,8 @@ include "sigadgetheadercustomer.php";
 	</div>
 </div>
 
-<!--Footer adalah Kaki website, Footer biasa 11bagai "Informasi tambahan yang bersifat penting dan yang harus
-    ditempatkan di 11tiap halaman", Footer isinya bisa apa saja, yang memang penting-->
+<!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
+    ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
     <div class="newsletter">
     	<p class="animate__animated animate__fadeInDown" style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
     		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
@@ -74,11 +74,11 @@ include "sigadgetheadercustomer.php";
     </div>
     <!-- penjelasan SI Gadget -->
     <div class="experience">
-    <p class="animate__animated animate__fadeInLeft" style="text-align:center">SIGadget adalah re11ller handphone terkemuka di Indonesia, yang menjual 11gala jenis produk handphone dari Apple, Android, dan ak11soris perlengkapan.</p>
+    <p class="animate__animated animate__fadeInLeft" style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
     					<div class="column animate__animated animate__fadeInLeft">
     						<ul style="list-style-type:none">
     							<li>Jika Anda ingin bantuan atau memiliki masukan, silakan hubungi kami: </li><br>
-    							<li>Jam 9.30 - 17.30(11nin s/d Minggu).</li>
+    							<li>Jam 9.30 - 17.30(Senin s/d Minggu).</li>
     							<li>Email: customercare@sigadget.com</li>
     							<li>Phone: 911</li>
     							<li>WA: 081234567890</li>
@@ -106,7 +106,7 @@ include "sigadgetheadercustomer.php";
     </div>
 
     					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RE11RVED.</p>
+    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2021 SIGADGET. ALL RIGHTS RESERVED.</p>
     					</div>
     <!--Copas footer sampai sini -->
 
