@@ -458,7 +458,7 @@ font-weight: normal;
 				 <?php $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
 																	$result = mysqli_query($conn, $sql);
 																	$resultCheck = mysqli_fetch_array($result);
-																	echo number_format ($resultCheck['Harga_Produk']);   ?>
+																	echo number_format($resultCheck['Harga_Produk']);   ?>
 				 </td>
             </tr>
 			
@@ -466,7 +466,7 @@ font-weight: normal;
                 <td>Jumlah Item Barang</td>
                 <td>:</td>
                 <td>
-                    <select name="qty" required>
+                    <select name="qty">
                         <option value="">- Jumlah -</option>
                         <?php
                             for($x=1;$x<=50;$x++){
@@ -482,8 +482,11 @@ font-weight: normal;
                 <td></td>
                 <td></td>
                 <td>
+				<form action="/sigadgetnavigation.php">
+
                     <input type="submit" name="hitung" value="Hitung">
-                    <input type="reset" name="reset" value="Reset">
+                    <input type="submit" name="reset" value="Reset">
+					</form>
                 </td>
             </tr>
         </table>
@@ -494,16 +497,25 @@ font-weight: normal;
     <h3>Hasil :</h3>
 <?php
  $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
- 
+  if ( isset($_GET['reset']) )
+ {
+ header("location:sigadgetnavigation.php");
+ unset($_SESSION["qty"]);
+ unset($_SESSION["Harga_Produk"]);
+ unset($_SESSION["total"]);
+ }
 	
-    if(isset($_POST['hitung'])){
+   if(isset($_POST['hitung'])){
+    if($_POST['qty'] ==  "") {
+echo "Silahkan isi jumlah produk yang ingin dibeli";
+} else {
         $nama    =$resultCheck['Nama_Produk'];
         $harga    =$resultCheck['Harga_Produk'];
-		$hargafinal = (float) $harga;
+        $hargafinal = (float) $harga;
         $qty    =$_POST['qty'];
         $total    =$hargafinal*$qty;
-		$totalstring = (string) $total;
-		$qtystring = (string) $qty;
+        $totalstring = (string) $total;
+        $qtystring = (string) $qty;
         echo "
             <table border='1' cellpadding='4'>
                 <tr>
@@ -520,6 +532,7 @@ font-weight: normal;
                 </tr>
             </table>
         ";
+}
     }
 	
 	if(isset($_POST['hitung'])){
@@ -544,9 +557,9 @@ $subject = mysqli_query($conn, $subjectName);
 											"<value='{$data ['Harga_Kurir']}'>"
 		. $data['Nama_Kurir'] . " / " . $data['Produk_Kurir'] . " / " . $data['Harga_Kurir'] . '</br>';
 		
-	if(isset($_POST[$data['ID_Kurir']]) && $_POST[$data['ID_Kurir']] == 'pricedesc') {
-	<option value="pricedesc">Show All Sales Based on Total Price Descending</option>
-	}
+	//if(isset($_POST[$data['ID_Kurir']]) && $_POST[$data['ID_Kurir']] == 'pricedesc') {
+	//<option value="pricedesc">Show All Sales Based on Total Price Descending</option>
+	//}
 	
 	
 }
@@ -575,11 +588,11 @@ $subject = mysqli_query($conn, $subjectName);
 
 <?php 	
 
-		 if(isset($_POST['simpan'])){
-			 $_SESSION["total_harga"] = $totalstring;
-			 $_SESSION["kuantitas"] = $qtystring;
-			 $_SESSION["account_id"] = $checksecond["ID_User"];
-		 }
+		// if(isset($_POST['simpan'])){
+		//	 $_SESSION["total_harga"] = $totalstring;
+		//	 $_SESSION["kuantitas"] = $qtystring;
+		//	 $_SESSION["account_id"] = $checksecond["ID_User"];
+		// }
 	
 	?>
  </form>
