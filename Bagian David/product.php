@@ -5,7 +5,7 @@ if(empty($_GET['name'])) {
 	header('location: ../home.php');
 }
 		
-$checkdata = mysqli_query($conn,"SELECT * FROM produk WHERE Nama_Produk = '$_GET[name]'");
+$checkdata = mysqli_query($conn,"SELECT * FROM produk WHERE Nama_Produk = '$_GET[name]' AND Storage = '$_GET[storage]' AND Warna = '$_GET[color]'");
 $check = mysqli_fetch_array($checkdata);
 
 ?>
@@ -318,7 +318,15 @@ ul.no-bullets {
 							<button hidden id="up" onclick="setQuantity('up');">+</button>
 							<?php 
 							$_SESSION["productbuy"] = $check["Nama_Produk"];
+							
+							if($check["Stok_Produk"]>=1) {
 							echo "<a href='../Bagian Tius/sigadgetnavigation.php' class='btn-cart'>Beli</a>";
+							} else if($check["Stok_Produk"]==0) {
+								echo "Sold out";
+							} else if($check["Stok_Produk"]<=5) {
+								echo "<a href='../Bagian Tius/sigadgetnavigation.php' class='btn-cart'>Beli</a>";
+								echo "Produk hampir habis";
+							}
 							?>
 							<br><br><br>
 							

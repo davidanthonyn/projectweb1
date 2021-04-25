@@ -18,7 +18,7 @@ include "sigadgetheadercustomer.php";
 <div class="row">
 	<?php
 							//SQL All Products Published
-							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Brand='Huawei' 
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna,Stok_Produk FROM produk WHERE Brand='Huawei' 
 							AND Brand='Samsung' 
 							AND Brand='Xiaomi' 
 							AND Brand='ASUS' 
@@ -31,32 +31,35 @@ include "sigadgetheadercustomer.php";
 								 while($row = $result->fetch_assoc()) {
 									 
 
-									 //Stok tersedia dan diatas 10, tidak diberi watermark apapun
-									 if($row['Stok_Produk']>10) {
-								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
+									//Stok tersedia dan diatas 10, tidak diberi watermark apapun
+									 if($row['Stok_Produk']>=10) {
+								 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]&storage=$row[Storage]&color=$row[Warna]' style=width:25%>
 									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 									 echo "<img src='../image/{$row['image']}' >";
 											echo "<h4>$row[Nama_Produk]</h4>";
-												echo "<p>$row[Harga_Produk]</p>";
+											echo "$row[Storage] ($row[Warna])<br><br>";
+												echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "</div></a>";
 													
 													//Stok tersedia dan dibawah sama dengan 10, diberi watermark "Produk hampir habis"
-									 } else if($row['Stok_Produk']<5 && $row['Stok_Produk']>0) {
-										 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
-											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
-											echo "<img src='../image/{$row['image']}' >";
-												echo "<h4>$row[Nama_Produk]</h4>";
-													echo "<p>$row[Harga_Produk]</p>";
+									 } else if($row['Stok_Produk']<=5 && $row['Stok_Produk']>0) {
+										 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]&storage=$row[Storage]&color=$row[Warna]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk]</h4>";
+											echo "$row[Storage] ($row[Warna])<br><br>";
+												echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "<p>Produk hampir habis</p>";
 														echo "</div></a>";
 										 
 										 //Stok habis, diberi watermark "Sold Out"
 									} else if($row['Stok_Produk']<1) {
-										echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
-											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
-											echo "<img src='../image/{$row['image']}' >";
-												echo "<h4>$row[Nama_Produk]</h4>";
-													echo "<p>$row[Harga_Produk]</p>";
+										echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]&storage=$row[Storage]&color=$row[Warna]' style=width:25%>
+									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
+									 echo "<img src='../image/{$row['image']}' >";
+											echo "<h4>$row[Nama_Produk]</h4>";
+											echo "$row[Storage] ($row[Warna])<br><br>";
+												echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "<p>Sold out</p>";
 														echo "</div></a>";
 									}

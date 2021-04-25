@@ -36,7 +36,7 @@ include "sigadgetheadercustomer.php";
 													echo "</div></a>";
 													
 													//Stok tersedia dan dibawah sama dengan 10, diberi watermark "Produk hampir habis"
-									 } else if($row['Stok_Produk']<5 && $row['Stok_Produk']>0) {
+									 } else if($row['Stok_Produk']<=5 && $row['Stok_Produk']>0) {
 										 echo "<a href='../Bagian David/product.php?name=$row[Nama_Produk]' style=width:25%>
 											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 											echo "<img src='../image/{$row['image']}' >";
