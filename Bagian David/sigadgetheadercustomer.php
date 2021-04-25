@@ -3,24 +3,26 @@ include "../sigadgetconnection.php";
 
 session_start();
 
-if(isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['account_username']);
-		header('location: PromotioniPhone11Pro.php');
-}
-
+$sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
+	
+	while($row=mysqli_fetch_array($sql)) {
+		
+		
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="styles.php" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="styles.css" rel="stylesheet">
-  <style>
-	body {
+	<script src="script.js" defer></script>
+	<script src="newsletter.js" defer></script>
+	<style>
+
+body {
 	font-family: 'Roboto', sans-serif;
 	}
 	
@@ -93,7 +95,7 @@ if(isset($_GET['logout'])) {
 				position:absolute;
 				left:-999em;
 				height:auto;
-				width:108px;
+				width:120px;
 				margin-top:50px;
 				border:1px solid #666;
 			}
@@ -224,92 +226,9 @@ if(isset($_GET['logout'])) {
   clear: both;
 }
 
-#backgroundhitam {
-background-color: Black;
-}
+	</style>
 
-#backgroundputih {
-background-color: White;
-}
-
-table {
-  margin-left: auto; 
-  margin-right: auto;
-}
-
-.judul {
-text-align:center;
-color: white;
-}
-
-
-.glow-on-hover {
-    width: 120px;
-    height: 40px;
-	border: 1px solid white;
-	border-collapse: collapse;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-	display: block;
-	margin: 0 auto;
-}
-
-	.glow-on-hover:before {
-		content: '';
-		background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-		position: absolute;
-		top: -2px;
-		left:-2px;
-		background-size: 400%;
-		z-index: -1;
-		filter: blur(5px);
-		width: calc(100% + 4px);
-		height: calc(100% + 4px);
-		animation: glowing 20s linear infinite;
-		opacity: 0;
-		transition: opacity .3s ease-in-out;
-		border-radius: 10px;
-	}
-
-		.glow-on-hover:active {
-			color: #000
-		}
-
-			.glow-on-hover:active:after {
-				background: transparent;
-			}
-
-				.glow-on-hover:hover:before {
-					opacity: 1;
-				}
-
-					.glow-on-hover:after {
-						z-index: -1;
-						content: '';
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						background: #111;
-						left: 0;
-						top: 0;
-						border-radius: 10px;
-					}
-
-						@keyframes glowing {
-							0% { background-position: 0 0; }
-							50% { background-position: 400% 0; }
-							100% { background-position: 0 0; }
-						}
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </style>
-  <title>iPhone 11 Pro | SI Gadget</title>
-  <link rel="shortcut icon" type="image" href="../smartphone.png">
+								<link rel="shortcut icon" type="image" href="image/<?php echo $row['Filename']; ?>"> <?php } ?>
   </head>
 <body>
 <!----navigation--->
@@ -336,7 +255,7 @@ color: white;
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian David/accessoriesproducts.php">Aksesoris</a>
+																																		<li><a href="../Bagian Tius/accessoriesproducts.php">Aksesoris</a>
 																																		<ul class="dropdown-list">
 																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
 																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
@@ -392,110 +311,4 @@ color: white;
         </ul>
     </div>
 </nav>
-<p style="text-align:center; font-size: 15px; position: relative; left: -532px;">Home / iPhone 11 Pro</p>
-<hr>
-
-<table style="width:80%">
-
-<tr id="backgroundhitam">
-<td>
-<h2 class="judul">iPhone 11 Pro</h2>
-
-<h1 class="judul" style="font-size: 50px;">Kamera Pro. Layar Pro.</h1>
-<h1 class="judul" style="font-size: 50px;">Performa Pro.</h1>
-
-<button class="glow-on-hover" type="button" onclick="document.location='iPhone11ProProducts.php'">Beli Sekarang</button>
-
 <br>
-
-<center>
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg2-1-min.jpg" alt="iPhone 11 Pro" width="100%" height="100%"><br><br><br>
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg3-1-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg4-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg5-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="100%">
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg6-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="100%">
-</center>
-</td>
-</tr>
-<br>
-
-<tr id="iphonetengahputih">
-<td>
-<br><br>
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg7-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="70%">
-<img src="Gallery/iPhone/iPhone 11 Pro/iphone-11-pro-reg8-1-min.jpg" alt="detail iPhone 11 Pro" width="100%" height="70%">
-<img src="Gallery/iPhone/iPhone 11 Pro/Lp_Product_Center_iPhone_11_Series.jpg" alt="detail iPhone 11 Pro" width="100%" height="60%">
-<img src="Gallery/iPhone/iPhone 11/Lp_Product_Center.jpg" alt="detail iPhone 11 Pro" width="100%" height="70%">
-
-<tr style="background-color:Gray;">
-<td>
-<br><br>
-<ol style="color:white; font-size: 12px;">
-<li>Kekuatan baterai bervariasi tergantung penggunaan dan konfigurasi. Lihat apple.com/batteries untuk informasi selengkapnya.</li>
-<br>
-<li>Layar memiliki sudut melengkung yang mengikuti desain lekukan yang indah, dan semua sudut ini berada di dalam bidang persegi standar. Jika diukur dalam bentuk persegi standar, diagonal layarnya berukuran 5,85 inci (iPhone 11 Pro), 6,46 inci (iPhone 11 Pro Max), atau 6,06 inci (iPhone 11). Area bidang layar berukuran lebih kecil.</li>
-
-<br>
-
-<ul style="list-style-type: none; color:white; font-size: 12px;">
-<li >Beberapa fitur mungkin tidak tersedia untuk semua negara atau semua wilayah.</li>
-<br><li>Sebagian laba dari setiap pembelian (PRODUCT)RED akan disalurkan ke Global Fund untuk memerangi COVID-19.</li>
-<br><li>*Rp 69.000/bulan setelah percobaan gratis. Satu paket langganan untuk tiap grup Keluarga Berbagi. Penawaran berlaku selama 3 bulan setelah aktivasi perangkat yang memenuhi syarat, mulai 1 November 2019. Paket diperbarui otomatis kecuali dibatalkan. Pembatasan dan ketentuan lain berlaku.</li>
-</ul>
-</tr>
-</td>
-</table>
-
-
-
-
-<br><br><br><br><br>
-
-<!--Footer adalah Kaki website, Footer biasa sebagai "Informasi tambahan yang bersifat penting dan yang harus
-    ditempatkan di setiap halaman", Footer isinya bisa apa saja, yang memang penting-->
-    <div class="newsletter">
-    	<p class="animate__animated animate__fadeInDown" style="text-align:center; color:white; font-size: 15px; position: relative; right: 200px">Mari berlangganan newsletter untuk mendapatkan informasi terbaru
-    		<input class="animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="text" id="email" name="email" size="60">
-    		<input class="button animate__animated animate__fadeInDown" style="position: relative; left: 300px" type="submit" value="KIRIM">
-    	</p>
-    </div>
-    <!-- penjelasan SI Gadget -->
-    <div class="experience">
-    <p class="animate__animated animate__fadeInLeft" style="text-align:center">SIGadget adalah reseller handphone terkemuka di Indonesia, yang menjual segala jenis produk handphone dari Apple, Android, dan aksesoris perlengkapan.</p>
-    					<div class="column animate__animated animate__fadeInLeft">
-    						<ul style="list-style-type:none">
-    							<li>Jika Anda ingin bantuan atau memiliki masukan, silakan hubungi kami: </li><br>
-    							<li>Jam 9.30 - 17.30(Senin s/d Minggu).</li>
-    							<li>Email: customercare@sigadget.com</li>
-    							<li>Phone: 911</li>
-    							<li>WA: 081234567890</li>
-    						</ul>
-    					</div>
-    															<div class="column animate__animated animate__fadeInLeft">
-    																	<ul style="list-style-type:none">
-    																		<li>Kami menerima metode pembayaran:</li><br>
-    																		<li>OVO</li>
-    																		<li>GO-PAY</li>
-    																		<li>Cash on Delivery(COD)</li>
-    																		<li>Debit card</li>
-    																		<li>Credit card</li>
-    																	</ul>
-    															</div>
-
-    																							<div class="column animate__animated animate__fadeInLeft">
-    																									<ul style="list-style-type:none">
-    																										<li>Kurir pengiriman:</li><br>
-    																										<li>JNE</li>
-    																										<li>JET Express</li>
-    																										<li>SiCepat</li>
-    																									</ul>
-    																							</div>
-    </div>
-
-    					<div class="bottomnav">
-    					  <p style="text-align:center; color:white; font-size: 10px">COPYRIGHT © 2020 SIGADGET. ALL RIGHTS RESERVED.</p>
-    					</div>
-    <!--Copas footer sampai sini -->
-
-</body>
-</html>
