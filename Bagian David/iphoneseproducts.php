@@ -32,7 +32,7 @@ include "sigadgetheadercustomer.php";
 									 <div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 									 echo "<img src='../image/{$row['image']}' >";
 											echo "<h4>$row[Nama_Produk]</h4>";
-												echo "<p>$row[Harga_Produk]</p>";
+												echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "</div></a>";
 													
 													//Stok tersedia dan dibawah sama dengan 10, diberi watermark "Produk hampir habis"
@@ -41,7 +41,7 @@ include "sigadgetheadercustomer.php";
 											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 											echo "<img src='../image/{$row['image']}' >";
 												echo "<h4>$row[Nama_Produk]</h4>";
-													echo "<p>$row[Harga_Produk]</p>";
+													echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "<p>Produk hampir habis</p>";
 														echo "</div></a>";
 										 
@@ -51,7 +51,7 @@ include "sigadgetheadercustomer.php";
 											<div class='col-4' onclick='location.href=../Bagian David/product.php;'>";
 											echo "<img src='../image/{$row['image']}' >";
 												echo "<h4>$row[Nama_Produk]</h4>";
-													echo "<p>$row[Harga_Produk]</p>";
+													echo number_format($row['Harga_Produk'] , 0, ',', '.');
 													echo "<p>Sold out</p>";
 														echo "</div></a>";
 									}
