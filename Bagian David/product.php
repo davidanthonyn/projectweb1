@@ -309,8 +309,8 @@ ul.no-bullets {
 			<?php
 			echo "<h1>$check[Nama_Produk]</h1>";
 			?>
-			<h4 id="demo"><?php echo "Rp $check[Harga_Produk]"; ?></h4>
-
+			<h4 id="demo">Rp. <?php echo number_format($check['Harga_Produk'] , 0, ',', '.'); ?></h4>
+													
 
 				<br>
 							<button hidden id="down" onclick="setQuantity('down');">-</button>
