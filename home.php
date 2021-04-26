@@ -98,7 +98,7 @@ function showSlides(n) {
 <br><br>
 <img class="experiencedays" src="image/<?php echo $rowfive['Filename']; ?>" alt="Experience Days" width="25%" height="25%"> <?php } while($rowsix=mysqli_fetch_array($sqlsix)) {?>
 <img class="experiencedays" src="image/<?php echo $rowsix['Filename']; ?>" alt="Free Ongkir" width="25%" height="25%" onclick="location.href='Bagian David/nomorresi.php';"> <?php } while($rowseven=mysqli_fetch_array($sqlseven)) {?>
-<img class="experiencedays" src="image/<?php echo $rowseven['Filename']; ?>" alt="Accessories" width="25%" height="25%" onclick="location.href='Bagian Tius/halamanaksesoris.php';"> <?php } while($roweight=mysqli_fetch_array($sqleight)) {?>
+<img class="experiencedays" src="image/<?php echo $rowseven['Filename']; ?>" alt="Accessories" width="25%" height="25%" onclick="location.href='Bagian Tius/headphoneproducts.php';"> <?php } while($roweight=mysqli_fetch_array($sqleight)) {?>
 
 
 <br><br>
