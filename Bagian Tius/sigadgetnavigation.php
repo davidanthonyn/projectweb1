@@ -493,7 +493,7 @@ font-weight: normal;
     </form>
     <hr />
 
-
+<form method="post" action="sigadgetpembayaran.php">
     <h3>Hasil :</h3>
 <?php
  $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
@@ -516,6 +516,8 @@ echo "Silahkan isi jumlah produk yang ingin dibeli";
         $total    =$hargafinal*$qty;
         $totalstring = (string) $total;
         $qtystring = (string) $qty;
+		 $_SESSION["total_harga"] = $totalstring;
+		 $_SESSION["kuantitas"] = $qtystring;
         echo "
             <table border='1' cellpadding='4'>
                 <tr>
@@ -546,7 +548,7 @@ $subject = mysqli_query($conn, $subjectName);
 <div class="tulisankurir">
 <h4> Select Courier : </h4>
  
- <form method="post" action=" ">
+ 
  
  <?php
  
