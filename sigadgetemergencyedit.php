@@ -19,11 +19,35 @@ if(isset($_GET['logout'])) {
 		header('location: home.php');
 }
 
+if(isset($_POST['updateproduct'])) {
+	$payment = mysqli_real_escape_string($conn,$_POST['statuspembayaran']);
+	$delivery = mysqli_real_escape_string($conn,$_POST['statuspengiriman']);
+
+		$updatepayment = mysqli_query($conn, "UPDATE `pembayaranuser` SET Updated_at=now(), Status_Pembayaran='$payment'");
+		$updatedelivery = mysqli_query($conn, "UPDATE `pengiriman` SET Updated_at=now(), Status_Pengiriman='$delivery'");
+		
+		if($updatepayment && $updatedelivery) {
+																			?>
+																				<script>
+																				alert('Edit delivery status and payment status success.');
+																				window.location.href='sigadgettransactions.php';
+																				</script>
+																			<?php
+																} else {
+																	?>
+																				<script>
+																				alert('Edit delivery status and payment status failed.');
+																				window.location.href='sigadgettransactions.php';
+																				</script>
+																			<?php
+																}
+}
+
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
 	
 	while($row=mysqli_fetch_array($sql)) {
 		
-		
+	
 ?>
 
 <!DOCTYPE html>
@@ -165,14 +189,18 @@ $check = mysqli_fetch_array($checkdata);
 <br>
 <form method="POST" action="sigadgetemergencyedit.php" enctype="multipart/form-data">
 	<p>ID Transaksi : <?php echo $check['ID_Transaksi'] ?></p>
+	
+	<br>
  
 	<p>Nama User : <?php echo $check['Nama_Lengkap'] ?></p>
+	
+	<br>
 	
 	<p>Nama Pembayaran : <?php echo $check['Nama_Pembayaran'] ?></p>
 	
 	<p>Jenis Pembayaran : <?php echo $check['Jenis_Pembayaran'] ?></p>
 	
-	Status Pembayaran : <select name="status">
+	Status Pembayaran : <select name="statuspembayaran">
 						<?php
 							if($check['Status_Pembayaran']=='Pending') {
 								echo "<option value='Pending'>Pending</option>";
@@ -195,79 +223,60 @@ $check = mysqli_fetch_array($checkdata);
 	
 	<p>Nomor Resi : <?php echo $check['Nomor_Resi'] ?></p>
 	
-	<p>Waktu Dibuat Pengiriman : <?php echo $check['Created_at'] ?></p>
+	Status Pengiriman : <select name="statuspengiriman">
+						<?php
+							if($check['Status_Pengiriman']=='Diproses') {
+								echo "<option value='Diproses'>Diproses</option>";
+								echo "<option value='Dikirim'>Dikirim</option>";
+								echo "<option value='Diterima'>Diterima</option>";
+								echo "<option value='Dibatalkan'>Dibatalkan</option>";
+								echo "<option value='Pending'>Pending</option>";
+									} else if($check['Status_Pengiriman']=='Dikirim') {
+											echo "<option value='Dikirim'>Dikirim</option>";
+										echo "<option value='Diterima'>Diterima</option>";
+										echo "<option value='Dibatalkan'>Dibatalkan</option>";
+										echo "<option value='Pending'>Pending</option>";
+										echo "<option value='Diproses'>Diproses</option>";
+											} else if($check['Status_Pengiriman']=='Diterima') {
+												echo "<option value='Diterima'>Diterima</option>";
+												echo "<option value='Dibatalkan'>Dibatalkan</option>";
+												echo "<option value='Pending'>Pending</option>";
+												echo "<option value='Diproses'>Diproses</option>";
+												echo "<option value='Dikirim'>Dikirim</option>";
+													}	else if($check['Status_Pengiriman']=='Dibatalkan') {
+														echo "<option value='Dibatalkan'>Dibatalkan</option>";
+														echo "<option value='Pending'>Pending</option>";
+														echo "<option value='Diproses'>Diproses</option>";
+														echo "<option value='Dikirim'>Dikirim</option>";
+														echo "<option value='Diterima'>Diterima</option>";
+															} else if($check['Status_Pengiriman']=='Pending') {
+																echo "<option value='Pending'>Pending</option>";
+																echo "<option value='Diproses'>Diproses</option>";
+																echo "<option value='Dikirim'>Dikirim</option>";
+																echo "<option value='Diterima'>Diterima</option>";
+																echo "<option value='Dibatalkan'>Dibatalkan</option>";
+															}
+						?>
+					</select>
 	
-  
-	Nama User : <input type="text" name="user" value="<?php echo $check['Nama_Lengkap'] ?>" readonly="readonly" Required>
-  <br><br>
-	Nama User : <input type="text" name="user" value="<?php echo $check['Nama_Lengkap'] ?>" readonly="readonly" Required>
-  <br><br>
-  
-  
-  
-	Nama Produk : <input type="text" name="productname" value="<?php echo $check['Nama_Produk'] ?>" placeholder="Enter Product Name" Required>
-  <br><br>
-	Jenis Produk : <input type="text" name="producttype" value="<?php echo $check['Jenis_Produk'] ?>" placeholder="Enter Product Type" Required>
-  <br><br>
-	Harga Produk : <input type="text" name="price" placeholder="Enter Price" value="<?php echo $check['Harga_Produk'] ?>" Required>
-  <br><br>
-	Stok Produk : <input type="text" name="stock" placeholder="Enter Stock" value="<?php echo $check['Stok_Produk'] ?>" Required>
-  <br><br>
-	Status Produk : <select name="status">
-						<option value="Pending">Pending</option>
-						<option value="Published">Published</option>
-						<option value="Non-Activate">Non-Activate</option>
-				</select>
-  <br><br>
-  
-	Brand : <input type="text" name="brand" placeholder="Enter Brand" value="<?php echo $check['Brand'] ?>" Required>
-	<br><br>
-	Warna : <input type="text" name="color" placeholder="Enter Color" value="<?php echo $check['Warna'] ?>" Required>
-	<br><br>
-	Jaringan : <input type="text" name="connectproduct" placeholder="Enter Connectivity" value="<?php echo $check['Jaringan'] ?>" Required>
-	<br><br>
-	OS : <input type="text" name="os" placeholder="Enter OS" value="<?php echo $check['OS'] ?>" Required>
-	<br><br>
-	Chipset : <input type="text" name="chip" placeholder="Enter Chipset" value="<?php echo $check['Chipset'] ?>" Required>
-	<br><br>
-	RAM : <input type="text" name="ram" placeholder="Enter RAM" value="<?php echo $check['RAM'] ?>" Required>
-	<br><br>
-	Storage : <input type="text" name="rom" placeholder="Enter Storage" value="<?php echo $check['Storage'] ?>" Required>
-	<br><br>
-	Layar : <input type="text" name="screen" placeholder="Enter Screen" value="<?php echo $check['Layar'] ?>" Required>
-	<br><br>
-	Kamera Depan : <input type="text" name="frontcamera" placeholder="Enter Front Camera" value="<?php echo $check['Kamera_Depan'] ?>" Required>
-	<br><br>
-	Kamera Belakang : <input type="text" name="backcamera" placeholder="Enter Back Camera" value="<?php echo $check['Kamera_Belakang'] ?>" Required>
-	<br><br>
-	Baterai : <input type="text" name="battery" placeholder="Enter Battery" value="<?php echo $check['Baterai'] ?>" Required>
-	<br><br>
-	Tipe Headphone : <input type="text" name="typeheadphone" placeholder="Enter Headphone Type" value="<?php echo $check['Tipe_Headphone'] ?>" Required>
-	<br><br>
-	Konektivitas Headphone : <input type="text" name="connectionheadphone" placeholder="Enter Headphone Connection" value="<?php echo $check['Konektivitas_Headphone'] ?>" Required>
-	<br><br>
-	Product Image : 
+	<br>
 	
-	<br><br><?php
-						include "sigadgetconnection.php";
-						$sql = "SELECT image FROM produk WHERE Nama_Produk ='$_GET[name]'";
-						$result = mysqli_query($conn, $sql);
-						while($row = mysqli_fetch_array($result)) {
-								echo "<img src='image/{$row['image']}' width='20%' height='20%'>";
-										echo "</div>";
-						}
-	?>
-	<br><br>
+	<p>Nama Produk : <?php echo $check['Nama_Produk'] ?></p>
 	
-	<input type="file" name="file" placeholder="Enter Product Image" value="<?php echo $check['image']; ?>"> <strong><?php echo $statusMsg;?></strong>
-	<br><br>
+	<p>Jumlah Beli : <?php echo $check['Jumlah_Terjual'] ?></p>
 	
+	<p>Total : <?php echo $check['Total_Harga'] ?></p>
+	<br>
 	
-
-  <input type="submit" name="updateproduct" value="Update Product">
+  <input type="submit" name="updateproduct" value="Update Transactions">
   <br><br>
-  <input type="button" value="Back" onclick="location.href='sigadgetdashboardproducts.php'" />
+  <input type="button" value="Back" onclick="location.href='sigadgettransactions.php'" />
+  <br><br>
 </form>
+
+<?php
+$conn->close();
+?>
 
 </body>
 </html>

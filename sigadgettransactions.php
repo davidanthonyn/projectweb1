@@ -152,7 +152,7 @@ th, td {
 <option value="today">Show All Today Transaction</option>
 </select>
 <input type="submit" name="submit" value="Get Data" /><br><br>
-<input type="button" value="Back to Dashboard" onclick="location.href='sigadgetdashboard.php'" />
+<input type="button" value="Back to Dashboard" onclick="location.href='Bagian Sanctus/sigadgetdashboard.php'" />
 </form>
 
 <?php
@@ -258,7 +258,7 @@ if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'proce
 	  $row["Nama_Pembayaran"] . " / " . $row["Jenis_Pembayaran"] . " / " . $row["Status_Pembayaran"] . " / " . $row["Updated_at"] . "</td><td>" 
 	  . $row["Nama_Kurir"] . " " . $row["Produk_Kurir"] .  " / " . $row["Nomor_Resi"] . " / " . $row["Harga_Kurir"] . " / " . $row["Status_Pengiriman"] . "</td><td>" 
 	  . $row["Nama_Produk"] . " / " . $row["Jumlah_Terjual"] . " / " . $row["Total_Harga"] . "</td><td>" 
-	  . $row["Created_at"] . "</td><td><a href= 'sigadgetemergencyedit.php?idtransaksi=$row[ID_Transaksi]&idpembayaran=$row[ID_Pembayaran]&idpengiriman=$row[ID_Pengiriman]'>Emergency Edit</a></td>";
+	  . $row["Created_at"] . "</td><td><a href= 'sigadgetemergencyedit.php?idtransaksi=$row[ID_Transaksi]'>Emergency Edit</a></td>";
 	  
 	  if($row['Status_Pembayaran']=='Pending') {
 		echo "<td><a href= 'sigadgetchanges.php?oppbayar=pendingtobayar&idbayar=$row[ID_Pembayaran]&idkirim=$row[ID_Pengiriman]'>Pending to Terbayar</a></td>";
@@ -279,7 +279,6 @@ if(isset($_POST['sortalltransaction']) && $_POST['sortalltransaction'] == 'proce
 } else {
   echo "0 results";
 }
-
 }
 
 // output data order by today
