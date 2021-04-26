@@ -27,7 +27,7 @@ $check = mysqli_fetch_array($checkdata);
 		$typeheadphone = mysqli_real_escape_string($conn,$_POST['typeheadphone']);
 		$connectionheadphone = mysqli_real_escape_string($conn,$_POST['connectionheadphone']);
 		
-		$targetDir = "image/";
+		$targetDir = "../image/";
 		$fileName = basename($_FILES["file"]["name"]);
 		$targetFilePath = $targetDir . $fileName;
 		$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
@@ -148,7 +148,7 @@ $check = mysqli_fetch_array($checkdata);
 						$sql = "SELECT image FROM produk WHERE ID_Produk ='$_GET[id]'";
 						$result = mysqli_query($conn, $sql);
 						while($row = mysqli_fetch_array($result)) {
-								echo "<img src='image/{$row['image']}' width='20%' height='20%'>";
+								echo "<img src='../image/{$row['image']}' width='20%' height='20%'>";
 										echo "</div>";
 						}
 	?>

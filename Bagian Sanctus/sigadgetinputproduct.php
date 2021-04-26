@@ -22,7 +22,7 @@ $statusMsg = '';
 		$typeheadphone = mysqli_real_escape_string($conn,$_POST['typeheadphone']);
 		$connectionheadphone = mysqli_real_escape_string($conn,$_POST['connectionheadphone']);
 		
-		$targetDir = "image/";
+		$targetDir = "../image/";
 		$fileName = basename($_FILES["file"]["name"]);
 		$targetFilePath = $targetDir . $fileName;
 		$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
