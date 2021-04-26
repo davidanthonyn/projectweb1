@@ -575,7 +575,7 @@ $subject = mysqli_query($conn, $subjectName);
 
 <br>
 
-<p> Akan dibeli oleh : </p> 
+<p> Produk dibeli oleh : </p> 
 <p> <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </p> 
 <p> <?php echo $_SESSION['account_phonenumber'] ?> </p> 
 <br>
@@ -591,8 +591,6 @@ $subject = mysqli_query($conn, $subjectName);
 <?php 	
 
 		if(isset($_POST['simpan'])){
-			 $_SESSION["total_harga"] = $totalstring;
-		     $_SESSION["kuantitas"] = $qtystring;
 			 $_SESSION["radiobutton"] = $_POST['radiobutton'];
 		     $_SESSION["account_id"] = $checksecond["ID_User"];
 		 }
