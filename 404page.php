@@ -1,5 +1,5 @@
 <?php 
-include "sigadgetheadererror.php";
+
 ?>
 <html>
 <head>
