@@ -18,11 +18,8 @@ include "sigadgetheadercustomer.php";
 <div class="row">
 	<?php
 							//SQL All Products Published
-							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna,Stok_Produk FROM produk WHERE Brand='Huawei' 
-							AND Brand='Samsung' 
-							AND Brand='Xiaomi' 
-							AND Brand='ASUS' 
-							AND Brand='Realme' 
+							$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna,Stok_Produk FROM produk WHERE Jenis_Produk='Smartphone' 
+							AND OS='Android'
 							AND Status_Produk='Published'";
 							$result = $conn->query($sql);					
 							
