@@ -422,12 +422,17 @@ font-weight: normal;
 
 <br>
 
-
+<form method="post" action=" ">
 <button type="submit" class="btn-cart" name="show" >Show Shoping Details</button>
 
 <?php
 
- 
+	if(isset($_POST['show'])){
+		echo "Total harga is " . $_SESSION["total_harga"];
+		echo "kurir is " . $_SESSION["radiobutton"];
+		echo "jumlah is " . $_SESSION["kuantitas"];
+		
+	}
 
 ?>
-		
+		</form>
