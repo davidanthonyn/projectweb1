@@ -1,7 +1,5 @@
 <?php
-include "sigadgetconnection.php";
-
-session_start();
+include "sigadgetheaderhome.php";
 
 if(isset($_GET['logout'])) {
 		session_destroy();
@@ -9,7 +7,7 @@ if(isset($_GET['logout'])) {
 		header('location: home.php');
 }
 
-$sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
+
 $sqltwo = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='Iklan iPhone 11 Pro smartfren.png'");
 $sqlthree = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='Iklan iPhone 11.png'");
 $sqlfour = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='Iklan AirPods Pro.png'");
@@ -17,10 +15,6 @@ $sqlfive = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='user 
 $sqlsix = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='free-ongkir.jpg'");
 $sqlseven = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='accsr.jpg'");
 $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-Apple-store-Retail-in-Asia3.jpg'");
-
-	
-	while($row=mysqli_fetch_array($sql)) {
-		
 		
 ?>
 <!DOCTYPE html>
@@ -38,86 +32,8 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 	</style>
 
   <title>SI Gadget | Menjual Smartphone dan Aksesoris</title>
-								<link rel="shortcut icon" type="image" href="image/<?php echo $row['Filename']; ?>"> <?php } ?>
   </head>
 <body>
-<!----navigation--->
-<nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo" onclick="location.href='home.php';"></div></div>
-    <div class="navbar-right"  style="position: relative; left: 140px">
-        <ul>
-            <li><a href="Bagian David/iPhoneproducts.php">iPhone</a>
-			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="Bagian David/iphone12proproducts.php">iPhone 12 Pro</a></li>
-                    <li><a class="dropdown" href="Bagian David/iphone12products.php">iPhone 12</a></li>
-					<li><a class="dropdown" href="Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
-					<li><a class="dropdown" href="Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
-					<li><a class="dropdown" href="Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
-            </ul>
-          </li>
-
-                              	<li><a href="Bagian David/androidproducts.php">Android</a>
-																			<ul class="dropdown-list">
-																					<li><a class="dropdown" href="Bagian Migel/huawei.new.php">Huawei</a></li>
-																					<li><a class="dropdown" href="Bagian Migel/samsungads.new.php">Samsung</a></li>
-																					<li><a class="dropdown" href="Bagian Migel/xiaomi.new.php">Xiaomi</a></li>
-																					<li><a class="dropdown" href="Bagian Migel/asus.new.php">ASUS</a></li>
-																					<li><a class="dropdown" href="Bagian Migel/realme.php">Realme</a></li>
-																				</ul>
-                                  </li>
-																																		<li><a href="Bagian Tius/headphoneproducts.php">Headphone</a>
-                                                                    </li>
-
-																																																			<li><a href="Bagian Sanctus/eventpromo.php">Event and Promo</a>
-
-																																																													<li><a href="#">Layanan</a>
-																																																														<ul class="dropdown-list">
-																																																															<li><a class="dropdown" href="Bagian Sanctus/About.php">About</a></li>
-																																																															<li><a class="dropdown" href="Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
-																																																															<li><a class="dropdown" href="Bagian Sanctus/repair.php">Repair</a></li>
-																																																															<li><a class="dropdown" href="Bagian David/nomorresi.php">Track Resi</a></li>
-																																																														</ul>
-
-                                                                                                                            <li>
-																															<?php
-																															if(empty($_SESSION['account_username'])) {
-																																echo "<a href='Bagian David/account.php'>Login</a>";
-																																} else if(!empty($_SESSION['account_username'])) {
-																																	echo "<a><strong>$_SESSION[account_username]</strong></a>";
-																																	echo "<ul class='dropdown-list'>";
-																																	echo "<form method='GET' action='home.php' enctype='multipart/form-data'>";
-																																	echo "<li><a class='dropdown' href='customaccount.php'>Account</a></li>";
-																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
-																																	echo "</form>";
-																																	
-																																}
-																															?>
-																															</ul>
-																																	
-																																	
-																																																			<li>
-																																																						<?php
-																																																						if(empty($_SESSION['account_username'])) {
-																																																							} else if(!empty($_SESSION['account_username'])) {
-																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
-																																																								echo "<a href='Bagian Sanctus/sigadgetdashboard.php'>Dashboard</a>";
-																																																								echo "<ul class='dropdown-list'>";
-																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
-																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
-																																																									}
-																																																							}
-																																																						?>
-																																																						</ul>
-																																																								</li>
-
-        </ul>
-    </div>
-</nav>
 
 
 
@@ -125,11 +41,11 @@ $sqleight = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='New-
 
 <div class="slideshow-container" style="position: relative;overflow-x: hidden;" body="background-size: cover;">
 <div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-								<img src="image/<?php echo $rowtwo['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/PromotioniPhone11Pro.php'"> <?php } while($rowfour=mysqli_fetch_array($sqlfour)) {?>
+								<img src="image/<?php echo $rowtwo['Filename']; ?>" style="width:100%" onclick="document.location='Bagian David/iphone12proproducts.php'"> <?php } while($rowfour=mysqli_fetch_array($sqlfour)) {?>
 </div>
 
 <div class="mySlides fade about-section animate__animated animate__fadeInLeft">
-  <img src="image/<?php echo $rowfour['Filename']; ?>" style="width:100%" onclick="document.location='Bagian Tius/headphone.php'"> <?php } while($rowthree=mysqli_fetch_array($sqlthree)) {?>
+  <img src="image/<?php echo $rowfour['Filename']; ?>" style="width:100%" onclick="document.location='Bagian Tius/headphoneproducts.php'"> <?php } while($rowthree=mysqli_fetch_array($sqlthree)) {?>
 </div>
 
 <div class="mySlides fade about-section animate__animated animate__fadeInLeft">
