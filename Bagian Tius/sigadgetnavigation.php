@@ -335,7 +335,7 @@ font-weight: normal;
 <body>
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
-<body>
+</body>
 
 <!----navigation--->
 <nav class="navbar">
@@ -584,15 +584,16 @@ $subject = mysqli_query($conn, $subjectName);
     </div>
 	
 
-<button type="submit" class="btn-cart" name="simpan">Next</button>
+<button type="submit" class="btn-cart" name="simpan" ><a href="sigadgetpembayaran.php">Next</a></button>
 
 <?php 	
 
-		// if(isset($_POST['simpan'])){
-		//	 $_SESSION["total_harga"] = $totalstring;
-		//	 $_SESSION["kuantitas"] = $qtystring;
-		//	 $_SESSION["account_id"] = $checksecond["ID_User"];
-		// }
+		if(isset($_POST['simpan'])){
+			 $_SESSION["total_harga"] = $totalstring;
+		     $_SESSION["kuantitas"] = $qtystring;
+			 $_SESSION["radiobutton"] = $_POST['radiobutton'];
+		     $_SESSION["account_id"] = $checksecond["ID_User"];
+		 }
 	
 	?>
  </form>
