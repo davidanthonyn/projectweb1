@@ -248,19 +248,12 @@ body {
 
                               	<li><a href="../Bagian David/androidproducts.php">Android</a>
 																			<ul class="dropdown-list">
-																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/xiaomi.new.php">Xiaomi</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/asus.new.php">ASUS</a></li>
 																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
 																				</ul>
                                   </li>
-																																		<li><a href="../Bagian Tius/halamanaksesoris.php">Aksesoris</a>
-																																		<ul class="dropdown-list">
-																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
-																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
-																																				<li><a class="dropdown" href="../Bagian Tius/aksesorislain.php">Aksesoris Lain</a></li>
-																																			</ul>
+																																		<li><a href="../Bagian Tius/headphoneproducts.php">Headphone</a>
                                                                     </li>
 
 																																																			<li><a href="../Bagian Sanctus/eventpromo.php">Event and Promo</a>
@@ -293,7 +286,7 @@ body {
 																																																						if(empty($_SESSION['account_username'])) {
 																																																							} else if(!empty($_SESSION['account_username'])) {
 																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
-																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
+																																																								echo "<a href='../Bagian Sanctus/sigadgetdashboard.php'>Dashboard</a>";
 																																																								echo "<ul class='dropdown-list'>";
 																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
 																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
