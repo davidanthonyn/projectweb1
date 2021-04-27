@@ -504,13 +504,13 @@ font-weight: normal;
 
         <div class="row">
           <div class="col-50">
-            <h3>Informasi Pembelian Produk</h3>
+            <h3>Product Purchase Information</h3>
 			<hr>
-           <p> Akan dibeli oleh : <strong>  <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </strong></p> 
+           <p> Will be bought by : <strong>  <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </strong></p> 
 	
-	<p>Nomor HP: <?php echo $_SESSION['account_phonenumber'] ?> </p> 
+	<p>Customer Phone Number: <?php echo $_SESSION['account_phonenumber'] ?> </p> 
 	
-	<p> Alamat : <?php echo $_SESSION['account_address'] ?></p> 
+	<p> Address : <?php echo $_SESSION['account_address'] ?></p> 
 	
 
    </div>
@@ -529,33 +529,20 @@ font-weight: normal;
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <input type="text" id="cname" name="cardname" placeholder="Fransiskus Advendtius Marlie">
             <label for="ccnum">Credit card number</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
           </div>
 
         </div>
-        <input type="submit"  value="Beli" class="btn">
+       
      
     </div>
   </div>
 
   <div class="col-25">
     <div class="container">
-      <h4>Detail Pembelian Product
+      <h4>Product Purchase Details
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
           <b>	<?php
@@ -575,13 +562,46 @@ font-weight: normal;
         </span>
       </h4>
 	  <?php
-		echo "total harga is " . $_SESSION["total_harga"] . ".<br>";
-		echo "kuantitas yang dibeli is " . $_SESSION["kuantitas"] . ".<br>";
-		echo "kurir is " . $_SESSION["radiobutton"] . ".<br>";
-		echo "id user pembeli is " . $_SESSION["account_id"] . ".";
+		$_SESSION['id_kurir']=$_POST['radiobutton'];
+		$kurirfinal = "SELECT Nama_Kurir , Produk_Kurir , Harga_Kurir FROM kurir WHERE ID_Kurir='$_SESSION[id_kurir]'";
+		$hasil = mysqli_query($conn,$kurirfinal);
+		$hasilarray = mysqli_fetch_array($hasil);
+		
+				
+		echo "Quantity of Product Purchased : " . $_SESSION["kuantitas"] . ".<br>";
+		echo "Total Product Price : " . $_SESSION["total_harga"] . ".<br>";
+		
+		echo "Courier Name : " . $hasilarray['Nama_Kurir'] . ".<br>";
+		echo "Courier Type :" . $hasilarray['Produk_Kurir'] . ".<br>";
+		echo "Courier Price : " . $hasilarray['Harga_Kurir'] . ".<br>";
+	
+		$Totalharga = $_SESSION["total_harga"];
+		$Totalhargaint = (int)$Totalharga;
+		
+		$Totalhargakurir = $hasilarray["Harga_Kurir"];
+		$Kurirhargaint = (int)$Totalhargakurir;
+		
+		$hargafinal = $Totalhargaint +$Kurirhargaint;
+
 		?>
+		
+		
+			 
+			 
+			
+		
       <hr>
-      <p>Total <span class="price" style="color:black"><b>39900000</b></span></p>
+      <p>Total <span class="price" style="color:black"><b><?php echo $hargafinal; ?></b></span></p>
+	  
+	   <input type="submit" name="beli" value="Beli" class="btn">
+		<?php 
+		
+		 if(isset($_POST['beli'])){
+		 }
+			 ?>
+			 
+		<input type="button" value="Back"  onclick="location.href='sigadgetnavigation.php'" />		
+		
     </div>
   </div>
 </div>

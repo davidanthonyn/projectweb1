@@ -80,10 +80,10 @@ th, td {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 25%;
+  width: 50%;
   font-size: 15px;
-  margin: 0px 340px 200px 35px;
-  position: 400px;
+  margin: 30px 30px 20px 35px;
+  position: 40px;
 }
 	
 	
@@ -427,11 +427,11 @@ font-weight: normal;
 <div class="small-container">
 <div class="row">    
 
-<h3>Form Hitung Total Bayar</h3>
+<h3>Total Pay Calculation Form</h3>
     <form method="POST">
         <table>
             <tr>
-                <td>Nama Barang</td>
+                <td>Name of Product</td>
                 <td>:</td>
                 <td>
 				
@@ -451,7 +451,7 @@ font-weight: normal;
 	   </td>
             </tr>
             <tr>
-			<td>Harga</td>
+			<td>Price</td>
                 <td>:</td>
 				
                  <td> <text type="number_format" name="harga" >
@@ -463,11 +463,11 @@ font-weight: normal;
             </tr>
 			
             <tr>
-                <td>Jumlah Item Barang</td>
+                <td>The Quantity of items to be purchased</td>
                 <td>:</td>
                 <td>
                     <select name="qty">
-                        <option value="">- Jumlah -</option>
+                        <option value="">- Quantity -</option>
                         <?php
                             for($x=1;$x<=50;$x++){
                         ?>
@@ -494,7 +494,7 @@ font-weight: normal;
     <hr />
 
 <form method="post" action="sigadgetpembayaran.php">
-    <h3>Hasil :</h3>
+    <h3>Result :</h3>
 <?php
  $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
   if ( isset($_GET['reset']) )
@@ -533,70 +533,58 @@ echo "Silahkan isi jumlah produk yang ingin dibeli";
                     <td align='right'>";echo number_format($total,0,',','.');echo "</td>
                 </tr>
             </table>
-        ";
-}
-    }
-	
-	if(isset($_POST['hitung'])){
-		
-	
-	$subjectName = "SELECT * FROM kurir";
-
-
-$subject = mysqli_query($conn, $subjectName);
-?>
-<div class="tulisankurir">
-<h4> Select Courier : </h4>
- 
- 
- 
- <?php
- 
- while($data = mysqli_fetch_array($subject)) {
- 
- echo "<input type='radio' name='radiobutton' value='{$data['Nama_Kurir']}'>" ,
-											"<value='{$data['Produk_Kurir']}'>" ,
-											"<value='{$data ['Harga_Kurir']}'>"
-		. $data['Nama_Kurir'] . " / " . $data['Produk_Kurir'] . " / " . $data['Harga_Kurir'] . '</br>';
-		
-	//if(isset($_POST[$data['ID_Kurir']]) && $_POST[$data['ID_Kurir']] == 'pricedesc') {
-	//<option value="pricedesc">Show All Sales Based on Total Price Descending</option>
-	//}
-	
-	
-}
-
-		
-	}
+			";
 			
+		$subjectName = "SELECT * FROM kurir";
+		$subject = mysqli_query($conn, $subjectName);
+
+			echo "<div class='tulisankurir'>
+			<h4> Select Courier : </h4>";
+			
+			while($data = mysqli_fetch_array($subject)) { 
+
+	 	 	 
+			echo "<input type='radio' name='radiobutton' value='{$data['ID_Kurir']}'>" . 
+			$data['Nama_Kurir'] . " / " . $data['Produk_Kurir'] . " / " . $data['Harga_Kurir'] . '</br>';
+
+				}
+			echo "</div>";
+			
+			echo "<button type='submit' class='btn-cart' name='simpan' ><a href='sigadgetpembayaran.php'>Next</a></button>";
+			if(isset($_POST['simpan'])){
+			
+		     $_SESSION["account_id"] = $checksecond["ID_User"];
+		 }
+				}
+	
+	
+			
+        
+}
+   
+	
 		
+	
+	
 ?>
 
+ </form>
+ 
+ <form action="../home.php">
+ <input type="submit" name="back" value="Back" class="btn">
+ </form>
+ 
+ 
+
+
 
 <br>
-
-<p> Produk dibeli oleh : </p> 
-<p> <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </p> 
-<p> <?php echo $_SESSION['account_phonenumber'] ?> </p> 
-<br>
-<p> Alamat : </p> 
-<p> <?php echo $_SESSION['account_address'] ?> </p> 
 
    </div>
     </div>
 	
-
-<button type="submit" class="btn-cart" name="simpan" ><a href="sigadgetpembayaran.php">Next</a></button>
-
-<?php 	
-
-		if(isset($_POST['simpan'])){
-			 $_SESSION["radiobutton"] = $_POST['radiobutton'];
-		     $_SESSION["account_id"] = $checksecond["ID_User"];
-		 }
 	
-	?>
- </form>
+
 	</div>
 </body>
 </html>
