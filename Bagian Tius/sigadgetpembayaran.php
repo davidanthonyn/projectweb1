@@ -545,7 +545,8 @@ font-weight: normal;
       <h4>Product Purchase Details
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>	<?php
+          <b>	
+		  <?php
     $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
     $result = mysqli_query($conn, $sql);
 	$resultCheck = mysqli_fetch_array($result);
@@ -557,8 +558,11 @@ font-weight: normal;
 
 	}
 	?>
+
 	<hr>
+
 	</b>
+
         </span>
       </h4>
 	  <?php
@@ -597,8 +601,39 @@ font-weight: normal;
 		<?php 
 		
 		 if(isset($_POST['beli'])){
-		 }
-			 ?>
+
+		$idproduk = mysqli_real_escape_string($conn,$_SESSION['idproduct']);
+		$kuantitasproduk = mysqli_real_escape_string($conn,$_SESSION['kuantitas']);
+		$hargaproduk = mysqli_real_escape_string($conn,$_SESSION["Harga_Produk"]);
+		$hargaproduktotal = mysqli_real_escape_string($conn,$hargafinal);
+
+					$insert = mysqli_query($conn,"INSERT INTO `penjualan`(`ID_Penjualan`, `ID_Produk`, `Jumlah_Terjual`, `Harga_Produk`, `Total_Harga`, `Created_at`)
+					 VALUES (NULL,'$idproduk','$kuantitasproduk','$hargaproduk','$hargaproduktotal',now())");
+					
+					$conn->close();
+					
+					if($insert) {
+									?>
+																				<script>
+																				alert('Purchase succeed, back to home');
+																				window.location.href='../home.php';
+																				</script>
+																				
+																			<?php
+									
+								} else {
+									echo mysqli_error();
+				}
+
+	}
+
+?>
+
+
+</body>
+</html>
+
+
 			 
 		<input type="button" value="Back"  onclick="location.href='sigadgetnavigation.php'" />		
 		

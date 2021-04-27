@@ -318,6 +318,7 @@ ul.no-bullets {
 							<button hidden id="up" onclick="setQuantity('up');">+</button>
 							<?php 
 							$_SESSION["productbuy"] = $check["Nama_Produk"];
+							$_SESSION["idproduct"] = $check["ID_Produk"];
 							
 							if($check["Stok_Produk"]>=1) {
 							echo "<a href='../Bagian Tius/sigadgetnavigation.php' class='btn-cart'>Beli</a>";

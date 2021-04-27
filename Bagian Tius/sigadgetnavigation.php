@@ -436,7 +436,7 @@ font-weight: normal;
                 <td>
 				
 				<?php
-    $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
+    $sql = "SELECT  Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
     $result = mysqli_query($conn, $sql);
 	$resultCheck = mysqli_fetch_array($result);
     
@@ -445,6 +445,7 @@ font-weight: normal;
               echo "<img src='../image/$resultCheck[image]' class='img-responsive floating-image left'>";
        echo  "<h2>$resultCheck[Nama_Produk]</h2>";
 
+		
 	}
 	?>
 
