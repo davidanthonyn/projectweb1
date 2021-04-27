@@ -1,14 +1,5 @@
 <?php
-include "../sigadgetconnection.php";
-
-session_start();
-
-if(isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['account_username']);
-		header('location: ../Bagian Sanctus/pembayaran.php');
-}
-
+include "../Bagian David/sigadgetheadercustomer.php";
 ?>
 
 <!DOCTYPE html>
@@ -497,89 +488,6 @@ if(isset($_GET['logout'])) {
 Daftar animasinya ada di website https://animate.style -->
 
 <body>
-
-<!-- Ini adalah Navigasi, Navigasi adalah Kepala dari Website.. Untuk mempermudah user, menjelajahi web.
-Direkomendasikan Copas dari sini-->
-<!----navigation--->
-<nav class="navbar">
-    <div class="navbar-left"  style="position: relative; left: 140px"><div class="logo animate__animated animate__fadeInDown" onclick="location.href='../home.php';"></div></div>
-    <div class="navbar-right"  style="position: relative; left: 140px">
-        <ul>
-            <li><a href="../Bagian David/iPhoneproducts.php">iPhone</a>
-			<ul class="dropdown-list">
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhoneSE.php">iPhone SE</a></li>
-                    <li><a class="dropdown" href="../Bagian David/PromotioniPhone11Pro.php">iPhone 11 Pro</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhone11.php">iPhone 11</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXS.php">iPhone XS</a></li>
-					<li><a class="dropdown" href="../Bagian David/PromotioniPhoneXR.php">iPhone XR</a></li>
-            </ul>
-          </li>
-
-                              	<li><a href="../Bagian David/androidproducts.php">Android</a>
-																			<ul class="dropdown-list">
-																					<li><a class="dropdown" href="../Bagian Migel/huawei.new.php">Huawei</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/samsungads.new.php">Samsung</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/xiaomi.new.php">Xiaomi</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/asus.new.php">ASUS</a></li>
-																					<li><a class="dropdown" href="../Bagian Migel/realme.php">Realme</a></li>
-																				</ul>
-                                  </li>
-																																		<li><a href="../Bagian David/accessoriesproducts.php">Aksesoris</a>
-																																		<ul class="dropdown-list">
-																																				<li><a class="dropdown" href="../Bagian Tius/headphone.php">Headphone</a></li>
-																																				<li><a class="dropdown" href="../Bagian Tius/wirelesscharger.php">Powerbank</a></li>
-																																				<li><a class="dropdown" href="../Bagian Tius/aksesorislain.php">Aksesoris Lain</a></li>
-																																			</ul>
-                                                                    </li>
-
-																																																			<li><a href="../Bagian Sanctus/eventpromo.php">Event and Promo</a>
-
-																																																													<li><a href="#">Layanan</a>
-																																																														<ul class="dropdown-list">
-																																																															<li><a class="dropdown" href="../Bagian Sanctus/About.php">About</a></li>
-																																																															<li><a class="dropdown" href="../Bagian Sanctus/lokasitoko.php">Lokasi Toko</a></li>
-																																																															<li><a class="dropdown" href="../Bagian Sanctus/repair.php">Repair</a></li>
-																																																														</ul>
-
-                                                                                                                            <li>
-																															<?php
-																															if(empty($_SESSION['account_username'])) {
-																																echo "<a href='../Bagian David/account.php'>Login</a>";
-																																} else if(!empty($_SESSION['account_username'])) {
-																																	echo "<a><strong>$_SESSION[account_username]</strong></a>";
-																																	echo "<ul class='dropdown-list'>";
-																																	echo "<form method='GET' action='../home.php' enctype='multipart/form-data'>";
-																																	echo "<li><a class='dropdown' href='../customaccount.php'>Account</a></li>";
-																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
-																																	echo "</form>";
-																																	
-																																}
-																															?>
-																															</ul>
-																																																			<li>
-																																																						<?php
-																																																						if(empty($_SESSION['account_username'])) {
-																																																							} else if(!empty($_SESSION['account_username'])) {
-																																																									if(!empty($_SESSION['account_userlevel']) && $_SESSION['account_userlevel']=='admin') {
-																																																								echo "<a href='sigadgetdashboard.php'>Dashboard</a>";
-																																																								echo "<ul class='dropdown-list'>";
-																																																								echo "<li><a class='dropdown' href='../sigadgettransactions.php'>Transactions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
-																																																								echo "<li><a class='dropdown' href='../Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
-																																																								echo "<li><a class='dropdown' href='../sigadgetregisterimage.php'>Pictures</a></li>";
-																																																									}
-																																																							}
-																																																						?>
-																																																						</ul>
-																																																								</li>
-
-        </ul>
-    </div>
-</nav>
-<!--Copas dari atas sampai sini -->
 
 <p style="text-align:left; font-size: 15px; position: relative; left: 75px; z-index:-7;">Home / Cart / Pilih Kurir / Pilih Metode Pembayaran</p>
 <hr>
