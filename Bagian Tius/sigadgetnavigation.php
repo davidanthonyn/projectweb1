@@ -89,6 +89,7 @@ th, td {
 	
 	body {
 	font-family: 'Roboto', sans-serif;
+	background-image: url(../image/bg.jpg);
 	}
 	
 		.logo{
@@ -329,10 +330,14 @@ font-weight: normal;
 	transform: translateY(-5px);
 }
 	
+	
+
 </style>
   <title>Product Navigation</title>
 </head>
 <body>
+	
+
   <link rel="shortcut icon" type="image" href="../smartphone.png">
   </head>
 </body>
@@ -418,7 +423,6 @@ font-weight: normal;
 </nav>
 
 <h1 style="text-align:center;" >Product Navigation</h1><br>
-
 
 <br>
 <!----Produk Detail---->
