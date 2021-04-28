@@ -531,7 +531,7 @@ font-weight: normal;
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="Fransiskus Advendtius Marlie">
             <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
           </div>
 
         </div>
@@ -557,6 +557,8 @@ font-weight: normal;
        echo  "<h2>$resultCheck[Nama_Produk]</h2>";
 
 	}
+	
+	 
 	?>
 
 	<hr>
@@ -587,6 +589,7 @@ font-weight: normal;
 		$_SESSION['kurirfinale'] = $Kurirhargaint;
 		$hargafinale = $Totalhargaint +$Kurirhargaint;
 		
+	
 		?>
 		
 		

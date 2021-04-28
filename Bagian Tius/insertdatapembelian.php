@@ -17,7 +17,7 @@ session_start();
 		$iduser = $_SESSION['account_id'];
 	
 		
- 
+
 		
 		
 		
@@ -25,11 +25,12 @@ session_start();
 					`Harga_Produk`, `Total_Harga`, `Created_at`)
 					 VALUES (NULL,$idproduk,$kuantitasproduk,$hargaproduk,$hargaproduktotal,now())");
 					
-				//	$insert = mysqli_query($conn,"INSERT INTO pembayaranuser(`ID_Pembayaran`, `ID_User`, `Kode_Pembayaran`, 
-				//	`Card_Number`, `ID_Transaksi`, `Created_at`, `Updated_at`, `Status_Pembayaran`) 
-				//	VALUES (NULL,$iduser,1,'111111',2,now(),now(),'Terbayar')");
+					$insert2 = mysqli_query($conn,"INSERT INTO pembayaranuser(`ID_Pembayaran`, `ID_User`, `Kode_Pembayaran`, 
+					`Card_Number`, `ID_Transaksi`, `Created_at`, `Updated_at`, `Status_Pembayaran`) 
+					VALUES (NULL,$iduser,1,'111111',1,now(),now(),'Terbayar')");
 					
-					$conn->close();
+					$insert3 = mysqli_query($conn," INSERT INTO `transaksi`(`ID_Transaksi`, `ID_User`, `ID_Pembayaran`, 
+					`ID_Pengiriman`, `ID_Penjualan`) VALUES (NULL,$iduser,1,1,1)");
 					
 					if($insert) {
 									?>
@@ -41,7 +42,7 @@ session_start();
 																			<?php
 									
 								} else {
-									echo 'Purchase Error! , try again later..';
+									echo mysqli_error($conn);
 
 
 								}
