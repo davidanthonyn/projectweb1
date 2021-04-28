@@ -489,7 +489,7 @@ font-weight: normal;
                 <td>
 				<form action="/sigadgetnavigation.php">
 
-                    <input type="submit" name="hitung" value="Hitung">
+                    <input type="submit" name="hitung" value="Count">
                     <input type="submit" name="reset" value="Reset">
 					</form>
                 </td>
@@ -523,13 +523,14 @@ echo "Silahkan isi jumlah produk yang ingin dibeli";
         $qtystring = (string) $qty;
 		 $_SESSION["total_harga"] = $totalstring;
 		 $_SESSION["kuantitas"] = $qtystring;
+		 $_SESSION["Harga_Produk"] = $harga;
         echo "
             <table border='1' cellpadding='4'>
                 <tr>
-                    <td>Nama Barang</td>
-                    <td>Harga</td>
-                    <td>Banyaknya</td>
-                    <td>Total Harga</td>
+                    <td>Product Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total Price</td>
                 </tr>
                 <tr>
                     <td>$nama</td>

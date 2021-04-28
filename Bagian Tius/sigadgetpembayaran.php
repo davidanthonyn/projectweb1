@@ -116,9 +116,9 @@ label {
   background-color: #4CAF50;
   color: white;
   padding: 12px;
-  margin: 10px 500px;
+  margin: 10px 60px;
   border: none;
-  width: 100%;
+  width: 50%;
   border-radius: 3px;
   cursor: pointer;
   font-size: 17px;
@@ -584,9 +584,9 @@ font-weight: normal;
 		
 		$Totalhargakurir = $hasilarray["Harga_Kurir"];
 		$Kurirhargaint = (int)$Totalhargakurir;
+		$_SESSION['kurirfinale'] = $Kurirhargaint;
+		$hargafinale = $Totalhargaint +$Kurirhargaint;
 		
-		$hargafinal = $Totalhargaint +$Kurirhargaint;
-
 		?>
 		
 		
@@ -595,49 +595,22 @@ font-weight: normal;
 			
 		
       <hr>
-      <p>Total <span class="price" style="color:black"><b><?php echo $hargafinal; ?></b></span></p>
+      <p>Total <span class="price" style="color:black"><b><?php echo number_format($hargafinale,0,',','.');?></b></span></p>
 	  
+	  <input type="button" value="Back"  onclick="location.href='sigadgetnavigation.php'" />	
+	  
+		<form method="post" action="insertdatapembelian.php">  
 	   <input type="submit" name="beli" value="Beli" class="btn">
-		<?php 
+	    </form>
 		
-		 if(isset($_POST['beli'])){
-
-		$idproduk = mysqli_real_escape_string($conn,$_SESSION['idproduct']);
-		$kuantitasproduk = mysqli_real_escape_string($conn,$_SESSION['kuantitas']);
-		$hargaproduk = mysqli_real_escape_string($conn,$_SESSION["Harga_Produk"]);
-		$hargaproduktotal = mysqli_real_escape_string($conn,$hargafinal);
-
-					$insert = mysqli_query($conn,"INSERT INTO `penjualan`(`ID_Penjualan`, `ID_Produk`, `Jumlah_Terjual`, `Harga_Produk`, `Total_Harga`, `Created_at`)
-					 VALUES (NULL,'$idproduk','$kuantitasproduk','$hargaproduk','$hargaproduktotal',now())");
-					
-					$conn->close();
-					
-					if($insert) {
-									?>
-																				<script>
-																				alert('Purchase succeed, back to home');
-																				window.location.href='../home.php';
-																				</script>
-																				
-																			<?php
-									
-								} else {
-									echo mysqli_error();
-				}
-
-	}
-
-?>
-
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
 
 
 			 
-		<input type="button" value="Back"  onclick="location.href='sigadgetnavigation.php'" />		
-		
-    </div>
-  </div>
-</div>
- </form>
+			
+
