@@ -295,7 +295,7 @@ body {
 																																																								echo "<li><a class='dropdown' href='sigadgettransactions.php'>Transactions</a></li>";
 																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetproducts.php'>Products</a></li>";
 																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetsales.php'>Sales</a></li>";
-																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcourierdistributions.php'>Couriers & Distributions</a></li>";
+																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcouriers.php'>Couriers & Distributions</a></li>";
 																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetcustomers.php'>Customers</a></li>";
 																																																								echo "<li><a class='dropdown' href='Bagian Sanctus/sigadgetadmins.php'>Admins</a></li>";
 																																																								echo "<li><a class='dropdown' href='sigadgetregisterimage.php'>Pictures</a></li>";
