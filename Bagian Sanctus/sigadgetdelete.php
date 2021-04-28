@@ -57,6 +57,7 @@ $sql = "DELETE FROM produk WHERE ID_Produk = '$id'";
 
 ?>
 <?php 
+//Hapus kurir
 if($_GET['kurir']=="delete") {
 	$id=$_GET['id'];
 $sql = "DELETE FROM kurir WHERE ID_Kurir = '$id'";
@@ -82,3 +83,120 @@ $sql = "DELETE FROM kurir WHERE ID_Kurir = '$id'";
 			<?php
 		}	
 }
+?>
+
+<?php
+//Menonaktifan admin
+if($_GET['admin']=="nonactivate") {
+	$id=$_GET['id'];
+	$sql = mysqli_query($conn, "UPDATE `user` SET userstatus='Disabled',Updated_at=now() WHERE ID_User='$id'");
+	
+		$result = $conn->query($sql);
+	
+	if($result) {
+		?>
+		<script>
+		alert('Non-activate admin success.');
+		window.location.href='sigadgetadmins.php';
+		</script>
+		
+	<?php
+	}
+		else {
+			?>
+			<script>
+		alert('Non-activate admin success.');
+		window.location.href='sigadgetadmins.php';
+		</script>
+			
+			<?php
+		}	
+}
+?>
+
+<?php
+//Mengaktifkan admin
+if($_GET['admin']=="activate") {
+	$id=$_GET['id'];
+	$sql = mysqli_query($conn, "UPDATE `user` SET userstatus='Activate',Updated_at=now() WHERE ID_User='$id'");
+	
+		$result = $conn->query($sql);
+	
+	if($result) {
+		?>
+		<script>
+		alert('Re-activate admin success.');
+		window.location.href='sigadgetadmins.php';
+		</script>
+		
+	<?php
+	}
+		else {
+			?>
+			<script>
+		alert('Re-activate admin success.');
+		window.location.href='sigadgetadmins.php';
+		</script>
+			
+			<?php
+		}	
+}
+?>
+
+<?php
+//Menonaktifan customer
+if($_GET['customer']=="nonactivate") {
+	$id=$_GET['id'];
+	$sql = mysqli_query($conn, "UPDATE `user` SET userstatus='Disabled',Updated_at=now() WHERE ID_User='$id'");
+	
+		$result = $conn->query($sql);
+	
+	if($result) {
+		?>
+		<script>
+		alert('Non-activate customer success.');
+		window.location.href='sigadgetcustomers.php';
+		</script>
+		
+	<?php
+	}
+		else {
+			?>
+			<script>
+		alert('Non-activate customer success.');
+		window.location.href='sigadgetcustomers.php';
+		</script>
+			
+			<?php
+		}	
+}
+?>
+
+<?php
+//Mengaktifkan customer
+if($_GET['customer']=="activate") {
+	$id=$_GET['id'];
+	$sql = mysqli_query($conn, "UPDATE `user` SET userstatus='Activate',Updated_at=now() WHERE ID_User='$id'");
+	
+		$result = $conn->query($sql);
+	
+	if($result) {
+		?>
+		<script>
+		alert('Re-activate customer success.');
+		window.location.href='sigadgetcustomers.php';
+		</script>
+		
+	<?php
+	}
+		else {
+			?>
+			<script>
+		alert('Re-activate customer success.');
+		window.location.href='sigadgetcustomers.php';
+		</script>
+			
+			<?php
+		}	
+}
+?>

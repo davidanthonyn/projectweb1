@@ -21,7 +21,13 @@ include "sigadgetheader.php";
   while($row = $result->fetch_assoc()) {
 	  echo "<tr><td>" . $row["ID_User"] . "</td><td>" . $row["username"] . "</td><td>" . 
 	  $row["Nama_Lengkap"] . "</td><td>" . $row["email"] . 
-	  "</td><td>" . $row["No_Telepon"] . "</td><td>" . $row["Alamat"] . "</td></tr>";
+	  "</td><td>" . $row["No_Telepon"] . "</td><td>" . $row["Alamat"] . "</td>";
+	  
+		if($row['userstatus']=="Activate") {
+			 echo "<td><a href= 'sigadgetdelete.php?admin=nonactivate&id=$row[ID_User]'>Non-activate</a></td></tr>";
+		} else if($row["userstatus"]=="Disabled") {
+			 echo "<td><a href= 'sigadgetdelete.php?admin=activate&id=$row[ID_User]'>Activate</a></td></tr>";
+		}
   }
 } else {
   echo "0 results";
