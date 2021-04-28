@@ -40,7 +40,7 @@ include "sigadgetheader.php";
 
   <input type="submit" name="registercourier" value="Register Courier">
   <br><br>
-  <input type="button" value="Back" onclick="location.href='sigadgetdashboard.php'" />
+  <input type="button" value="Back" onclick="location.href='sigadgetcouriers.php'" />
 </form>
 
 </body>
