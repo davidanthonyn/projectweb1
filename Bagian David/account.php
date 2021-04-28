@@ -382,7 +382,7 @@ form a{
 						<input type="password" placeholder="Password" id="myPasswordLogin" name="password">
 						<button type="submit" class="btn-cart" onclick="loginAccount()" name="login">Login</button>
 						<?php include('../sigadgeterrors.php'); ?>
-						<a href="../Bagian David/forgotpassword.php">Forgot Password</a>
+				<!--		<a href="../Bagian David/forgotpassword.php">Forgot Password</a> -->
 					</form>
 					
 					<form id="RegForm" method="POST" action="account.php">
