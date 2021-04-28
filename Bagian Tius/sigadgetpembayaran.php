@@ -22,7 +22,7 @@ if(isset($_GET['logout'])) {
 
 if(empty($_SESSION['account_username']) && empty($_SESSION['productbuy'])) {
  header('location: ../home.php');
-} 
+}
 
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
 
@@ -44,19 +44,19 @@ th, td {
   padding: 15px;
   text-align: left;
 }
-   
-	
-	
-	
+
+
+
+
 	.tulisankurir {
 		 margin: 20px 340px 200px 35px;
          padding: 25px 12px;
          position: relative;
          max-width: 800px;
-		  
-	
+
+
 	}
-	
+
 	.row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -122,7 +122,7 @@ label {
   border-radius: 3px;
   cursor: pointer;
   font-size: 17px;
- 
+
 }
 
 .btn:hover {
@@ -143,7 +143,7 @@ span.price {
     margin-bottom: 20px;
   }
 }
-	
+
 	.btn-cart {
   border: none;
   outline: 0;
@@ -157,15 +157,15 @@ span.price {
   margin: 0px 340px 200px 35px;
   position: 400px;
 }
-	
-	
-	
-	
-	
+
+
+
+
+
 	body {
 	font-family: 'Roboto', sans-serif;
 	}
-	
+
 		.logo{
 		background-image: url(../smartphone.png);
 		width: 40px;
@@ -186,7 +186,7 @@ span.price {
 				height:51px;
 				background:#000000;
 			}
- 
+
 			.navbar ul{
 				float:left;
 				margin:0;
@@ -336,12 +336,12 @@ span.price {
 					}
 
 					@-webkit-keyframes fade {
-					  from {opacity: .4} 
+					  from {opacity: .4}
 					  to {opacity: 1}
 					}
 
 					@keyframes fade {
-					  from {opacity: .4} 
+					  from {opacity: .4}
 					  to {opacity: 1}
 					}
 
@@ -403,7 +403,7 @@ font-weight: normal;
 .col-4:hover {
 	transform: translateY(-5px);
 }
-	
+
 </style>
   <title>Product Navigation</title>
 </head>
@@ -464,7 +464,7 @@ font-weight: normal;
 																																	echo "<li><a class='dropdown' href='../customaccount.php'>Account</a></li>";
 																																	echo "<li><input class='dropdown' type='submit' name='logout' value='Logout'></a></li>";
 																																	echo "</form>";
-																																	
+
 																																}
 																															?>
 																															</ul>
@@ -491,7 +491,7 @@ font-weight: normal;
         </ul>
     </div>
 </nav>
-<form method="post" action=" ">
+
 <h1 style="text-align:center;" >Payment Details</h1><br>
 
 <br>
@@ -500,43 +500,43 @@ font-weight: normal;
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
-
-        <div class="row">
-          <div class="col-50">
-            <h3>Product Purchase Information</h3>
+			<form action="/action_page.php">
+  		<div class="row">
+    	<div class="col-50">
+				<h3>Product Purchase Information</h3>
 			<hr>
-           <p> Will be bought by : <strong>  <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </strong></p> 
-	
-	<p>Customer Phone Number: <?php echo $_SESSION['account_phonenumber'] ?> </p> 
-	
-	<p> Address : <?php echo $_SESSION['account_address'] ?></p> 
-	
-
-   </div>
-    </div>
-          </div>
+				<p> Will be bought by : <strong>  <?php echo $_SESSION['account_fullname'] ?> (<?php echo $_SESSION['account_username'] ?>) </strong></p>
+				<p>Customer Phone Number: <?php echo $_SESSION['account_phonenumber'] ?> </p>
+				<p> Address : <?php echo $_SESSION['account_address'] ?></p>
+		</div>
+	</div>
+ 		</div>
 		</form>
-		
+
 		 <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards | MANDIRI</label>
-			<hr>
+			 <h3>Payment</h3>
+			 <label for="fname">Accepted Cards | MANDIRI</label>
+				<hr>
             <div class="icon-container">
               <i class="fa fa-cc-visa" style="color:navy;"></i>
               <i class="fa fa-cc-amex" style="color:blue;"></i>
               <i class="fa fa-cc-mastercard" style="color:red;"></i>
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
+<<<<<<< Updated upstream
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="Fransiskus Advendtius Marlie">
             <label for="ccnum">Credit card number</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+=======
+						<form method="post" action="insertdatapembelian.php">
+	            <label for="cname">Name on Card</label>
+	            <input type="text" id="cname" name="cardname" placeholder="Fransiskus Advendtius Marlie" required>
+	            <label for="ccnum">Credit card number</label>
+	            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+>>>>>>> Stashed changes
           </div>
-
         </div>
-       
-     
     </div>
   </div>
 
@@ -545,28 +545,31 @@ font-weight: normal;
       <h4>Product Purchase Details
         <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>	
-		  <?php
-    $sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
-    $result = mysqli_query($conn, $sql);
-	$resultCheck = mysqli_fetch_array($result);
-    
-    if ($resultCheck > 0){
-        
-             
-       echo  "<h2>$resultCheck[Nama_Produk]</h2>";
+          <b>
+<?php
+    		$sql = "SELECT Nama_Produk,Harga_Produk,image,Storage,Warna FROM produk WHERE Nama_Produk='$_SESSION[productbuy]'";
+    		$result = mysqli_query($conn, $sql);
+				$resultCheck = mysqli_fetch_array($result);
 
+<<<<<<< Updated upstream
 	}
 	
 	 
 	?>
+=======
+    			if ($resultCheck > 0){
+						echo  "<h2>$resultCheck[Nama_Produk]</h2>";
+>>>>>>> Stashed changes
 
-	<hr>
+					}
+?>
 
-	</b>
+<hr>
+</b>
 
         </span>
       </h4>
+<<<<<<< Updated upstream
 	  <?php
 		$_SESSION['id_kurir']=$_POST['radiobutton'];
 		$kurirfinal = "SELECT Nama_Kurir , Produk_Kurir , Harga_Kurir FROM kurir WHERE ID_Kurir='$_SESSION[id_kurir]'";
@@ -597,23 +600,41 @@ font-weight: normal;
 			 
 			
 		
+=======
+
+<?php
+			$_SESSION['id_kurir']=$_POST['radiobutton'];
+			$kurirfinal = "SELECT Nama_Kurir , Produk_Kurir , Harga_Kurir FROM kurir WHERE ID_Kurir='$_SESSION[id_kurir]'";
+			$hasil = mysqli_query($conn,$kurirfinal);
+			$hasilarray = mysqli_fetch_array($hasil);
+
+			echo "Quantity of Product Purchased : " . $_SESSION["kuantitas"] . ".<br>";
+			echo "Total Product Price : " . $_SESSION["total_harga"] . ".<br>";
+
+			echo "Courier Name : " . $hasilarray['Nama_Kurir'] . ".<br>";
+			echo "Courier Type :" . $hasilarray['Produk_Kurir'] . ".<br>";
+			echo "Courier Price : " . $hasilarray['Harga_Kurir'] . ".<br>";
+
+			$Totalharga = $_SESSION["total_harga"];
+			$Totalhargaint = (int)$Totalharga;
+
+			$Totalhargakurir = $hasilarray["Harga_Kurir"];
+			$Kurirhargaint = (int)$Totalhargakurir;
+			$_SESSION['kurirfinale'] = $Kurirhargaint;
+			$hargafinale = $Totalhargaint +$Kurirhargaint;
+
+?>
+
+>>>>>>> Stashed changes
       <hr>
-      <p>Total <span class="price" style="color:black"><b><?php echo number_format($hargafinale,0,',','.');?></b></span></p>
-	  
-	  <input type="button" value="Back"  onclick="location.href='sigadgetnavigation.php'" />	
-	  
-		<form method="post" action="insertdatapembelian.php">  
-	   <input type="submit" name="beli" value="Beli" class="btn">
+      <p>Total
+				<span class="price" style="color:black"><b><?php echo number_format($hargafinale,0,',','.');?></b></span></p>
+
+	  	<input type="button" value="Back"  onclick="location.href='sigadgetnavigation.php'">
+			<input type="submit" name="beli" value="Beli" class="btn">
 	    </form>
-		
     </div>
   </div>
 </div>
-
 </body>
 </html>
-
-
-			 
-			
-
