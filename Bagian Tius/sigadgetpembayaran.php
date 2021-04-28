@@ -523,18 +523,11 @@ font-weight: normal;
               <i class="fa fa-cc-mastercard" style="color:red;"></i>
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
-<<<<<<< Updated upstream
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="Fransiskus Advendtius Marlie">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
-=======
 						<form method="post" action="insertdatapembelian.php">
 	            <label for="cname">Name on Card</label>
 	            <input type="text" id="cname" name="cardname" placeholder="Fransiskus Advendtius Marlie" required>
 	            <label for="ccnum">Credit card number</label>
 	            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
->>>>>>> Stashed changes
           </div>
         </div>
     </div>
@@ -551,15 +544,8 @@ font-weight: normal;
     		$result = mysqli_query($conn, $sql);
 				$resultCheck = mysqli_fetch_array($result);
 
-<<<<<<< Updated upstream
-	}
-	
-	 
-	?>
-=======
     			if ($resultCheck > 0){
 						echo  "<h2>$resultCheck[Nama_Produk]</h2>";
->>>>>>> Stashed changes
 
 					}
 ?>
@@ -569,38 +555,6 @@ font-weight: normal;
 
         </span>
       </h4>
-<<<<<<< Updated upstream
-	  <?php
-		$_SESSION['id_kurir']=$_POST['radiobutton'];
-		$kurirfinal = "SELECT Nama_Kurir , Produk_Kurir , Harga_Kurir FROM kurir WHERE ID_Kurir='$_SESSION[id_kurir]'";
-		$hasil = mysqli_query($conn,$kurirfinal);
-		$hasilarray = mysqli_fetch_array($hasil);
-		
-				
-		echo "Quantity of Product Purchased : " . $_SESSION["kuantitas"] . ".<br>";
-		echo "Total Product Price : " . $_SESSION["total_harga"] . ".<br>";
-		
-		echo "Courier Name : " . $hasilarray['Nama_Kurir'] . ".<br>";
-		echo "Courier Type :" . $hasilarray['Produk_Kurir'] . ".<br>";
-		echo "Courier Price : " . $hasilarray['Harga_Kurir'] . ".<br>";
-	
-		$Totalharga = $_SESSION["total_harga"];
-		$Totalhargaint = (int)$Totalharga;
-		
-		$Totalhargakurir = $hasilarray["Harga_Kurir"];
-		$Kurirhargaint = (int)$Totalhargakurir;
-		$_SESSION['kurirfinale'] = $Kurirhargaint;
-		$hargafinale = $Totalhargaint +$Kurirhargaint;
-		
-	
-		?>
-		
-		
-			 
-			 
-			
-		
-=======
 
 <?php
 			$_SESSION['id_kurir']=$_POST['radiobutton'];
@@ -625,7 +579,6 @@ font-weight: normal;
 
 ?>
 
->>>>>>> Stashed changes
       <hr>
       <p>Total
 				<span class="price" style="color:black"><b><?php echo number_format($hargafinale,0,',','.');?></b></span></p>
