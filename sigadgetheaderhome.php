@@ -3,11 +3,15 @@ include "sigadgetconnection.php";
 
 session_start();
 
+if(isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['account_username']);
+		header('location: home.php');
+}
+
 $sql = mysqli_query($conn, "SELECT Filename FROM image WHERE Filename='smartphone.png'");
 	
 	while($row=mysqli_fetch_array($sql)) {
-		
-		
 ?>
 
 <!DOCTYPE html>
@@ -227,8 +231,8 @@ body {
 }
 
 	</style>
-
-								<link rel="shortcut icon" type="image" href="image/<?php echo $row['Filename']; ?>"> <?php } ?>
+	
+	<link rel="shortcut icon" type="image" href="image/<?php echo $row['Filename']; ?>"> <?php } ?>
   </head>
 <body>
 <!----navigation--->
@@ -304,4 +308,3 @@ body {
         </ul>
     </div>
 </nav>
-<br>
