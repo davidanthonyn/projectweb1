@@ -77,7 +77,7 @@ th, td {
   outline: 0;
   padding: 10px 100px ;
   color: white;
-  background-color: #000;
+  background-color: #C0C0C0;
   text-align: center;
   cursor: pointer;
   width: 50%;
