@@ -1,11 +1,18 @@
 <?php
 include "sigadgetheadercustomer.php";
 
+error_reporting(0);
+
 if(empty($_GET['name'])) {
 	header('location: ../home.php');
 }
-		
+
+if(isset($_GET['name']) && $_GET['storage'] && $_GET['color']) {
 $checkdata = mysqli_query($conn,"SELECT * FROM produk WHERE Nama_Produk = '$_GET[name]' AND Storage = '$_GET[storage]' AND Warna = '$_GET[color]'");
+} else if(isset($_GET['name']) && $_GET['connectivity']) {
+$checkdata = mysqli_query($conn,"SELECT * FROM produk WHERE Nama_Produk = '$_GET[name]' AND Konektivitas_Headphone = '$_GET[connectivity]'");
+}
+
 $check = mysqli_fetch_array($checkdata);
 
 ?>
@@ -318,7 +325,6 @@ ul.no-bullets {
 							<button hidden id="up" onclick="setQuantity('up');">+</button>
 							<?php 
 							$_SESSION["productbuy"] = $check["Nama_Produk"];
-							$_SESSION["idproduct"] = $check["ID_Produk"];
 							
 							if($check["Stok_Produk"]>=1) {
 							echo "<a href='../Bagian Tius/sigadgetnavigation.php' class='btn-cart'>Beli</a>";
@@ -330,8 +336,9 @@ ul.no-bullets {
 							}
 							?>
 							<br><br><br>
-							
-							
+				<?php
+					if($check["Jenis_Produk"]=="Smartphone") {
+							?>
 							<h3>Spesifikasi</h3><hr>
 							<table style="width:100%;table-layout: fixed;">
 								  <tr>
@@ -413,8 +420,37 @@ ul.no-bullets {
 								  </tr>
 							</table>
 							<hr><br>							
-															
-																				
+				<?php
+									} else if($check["Jenis_Produk"]=="Accessories") {
+?>				
+
+								<h3>Spesifikasi</h3><hr>
+							<table style="width:100%;table-layout: fixed;">
+								  <tr>
+									<td>Warna</td>
+									<td><?php echo "$check[Warna]"; ?></td>
+								  </tr>
+							</table>
+							<hr><br>
+							
+							<table style="width:100%;table-layout: fixed;">
+								  <tr>
+									<td>Warna</td>
+									<td><?php echo "$check[Tipe_Headphone]"; ?></td>
+								  </tr>
+							</table>
+							<hr><br>
+							
+							<table style="width:100%;table-layout: fixed;">
+								  <tr>
+									<td>Warna</td>
+									<td><?php echo "$check[Konektivitas_Headphone]"; ?></td>
+								  </tr>
+							</table>
+							<hr><br>
+											<?php
+									}
+?>															
 																				
 																				  
 </ul>
